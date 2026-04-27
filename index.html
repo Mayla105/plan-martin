@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Plan Martin">
+  <title>Plan Martin Miranda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset ── */
+    :root {
+      --bg:#0f0f0f; --surface:#181818; --surface2:#222222; --border:#2a2a2a;
+      --green:#b8f04a; --yellow:#f5c842; --red:#ff5f5f; --blue:#7eb8f7;
+      --purple:#c084fc; --orange:#f5a623; --muted:#555; --text:#e8e8e8; --text2:#999;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      background:var(--bg); color:var(--text);
+      font-family:"DM Sans",-apple-system,sans-serif;
+      font-size:14px; line-height:1.6; min-height:100vh;
+      padding-top:env(safe-area-inset-top);
+      padding-bottom:env(safe-area-inset-bottom);
+      padding-left:env(safe-area-inset-left);
+      padding-right:env(safe-area-inset-right);
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    /* ── Hide all radio inputs ── */
+    input[type="radio"] { display:none; }
+
+    /* ── Header ── */
+    .header { padding:36px 28px 28px; border-bottom:1px solid var(--border); max-width:960px; margin:0 auto; }
+    h1 { font-family:"Bebas Neue",sans-serif; font-size:clamp(36px,8vw,60px); letter-spacing:2px; color:var(--green); line-height:1; margin-bottom:4px; }
+    .subtitle { color:var(--text2); font-size:12px; letter-spacing:1.5px; text-transform:uppercase; }
+    .week-bar { display:flex; align-items:center; gap:8px; margin-top:14px; }
+    .week-label { font-size:11px; color:var(--muted); letter-spacing:1px; text-transform:uppercase; font-weight:700; }
+    .week-btn {
+      background:var(--surface); border:1px solid var(--border); border-radius:6px;
+      padding:4px 12px; font-size:12px; font-weight:700; color:var(--text2);
+      cursor:pointer; font-family:inherit; transition:.15s;
+      display:inline-block; user-select:none;
+    }
+
+    /* ── Main grid ── */
+    .main { max-width:960px; margin:0 auto; padding:28px; display:grid; grid-template-columns:260px 1fr; gap:24px; align-items:start; }
+    .sidebar { position:sticky; top:24px; }
+    .sidebar-title { font-family:"Bebas Neue",sans-serif; font-size:12px; letter-spacing:2px; color:var(--muted); text-transform:uppercase; margin-bottom:10px; }
+    .day-list { display:flex; flex-direction:column; gap:5px; }
+    .day-btn {
+      background:var(--surface); border:1px solid var(--border); border-radius:10px;
+      padding:11px 14px; cursor:pointer; text-align:left; transition:.15s;
+      display:flex; align-items:center; gap:11px; width:100%;
+      position:relative; overflow:hidden; user-select:none;
+    }
+    .day-btn::before { content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:transparent; transition:background .2s; }
+    .day-btn:active { background:var(--surface2); }
+    .day-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+    .dot-oly  { background:var(--blue); }
+    .dot-mob  { background:var(--green); }
+    .dot-rest { background:var(--muted); }
+    .day-btn-info { flex:1; min-width:0; }
+    .day-btn-name { font-family:"Bebas Neue",sans-serif; font-size:15px; letter-spacing:1px; color:var(--text); line-height:1; margin-bottom:1px; }
+    .day-btn-sub { font-size:11px; color:var(--text2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .load-pips { display:flex; gap:2px; flex-shrink:0; }
+    .pip { width:6px; height:6px; border-radius:1px; background:var(--border); }
+    .pip.on-high { background:var(--red); }
+    .pip.on-med  { background:var(--yellow); }
+    .pip.on-low  { background:var(--green); }
+
+    /* ── Plan views: hidden by default, shown via :checked ── */
+    .content { min-height:400px; }
+    .plan-view { display:none; }
+
+    /* Day navigation via CSS :checked */
+    #r-lunes:checked    ~ .main #plan-lunes    { display:block; }
+    #r-martes:checked   ~ .main #plan-martes   { display:block; }
+    #r-miercoles:checked~ .main #plan-miercoles{ display:block; }
+    #r-jueves:checked   ~ .main #plan-jueves   { display:block; }
+    #r-viernes:checked  ~ .main #plan-viernes  { display:block; }
+    #r-sabado:checked   ~ .main #plan-sabado   { display:block; }
+
+    /* Active day button highlight */
+    #r-lunes:checked    ~ .main label[for="r-lunes"],
+    #r-martes:checked   ~ .main label[for="r-martes"],
+    #r-miercoles:checked~ .main label[for="r-miercoles"],
+    #r-jueves:checked   ~ .main label[for="r-jueves"],
+    #r-viernes:checked  ~ .main label[for="r-viernes"],
+    #r-sabado:checked   ~ .main label[for="r-sabado"]   { background:var(--surface2); border-color:#333; }
+
+    /* Active day left-bar */
+    #r-lunes:checked    ~ .main label[for="r-lunes"]::before,
+    #r-martes:checked   ~ .main label[for="r-martes"]::before,
+    #r-miercoles:checked~ .main label[for="r-miercoles"]::before,
+    #r-jueves:checked   ~ .main label[for="r-jueves"]::before,
+    #r-viernes:checked  ~ .main label[for="r-viernes"]::before,
+    #r-sabado:checked   ~ .main label[for="r-sabado"]::before  { background:var(--green); }
+
+    /* Week button active */
+    #w1:checked ~ .header label[for="w1"],
+    #w2:checked ~ .header label[for="w2"],
+    #w3:checked ~ .header label[for="w3"],
+    #w4:checked ~ .header label[for="w4"] { background:var(--green); border-color:var(--green); color:#0f1a00; }
+
+    /* Week row highlight in ALL progression tables */
+    #w1:checked ~ .main .prog-table tbody tr:nth-child(1) td,
+    #w2:checked ~ .main .prog-table tbody tr:nth-child(2) td,
+    #w3:checked ~ .main .prog-table tbody tr:nth-child(3) td,
+    #w4:checked ~ .main .prog-table tbody tr:nth-child(4) td { background:rgba(184,240,74,.07); }
+    #w1:checked ~ .main .prog-table tbody tr:nth-child(1) td:first-child,
+    #w2:checked ~ .main .prog-table tbody tr:nth-child(2) td:first-child,
+    #w3:checked ~ .main .prog-table tbody tr:nth-child(3) td:first-child,
+    #w4:checked ~ .main .prog-table tbody tr:nth-child(4) td:first-child { color:var(--green); }
+
+    /* ── Plan header ── */
+    .plan-header { margin-bottom:20px; padding-bottom:18px; border-bottom:1px solid var(--border); }
+    .plan-day-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:4px; }
+    .plan-title { font-family:"Bebas Neue",sans-serif; font-size:30px; letter-spacing:1px; line-height:1; margin-bottom:8px; }
+    .plan-tags { display:flex; flex-wrap:wrap; gap:5px; }
+    .tag { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; padding:3px 8px; border-radius:4px; }
+    .tag-oly      { background:rgba(126,184,247,.12); color:var(--blue); }
+    .tag-mob      { background:rgba(184,240,74,.12);  color:var(--green); }
+    .tag-run      { background:rgba(245,166,35,.12);  color:var(--orange); }
+    .tag-optional { background:rgba(255,255,255,.05); color:var(--muted); }
+    .tag-warn     { background:rgba(245,200,66,.1);   color:var(--yellow); }
+
+    /* ── Accordion: <details>/<summary> — ZERO JavaScript ── */
+    details.block {
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:10px; margin-bottom:10px; overflow:hidden;
+    }
+    details.block summary {
+      list-style:none; padding:13px 16px; display:flex; align-items:center;
+      gap:10px; cursor:pointer; user-select:none; transition:background .12s;
+      /* reset default summary arrow */
+    }
+    details.block summary::-webkit-details-marker { display:none; }
+    details.block summary::marker { display:none; }
+    details.block summary:active { background:rgba(255,255,255,.03); }
+    .block-icon   { font-size:15px; flex-shrink:0; }
+    .block-title  { font-weight:600; font-size:13.5px; color:var(--text); flex:1; }
+    .block-subtitle { font-size:11px; color:var(--text2); margin-top:1px; }
+    .block-chevron { color:var(--muted); font-size:10px; transition:transform .2s; flex-shrink:0; }
+    details.block[open] .block-chevron { transform:rotate(180deg); }
+    .block-body { border-top:1px solid var(--border); } /* display handled by <details> */
+
+    /* Run block variant */
+    details.run-block {
+      background:rgba(245,166,35,.06); border:1px solid rgba(245,166,35,.2);
+      border-radius:10px; margin-bottom:10px; overflow:hidden;
+    }
+    details.run-block summary { list-style:none; padding:13px 16px; display:flex; align-items:center; gap:10px; cursor:pointer; user-select:none; }
+    details.run-block summary::-webkit-details-marker { display:none; }
+    details.run-block summary::marker { display:none; }
+    details.run-block .block-icon  { color:var(--orange); }
+    details.run-block .block-chevron { color:var(--orange); opacity:.6; transition:transform .2s; }
+    details.run-block[open] .block-chevron { transform:rotate(180deg); }
+    details.run-block[open] summary { border-bottom:1px solid rgba(245,166,35,.15); }
+    .run-body { padding:12px 16px 14px; font-size:13px; color:var(--text2); line-height:1.7; }
+    .run-body strong { color:var(--orange); }
+    .zone-badge {
+      display:inline-flex; align-items:center; gap:4px; margin-top:8px;
+      background:rgba(245,166,35,.15); border:1px solid rgba(245,166,35,.3);
+      border-radius:5px; padding:3px 9px; font-size:11px; font-weight:700;
+      color:var(--orange); letter-spacing:.5px;
+    }
+
+    /* ── Exercises ── */
+    .ex-group { padding:12px 16px; border-bottom:1px solid rgba(255,255,255,.03); }
+    .ex-group:last-child { border-bottom:none; }
+    .ex-item { display:flex; align-items:flex-start; gap:8px; padding:5px 0; }
+    .ex-bullet { width:4px; height:4px; border-radius:50%; background:var(--muted); flex-shrink:0; margin-top:7px; }
+    .ex-name   { font-size:13px; color:var(--text); font-weight:500; flex:1; }
+    .ex-detail { font-size:11px; color:var(--text2); text-align:right; flex-shrink:0; }
+    .ex-note   { font-size:11px; color:var(--muted); font-style:italic; padding:2px 0 4px 12px; }
+
+    /* ── Progression tables ── */
+    .prog-table { width:100%; border-collapse:collapse; font-size:12px; margin-top:6px; }
+    .prog-table th { text-align:left; color:var(--muted); font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; padding:0 0 6px; border-bottom:1px solid var(--border); }
+    .prog-table td { padding:6px 0; color:var(--text2); border-bottom:1px solid rgba(255,255,255,.03); vertical-align:middle; }
+    .prog-table td:first-child { color:var(--text); font-weight:500; min-width:60px; }
+    .prog-table tr:last-child td { border-bottom:none; }
+    .pb { display:inline-block; padding:2px 7px; border-radius:3px; font-size:11px; font-weight:700; }
+    .pb-blue   { background:rgba(126,184,247,.15); color:var(--blue); }
+    .pb-green  { background:rgba(184,240,74,.15);  color:var(--green); }
+    .pb-yellow { background:rgba(245,200,66,.15);  color:var(--yellow); }
+
+    /* ── Notes ── */
+    .note-box { margin:0 16px 12px; background:rgba(184,240,74,.04); border:1px solid rgba(184,240,74,.12); border-radius:7px; padding:10px 13px; font-size:12px; color:var(--text2); line-height:1.65; }
+    .note-box strong { color:var(--green); }
+    .note-warn { background:rgba(245,200,66,.04); border-color:rgba(245,200,66,.15); }
+    .note-warn strong { color:var(--yellow); }
+    .note-box-standalone { background:rgba(245,200,66,.04); border:1px solid rgba(245,200,66,.15); border-radius:8px; padding:12px 14px; font-size:12px; color:var(--text2); line-height:1.65; margin-bottom:14px; }
+    .note-box-standalone strong { color:var(--yellow); }
+
+    /* ── Sub-labels & Complex lists ── */
+    .sub-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--muted); padding:10px 16px 4px; }
+    .complex-wrap { padding:0 16px 12px; }
+    .complex-list { background:var(--surface2); border-radius:7px; overflow:hidden; }
+    .c-item { display:flex; justify-content:space-between; align-items:center; padding:7px 12px; border-bottom:1px solid var(--border); font-size:12px; }
+    .c-item:last-child { border-bottom:none; }
+    .c-item-name { color:var(--text); }
+    .c-item-reps { color:var(--text2); font-size:11px; font-weight:600; }
+
+    /* ── Responsive ── */
+    @media (max-width:660px) {
+      .header  { padding:24px 16px 20px; }
+      .main    { grid-template-columns:1fr; padding:16px; gap:16px; }
+      .sidebar { position:static; }
+      .day-list { display:grid; grid-template-columns:1fr 1fr; gap:5px; }
+      h1 { font-size:38px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ WEEK RADIO INPUTS (before .header so ~ selector reaches it) ══ -->
+<input type="radio" name="week" id="w1" checked>
+<input type="radio" name="week" id="w2">
+<input type="radio" name="week" id="w3">
+<input type="radio" name="week" id="w4">
+
+<!-- ══ DAY RADIO INPUTS (before .main so ~ selector reaches it) ══ -->
+<input type="radio" name="day" id="r-lunes" checked>
+<input type="radio" name="day" id="r-martes">
+<input type="radio" name="day" id="r-miercoles">
+<input type="radio" name="day" id="r-jueves">
+<input type="radio" name="day" id="r-viernes">
+<input type="radio" name="day" id="r-sabado">
+
+<!-- ══ HEADER ══ -->
+<div class="header">
+  <h1>Plan Martin Miranda</h1>
+  <p class="subtitle">Entrenamiento semanal · Oly + Movilidad</p>
+  <div class="week-bar">
+    <span class="week-label">Semana</span>
+    <label for="w1" class="week-btn">S1</label>
+    <label for="w2" class="week-btn">S2</label>
+    <label for="w3" class="week-btn">S3</label>
+    <label for="w4" class="week-btn">S4 🔻</label>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<div class="main">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-title">Días</div>
+    <div class="day-list">
+
+      <label for="r-lunes" class="day-btn">
+        <div class="day-dot dot-oly"></div>
+        <div class="day-btn-info"><div class="day-btn-name">Lunes</div><div class="day-btn-sub">Oly — Snatch</div></div>
+        <div class="load-pips"><div class="pip on-high"></div><div class="pip on-high"></div><div class="pip on-high"></div></div>
+      </label>
+
+      <label for="r-martes" class="day-btn">
+        <div class="day-dot dot-mob"></div>
+        <div class="day-btn-info"><div class="day-btn-name">Martes</div><div class="day-btn-sub">Movilidad + Run 5K</div></div>
+        <div class="load-pips"><div class="pip on-med"></div><div class="pip on-med"></div><div class="pip"></div></div>
+      </label>
+
+      <label for="r-miercoles" class="day-btn">
+        <div class="day-dot dot-oly"></div>
+        <div class="day-btn-info"><div class="day-btn-name">Miércoles</div><div class="day-btn-sub">Oly — Front Squat + DL</div></div>
+        <div class="load-pips"><div class="pip on-high"></div><div class="pip on-high"></div><div class="pip on-high"></div></div>
+      </label>
+
+      <label for="r-jueves" class="day-btn">
+        <div class="day-dot dot-mob"></div>
+        <div class="day-btn-info"><div class="day-btn-name">Jueves</div><div class="day-btn-sub">Movilidad + Run 5K</div></div>
+        <div class="load-pips"><div class="pip on-med"></div><div class="pip on-med"></div><div class="pip"></div></div>
+      </label>
+
+      <label for="r-viernes" class="day-btn">
+        <div class="day-dot dot-oly"></div>
+        <div class="day-btn-info"><div class="day-btn-name">Viernes</div><div class="day-btn-sub">Oly — Clean &amp; Jerk</div></div>
+        <div class="load-pips"><div class="pip on-high"></div><div class="pip on-high"></div><div class="pip on-high"></div></div>
+      </label>
+
+      <label for="r-sabado" class="day-btn">
+        <div class="day-dot dot-mob"></div>
+        <div class="day-btn-info"><div class="day-btn-name">Sábado</div><div class="day-btn-sub">Solo Movilidad</div></div>
+        <div class="load-pips"><div class="pip on-low"></div><div class="pip"></div><div class="pip"></div></div>
+      </label>
+
+      <div class="day-btn" style="opacity:.35;pointer-events:none;cursor:default">
+        <div class="day-dot dot-rest"></div>
+        <div class="day-btn-info"><div class="day-btn-name">Domingo</div><div class="day-btn-sub">Descanso</div></div>
+        <div class="load-pips"><div class="pip"></div><div class="pip"></div><div class="pip"></div></div>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <!-- ══════════════ LUNES ══════════════ -->
+    <div id="plan-lunes" class="plan-view">
+      <div class="plan-header">
+        <div class="plan-day-label" style="color:var(--blue)">Lunes · 19hs Oly · 20:30 WOD full</div>
+        <div class="plan-title">Snatch Olímpico</div>
+        <div class="plan-tags"><span class="tag tag-oly">⚡ Oly</span><span class="tag tag-warn">Carga alta</span></div>
+      </div>
+
+      <details class="block" open>
+        <summary><span class="block-icon">🔄</span><div><div class="block-title">Movilidad General</div><div class="block-subtitle">2 rounds</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="ex-group">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Sentada 90°-90° Rot. Externa</span><span class="ex-detail">8/8</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Pull over con disco sobre pelota</span><span class="ex-detail">5 + 10''</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Sentadilla + Rotaciones torácicas</span><span class="ex-detail">5/5</span></div>
+        </div></div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">🔥</span><div><div class="block-title">Core</div><div class="block-subtitle">4 rounds</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="ex-group">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Good Morning Sumo (con barra)</span><span class="ex-detail">5 reps</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Vuelos Frontales en Sentadilla (con disco)</span><span class="ex-detail">10 reps</span></div>
+        </div></div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">🎯</span><div><div class="block-title">Bloque 1 — Técnico Snatch</div><div class="block-subtitle">3 sets · Complejo (1+1+1+1+1)</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body">
+          <div class="complex-wrap"><div class="complex-list">
+            <div class="c-item"><span class="c-item-name">Snatch Segmented Deadlift</span><span class="c-item-reps">1 rep</span></div>
+            <div class="c-item"><span class="c-item-name">High Hang Squat Snatch</span><span class="c-item-reps">1 rep</span></div>
+            <div class="c-item"><span class="c-item-name">Hang Squat Snatch (Drop &amp; Reset)</span><span class="c-item-reps">1 rep</span></div>
+            <div class="c-item"><span class="c-item-name">Slow-Pull Power Snatch</span><span class="c-item-reps">1 rep</span></div>
+            <div class="c-item"><span class="c-item-name">Low Hang Squat Snatch</span><span class="c-item-reps">1 rep</span></div>
+          </div></div>
+          <div class="sub-label">Progresión semanal</div>
+          <div class="ex-group"><table class="prog-table"><thead><tr><th>Semana</th><th>Set 1</th><th>Set 2</th><th>Set 3</th></tr></thead><tbody>
+            <tr><td>Sem 1</td><td><span class="pb pb-blue">@55</span></td><td><span class="pb pb-blue">@60</span></td><td><span class="pb pb-blue">@65</span></td></tr>
+            <tr><td>Sem 2</td><td><span class="pb pb-blue">@58</span></td><td><span class="pb pb-blue">@63</span></td><td><span class="pb pb-blue">@68</span></td></tr>
+            <tr><td>Sem 3</td><td><span class="pb pb-blue">@61</span></td><td><span class="pb pb-blue">@66</span></td><td><span class="pb pb-blue">@71</span></td></tr>
+            <tr><td>Sem 4 🔻</td><td colspan="3" style="color:var(--muted)">Descarga</td></tr>
+          </tbody></table></div>
+        </div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">💪</span><div><div class="block-title">Bloque 2 — Fuerza Snatch</div><div class="block-subtitle">5 sets · Complejo de fuerza (1+1+1+1+1)</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body">
+          <div class="complex-wrap"><div class="complex-list">
+            <div class="c-item"><span class="c-item-name">Snatch Lift Off</span><span class="c-item-reps">1 rep</span></div>
+            <div class="c-item"><span class="c-item-name">Pausing Squat Snatch</span><span class="c-item-reps">1 rep · 2'' pausa abajo</span></div>
+            <div class="c-item"><span class="c-item-name">Hang Squat Snatch (Drop &amp; Reset)</span><span class="c-item-reps">1 rep</span></div>
+            <div class="c-item"><span class="c-item-name">Slow-Pull Squat Snatch</span><span class="c-item-reps">1 rep</span></div>
+            <div class="c-item"><span class="c-item-name">Low Hang Squat Snatch</span><span class="c-item-reps">1 rep</span></div>
+          </div></div>
+          <div class="sub-label">Progresión — 5 sets por semana</div>
+          <div class="ex-group"><table class="prog-table"><thead><tr><th>Sem</th><th>S1</th><th>S2</th><th>S3</th><th>S4</th><th>S5</th></tr></thead><tbody>
+            <tr><td>Sem 1</td><td>@70</td><td>@73</td><td>@76</td><td>@79</td><td>@82</td></tr>
+            <tr><td>Sem 2</td><td>@73</td><td>@76</td><td>@79</td><td>@82</td><td>@85</td></tr>
+            <tr><td>Sem 3</td><td>@76</td><td>@79</td><td>@82</td><td>@85</td><td>@88</td></tr>
+            <tr><td>Sem 4 🔻</td><td colspan="5" style="color:var(--muted)">Descarga</td></tr>
+          </tbody></table></div>
+        </div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">🏋️</span><div><div class="block-title">Bloque 3 — Estabilidad Overhead</div><div class="block-subtitle">Bamboo Bar + OTM 4'</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body">
+          <div class="ex-group"><div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Bamboo Bar Overhead Squats</span><span class="ex-detail">4×5 · ligero/mod.</span></div></div>
+          <div class="sub-label">OTM 4 minutos</div>
+          <div class="complex-wrap"><div class="complex-list">
+            <div class="c-item"><span class="c-item-name">Pausing Snatch Balance</span><span class="c-item-reps">1 rep · 3'' pausa abajo</span></div>
+            <div class="c-item"><span class="c-item-name">Overhead Squat</span><span class="c-item-reps">1 rep</span></div>
+            <div class="c-item"><span class="c-item-name">OHS 1/4 + 2'' iso</span><span class="c-item-reps">1 rep</span></div>
+          </div></div>
+          <div class="sub-label">Carga semanal</div>
+          <div class="ex-group"><table class="prog-table"><thead><tr><th>Semana</th><th>Carga</th></tr></thead><tbody>
+            <tr><td>Sem 1</td><td><span class="pb pb-blue">@68</span></td></tr>
+            <tr><td>Sem 2</td><td><span class="pb pb-blue">@71</span></td></tr>
+            <tr><td>Sem 3</td><td><span class="pb pb-blue">@74</span></td></tr>
+            <tr><td>Sem 4 🔻</td><td style="color:var(--muted)">Descarga</td></tr>
+          </tbody></table></div>
+        </div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">💥</span><div><div class="block-title">WOD 20:30</div><div class="block-subtitle">Full intensity</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="note-box">El Snatch es técnico y neuromotor — no destroza muscularmente como el Deadlift. Llegás al WOD con el sistema nervioso activado pero sin fatiga real de piernas. <strong>Este es uno de tus días para entrenar a intensidad de competencia.</strong></div></div>
+      </details>
+    </div>
+
+    <!-- ══════════════ MARTES ══════════════ -->
+    <div id="plan-martes" class="plan-view">
+      <div class="plan-header">
+        <div class="plan-day-label" style="color:var(--green)">Martes · Movilidad + Run</div>
+        <div class="plan-title">Movilidad Día 1 + 5K Zona 2</div>
+        <div class="plan-tags"><span class="tag tag-mob">🦵 Movilidad</span><span class="tag tag-run">🏃 Run Z2</span></div>
+      </div>
+
+      <details class="block" open>
+        <summary><span class="block-icon">🔄</span><div><div class="block-title">Movilidad — Bloque 1</div><div class="block-subtitle">x1 serie</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="ex-group">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Foam Roll Gemelo Dcho + Quads</span><span class="ex-detail">1' c/u</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Split Stance Ankle Iso</span><span class="ex-detail">3×20''</span></div>
+          <div class="ex-note">*3 veces Izq y 2 veces Dcha. Opcional: subir/bajar talón sin tocar suelo</div>
+        </div></div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">🔄</span><div><div class="block-title">Movilidad — Bloque 2</div><div class="block-subtitle">x2 series</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="ex-group">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">9090 Hip Butterfly</span><span class="ex-detail">6/6 · 3:3</span></div>
+          <div class="ex-note">*Puedo asistirme con apoyo de mano si es necesario</div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Tall Kneeling Hip Rotation</span><span class="ex-detail">6/6 · 3:3</span></div>
+          <div class="ex-note">*Si me siento cómodo, ejecutar con disco en OH</div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Landmine Sots Press</span><span class="ex-detail">8/8 · 1:1</span></div>
+          <div class="ex-note">*Codo cerrado, buena postura en el squat. Evitar hombros cerca de orejas</div>
+        </div></div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">💪</span><div><div class="block-title">Accesorios</div><div class="block-subtitle">x3 · Descanso libre</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="ex-group">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Split Squat Front Foot Elevated</span><span class="ex-detail">8/8</span></div>
+          <div class="ex-note">*Simular sentadilla con pierna de adelante. Activar Short Foot</div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Tip Toe Farmer Walk</span><span class="ex-detail">2×10 mts</span></div>
+          <div class="ex-note">*Probar peso corporal primero; si me siento bien, agregar carga</div>
+        </div></div>
+      </details>
+
+      <details class="run-block">
+        <summary><span class="block-icon">🏃</span><div><div class="block-title">Run 5K — Zona 2</div><div class="block-subtitle">Ritmo conversacional</div></div><span class="block-chevron">▼</span></summary>
+        <div class="run-body">Corré los 5K a un ritmo donde podés mantener una conversación con frases completas.<br><br>No es cardio intenso — es <strong>base aeróbica y recuperación activa</strong>. Si la sesión fue exigente, bajá el ritmo sin culpa.<br><span class="zone-badge">❤️ Zona 2 · 60–70% FC máx</span></div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">🧘</span><div><div class="block-title">Vuelta a la Calma</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="ex-group">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Caminar</span><span class="ex-detail">10' – 15'</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Bici suave</span><span class="ex-detail">10' – 15'</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Elongación post ducha (cuerpo frío)</span><span class="ex-detail">20''–35'' c/pos.</span></div>
+          <div class="ex-note">*Respiraciones profundas para relajar el tejido</div>
+        </div></div>
+      </details>
+    </div>
+
+    <!-- ══════════════ MIÉRCOLES ══════════════ -->
+    <div id="plan-miercoles" class="plan-view">
+      <div class="plan-header">
+        <div class="plan-day-label" style="color:var(--blue)">Miércoles · 19hs Oly · 20:30 WOD escalado</div>
+        <div class="plan-title">Front Squat + Deadlift</div>
+        <div class="plan-tags"><span class="tag tag-oly">⚡ Oly</span><span class="tag tag-warn">Día más exigente</span></div>
+      </div>
+
+      <div class="note-box-standalone">⚠️ <strong>WOD 20:30 — Escalado.</strong> Front Squat y Deadlift pesado pusieron mucho en piernas y lumbar. Bajá cargas, reducí rondas si hace falta — el objetivo es el estímulo de movimiento, no el score.</div>
+
+      <details class="block" open>
+        <summary><span class="block-icon">🔄</span><div><div class="block-title">Movilidad General</div><div class="block-subtitle">2 rounds</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="ex-group">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Pasajes frontales/laterales con banda</span><span class="ex-detail">5/5/5</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">OHS con banda</span><span class="ex-detail">5 reps</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Sentadilla Cossack OH con banda</span><span class="ex-detail">3/3</span></div>
+        </div></div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">🔥</span><div><div class="block-title">Core</div><div class="block-subtitle">3 rounds</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="ex-group">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Lumbares en banco</span><span class="ex-detail">15 – 12 – 10</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Abdomen en banco declinado</span><span class="ex-detail">30 reps · sin peso</span></div>
+        </div></div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">🦵</span><div><div class="block-title">Bloque 1 — Front Squat</div><div class="block-subtitle">Progresión principal + acumulación</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body">
+          <div class="sub-label">Progresión principal</div>
+          <div class="ex-group"><table class="prog-table"><thead><tr><th>Semana</th><th>Esquema</th><th>Carga</th></tr></thead><tbody>
+            <tr><td>Sem 1</td><td>Build to 3 reps</td><td><span class="pb pb-blue">@84</span></td></tr>
+            <tr><td>Sem 2</td><td>Build to 2 reps</td><td><span class="pb pb-blue">@87</span></td></tr>
+            <tr><td>Sem 3</td><td>Build to 2 reps</td><td><span class="pb pb-blue">@90</span></td></tr>
+            <tr><td>Sem 4 🔻</td><td>Descarga</td><td>—</td></tr>
+          </tbody></table></div>
+          <div class="sub-label">Acumulación — 3×6 · descanso 60-90''</div>
+          <div class="ex-group"><table class="prog-table"><thead><tr><th>Semana</th><th>Carga</th></tr></thead><tbody>
+            <tr><td>Sem 1</td><td><span class="pb pb-green">@71</span></td></tr>
+            <tr><td>Sem 2</td><td><span class="pb pb-green">@74</span></td></tr>
+            <tr><td>Sem 3</td><td><span class="pb pb-green">@77</span></td></tr>
+            <tr><td>Sem 4 🔻</td><td style="color:var(--muted)">Descarga</td></tr>
+          </tbody></table></div>
+        </div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">⬆️</span><div><div class="block-title">Bloque 2 — Deadlift</div><div class="block-subtitle">Progresión + volumen + Good Morning</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body">
+          <div class="sub-label">Progresión principal</div>
+          <div class="ex-group"><table class="prog-table"><thead><tr><th>Semana</th><th>Esquema</th><th>Carga</th></tr></thead><tbody>
+            <tr><td>Sem 1</td><td>Build to 2 reps</td><td><span class="pb pb-blue">@80 kg</span></td></tr>
+            <tr><td>Sem 2</td><td>Build to 2 reps</td><td><span class="pb pb-blue">@84 kg</span></td></tr>
+            <tr><td>Sem 3</td><td>Build to 2 reps</td><td><span class="pb pb-blue">@88 kg</span></td></tr>
+            <tr><td>Sem 4 🔻</td><td>Descarga</td><td>—</td></tr>
+          </tbody></table></div>
+          <div class="sub-label">Volumen — descanso 90''</div>
+          <div class="ex-group"><table class="prog-table"><thead><tr><th>Semana</th><th>Sets × Reps</th><th>Carga</th></tr></thead><tbody>
+            <tr><td>Sem 1</td><td>4×3</td><td><span class="pb pb-green">@72 kg</span></td></tr>
+            <tr><td>Sem 2</td><td>6×2</td><td><span class="pb pb-green">@75 kg</span></td></tr>
+            <tr><td>Sem 3</td><td>5×2</td><td><span class="pb pb-green">@78 kg</span></td></tr>
+            <tr><td>Sem 4 🔻</td><td>Descarga</td><td>—</td></tr>
+          </tbody></table></div>
+          <div class="ex-group"><div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Good Morning</span><span class="ex-detail">5×5</span></div></div>
+        </div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">🤸</span><div><div class="block-title">Bloque 3 — Accesorios</div><div class="block-subtitle">Descanso 30'' entre rounds</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="ex-group">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Pull Ups</span><span class="ex-detail">4×6-8</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Ring Dips</span><span class="ex-detail">4×6-8</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Kneeling Chop</span><span class="ex-detail">3×8/8</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Strict Toes to Bar</span><span class="ex-detail">3×10</span></div>
+        </div></div>
+      </details>
+    </div>
+
+    <!-- ══════════════ JUEVES ══════════════ -->
+    <div id="plan-jueves" class="plan-view">
+      <div class="plan-header">
+        <div class="plan-day-label" style="color:var(--green)">Jueves · Movilidad + Run</div>
+        <div class="plan-title">Movilidad Día 2 + 5K Zona 2</div>
+        <div class="plan-tags"><span class="tag tag-mob">🦵 Movilidad</span><span class="tag tag-run">🏃 Run Z2</span></div>
+      </div>
+
+      <details class="block" open>
+        <summary><span class="block-icon">🔄</span><div><div class="block-title">Movilidad — Bloque 1</div><div class="block-subtitle">x1 serie</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="ex-group">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Foam Roll Glúteos + Foot Massage</span><span class="ex-detail">1' c/u</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Scorpion Crossover</span><span class="ex-detail">12 · 4'' hold</span></div>
+          <div class="ex-note">*Inspirar al ir, largar el aire al encontrar tensión</div>
+        </div></div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">🔄</span><div><div class="block-title">Movilidad — Bloque 2</div><div class="block-subtitle">x2 series</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="ex-group">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Bear Crawl KB Passthrough</span><span class="ex-detail">12 · 3:3</span></div>
+          <div class="ex-note">*Puedo usar miniband por encima de rodillas</div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Quadruped to Pigeon</span><span class="ex-detail">12 · 3''</span></div>
+          <div class="ex-note">*Mantener rodilla a 90° en la ejecución</div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Chinese Plank March</span><span class="ex-detail">12 · 3'' c/pierna</span></div>
+          <div class="ex-note">*Pelvis paralela al techo</div>
+        </div></div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">💪</span><div><div class="block-title">Accesorios</div><div class="block-subtitle">x3 · Descanso libre</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="ex-group">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Single Leg Hip Thrust DB</span><span class="ex-detail">8/8 · 3:1 · RPE 6</span></div>
+          <div class="ex-note">*Bajar en 3'' y subir en 1''</div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Turkish Get Up</span><span class="ex-detail">3/3 · RPE 6-7</span></div>
+        </div></div>
+      </details>
+
+      <details class="run-block">
+        <summary><span class="block-icon">🏃</span><div><div class="block-title">Run 5K — Zona 2</div><div class="block-subtitle">Ritmo conversacional</div></div><span class="block-chevron">▼</span></summary>
+        <div class="run-body">Corré los 5K a un ritmo donde podés mantener una conversación con frases completas.<br><br>No es cardio intenso — es <strong>base aeróbica y recuperación activa</strong>. Si la sesión fue exigente, bajá el ritmo sin culpa.<br><span class="zone-badge">❤️ Zona 2 · 60–70% FC máx</span></div>
+      </details>
+    </div>
+
+    <!-- ══════════════ VIERNES ══════════════ -->
+    <div id="plan-viernes" class="plan-view">
+      <div class="plan-header">
+        <div class="plan-day-label" style="color:var(--blue)">Viernes · 19hs Oly · 20:30 WOD full</div>
+        <div class="plan-title">Clean &amp; Jerk</div>
+        <div class="plan-tags"><span class="tag tag-oly">⚡ Oly</span><span class="tag tag-warn">Carga alta</span></div>
+      </div>
+
+      <details class="block" open>
+        <summary><span class="block-icon">🔄</span><div><div class="block-title">Movilidad General</div><div class="block-subtitle">2 rounds</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="ex-group">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Pasajes frontales/laterales con banda</span><span class="ex-detail">5/5/5</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Rot. externa + press con banda</span><span class="ex-detail">10 reps</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Pull over con disco sobre pelota</span><span class="ex-detail">5 + 10''</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Sentadilla Cossack con banda OH</span><span class="ex-detail">5/5</span></div>
+        </div></div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">🔥</span><div><div class="block-title">Core</div><div class="block-subtitle">3 rounds</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="ex-group">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Plancha lateral estrella + Press</span><span class="ex-detail">8/8</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Extensiones Y/T/W</span><span class="ex-detail">10/10/10</span></div>
+        </div></div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">🎯</span><div><div class="block-title">Bloque 1 — Técnica Split Jerk</div><div class="block-subtitle">3 etapas progresivas</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body">
+          <div class="sub-label">1) Posición de pies</div>
+          <div class="ex-group">
+            <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Back Rack Step to Split</span><span class="ex-detail">1×5 · ligero</span></div>
+            <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Back Rack Jump to Split</span><span class="ex-detail">1×3 · mod.</span></div>
+          </div>
+          <div class="sub-label">2) Posición overhead</div>
+          <div class="ex-group">
+            <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Press in Split</span><span class="ex-detail">1×5 · ligero</span></div>
+            <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Jerk Balance in Split</span><span class="ex-detail">2×3 · moderado</span></div>
+          </div>
+          <div class="sub-label">3) Push Press — 4 sets</div>
+          <div class="ex-group"><table class="prog-table"><thead><tr><th>Semana</th><th>Carga</th></tr></thead><tbody>
+            <tr><td>Sem 1</td><td><span class="pb pb-blue">@55</span></td></tr>
+            <tr><td>Sem 2</td><td><span class="pb pb-blue">@60</span></td></tr>
+            <tr><td>Sem 3</td><td><span class="pb pb-blue">@65</span></td></tr>
+            <tr><td>Sem 4 🔻</td><td style="color:var(--muted)">Descarga</td></tr>
+          </tbody></table></div>
+        </div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">💪</span><div><div class="block-title">Bloque 2 — Clean &amp; Jerk</div><div class="block-subtitle">5 sets · Descanso 60-90''</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body">
+          <div class="complex-wrap"><div class="complex-list">
+            <div class="c-item"><span class="c-item-name">Squat Clean</span><span class="c-item-reps">1 rep</span></div>
+            <div class="c-item"><span class="c-item-name">Hang Squat Clean</span><span class="c-item-reps">1 rep</span></div>
+            <div class="c-item"><span class="c-item-name">Split Jerk (Drop &amp; Reset)</span><span class="c-item-reps">1 rep</span></div>
+            <div class="c-item"><span class="c-item-name">Squat Clean</span><span class="c-item-reps">1 rep</span></div>
+            <div class="c-item"><span class="c-item-name">Split Jerk</span><span class="c-item-reps">1 rep</span></div>
+          </div></div>
+          <div class="sub-label">Progresión — 5 sets por semana</div>
+          <div class="ex-group"><table class="prog-table"><thead><tr><th>Sem</th><th>S1</th><th>S2</th><th>S3</th><th>S4</th><th>S5</th></tr></thead><tbody>
+            <tr><td>Sem 1</td><td>@70</td><td>@73</td><td>@76</td><td>@79</td><td>@82</td></tr>
+            <tr><td>Sem 2</td><td>@73</td><td>@76</td><td>@79</td><td>@82</td><td>@85</td></tr>
+            <tr><td>Sem 3</td><td>@76</td><td>@79</td><td>@82</td><td>@85</td><td>@88</td></tr>
+            <tr><td>Sem 4 🔻</td><td colspan="5" style="color:var(--muted)">Descarga</td></tr>
+          </tbody></table></div>
+        </div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">🤸</span><div><div class="block-title">Bloque 3 — Accesorios</div><div class="block-subtitle">Descanso 30'' entre rounds</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="ex-group">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Double KB Front Rack Pause Squats</span><span class="ex-detail">3×10 · 2'' pausa</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Single Leg Hip Thrust</span><span class="ex-detail">3×6/6</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Banded Curl Nórdico</span><span class="ex-detail">3×10</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">L-Sit Hold</span><span class="ex-detail">3×15''</span></div>
+        </div></div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">💥</span><div><div class="block-title">WOD 20:30</div><div class="block-subtitle">Full intensity</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="note-box">El Clean &amp; Jerk es técnico como el Snatch — la fatiga es neuromotora, no muscular destructiva. <strong>Este es tu segundo día de intensidad de competencia. Aprovechalo.</strong></div></div>
+      </details>
+    </div>
+
+    <!-- ══════════════ SÁBADO ══════════════ -->
+    <div id="plan-sabado" class="plan-view">
+      <div class="plan-header">
+        <div class="plan-day-label" style="color:var(--green)">Sábado · Solo Movilidad</div>
+        <div class="plan-title">Movilidad Día 3</div>
+        <div class="plan-tags"><span class="tag tag-mob">🦵 Movilidad</span><span class="tag tag-optional">Sin run</span></div>
+      </div>
+
+      <details class="block" open>
+        <summary><span class="block-icon">🔄</span><div><div class="block-title">Movilidad — Bloque 1</div><div class="block-subtitle">x1 serie</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="ex-group">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Foam Roll Gemelos + Quads</span><span class="ex-detail">1' c/u</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Tibial Internal Rotation</span><span class="ex-detail">2×8/8 · 3:3</span></div>
+          <div class="ex-note">*Split: rodilla posterior no toca el suelo. Ir en 3'' y volver en 3''</div>
+        </div></div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">🔄</span><div><div class="block-title">Movilidad — Bloque 2</div><div class="block-subtitle">x2 series</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="ex-group">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Half Kneeling Bottom Press</span><span class="ex-detail">6/6 · 3:3</span></div>
+          <div class="ex-note">*Controlar apertura de codo. Hombro no se acerca a la oreja. No despegar el pie</div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Single Leg KB Passthrough</span><span class="ex-detail">12/12 · 1:1</span></div>
+          <div class="ex-note">*Buen control podal</div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Cossack Glides</span><span class="ex-detail">12 · 3:3</span></div>
+          <div class="ex-note">*Los pies no deben desplazarse. Ir en 3'' y volver en 3''</div>
+        </div></div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">💪</span><div><div class="block-title">Accesorios</div><div class="block-subtitle">x3 · Descanso lo necesario</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="ex-group">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Bird Dog Row</span><span class="ex-detail">8/8 · 1:1</span></div>
+          <div class="ex-note">*Ejecutar con KB ligeramente pesada</div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Cossack Squat Lateral Foot Elevated</span><span class="ex-detail">6/6 · 1:1</span></div>
+          <div class="ex-note">*Buscar profundidad con control</div>
+        </div></div>
+      </details>
+
+      <details class="block">
+        <summary><span class="block-icon">🧘</span><div><div class="block-title">Vuelta a la Calma</div></div><span class="block-chevron">▼</span></summary>
+        <div class="block-body"><div class="ex-group">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Caminar</span><span class="ex-detail">10' – 15'</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Bici suave</span><span class="ex-detail">10' – 15'</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Elongación post ducha (cuerpo frío)</span><span class="ex-detail">20''–35'' c/pos.</span></div>
+          <div class="ex-note">*Respiraciones profundas para relajar el tejido</div>
+        </div></div>
+      </details>
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>
