@@ -277,6 +277,45 @@
       h1 { font-size:38px; }
       .mayo-s3-plan > div { grid-template-columns:1fr !important; }
     }
+
+    /* ── BWP responsive grid ── */
+    .bwp-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    .bwp-sidebar-aside { position: sticky; top: 24px; }
+
+    @media (max-width: 700px) {
+      .bwp-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .bwp-sidebar-aside {
+        position: static;
+      }
+      #bwp-mes-list {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .bwp-mes-btn {
+        flex: 1;
+        min-width: 120px;
+        padding: 8px 10px;
+      }
+      #bwp-sem-btns {
+        flex-direction: column !important;
+      }
+      #bwp-day-btns .day-btn {
+        padding: 10px 12px;
+      }
+      .bwp-grid .content {
+        min-width: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -777,10 +816,10 @@
 
   <!-- ══════════════ BLACK WEEK PROJECT ══════════════ -->
   <div class="bwp-plan" style="grid-column:1/-1; display:none;" id="bwp-root">
-    <div style="display:grid; grid-template-columns:260px 1fr; gap:24px; align-items:start;">
+    <div class="bwp-grid">
 
       <!-- Sidebar BWP -->
-      <aside class="sidebar" id="bwp-sidebar" style="position:sticky; top:24px;">
+      <aside class="sidebar bwp-sidebar-aside" id="bwp-sidebar">
         <div class="sidebar-title">Black Week Project</div>
         <div id="bwp-mes-list"></div>
       </aside>
