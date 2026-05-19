@@ -205,25 +205,89 @@
     .c-item-name { color:var(--text); }
     .c-item-reps { color:var(--text2); font-size:11px; font-weight:600; }
 
-    /* ── Responsive ── */
+    /* ── Plan selector tabs ── */
+    input[type="radio"][name="plan"] { display:none; }
+    .plan-tabs { display:flex; gap:8px; margin-top:14px; flex-wrap:wrap; }
+    .plan-tab-btn {
+      background:var(--surface); border:1px solid var(--border); border-radius:6px;
+      padding:5px 14px; font-size:12px; font-weight:700; color:var(--text2);
+      cursor:pointer; font-family:inherit; transition:.15s;
+      display:inline-block; user-select:none;
+    }
+    .plan-tab-btn.active { background:var(--green); border-color:var(--green); color:#0f1a00; }
+    /* Show/hide manejado por JS */
+    .base-plan { display:none; }
+    .bwp-plan  { display:none; }
+
+    /* BWP — estilos JS-based */
+    .bwp-mes-active { background:var(--surface2) !important; border-color:#333 !important; }
+    .bwp-mes-active::before { background:var(--green) !important; }
+    .bwp-sem-active { background:rgba(184,240,74,.08) !important; border-color:rgba(184,240,74,.25) !important; color:var(--green) !important; }
+    .bwp-day-active { background:var(--surface2) !important; border-color:#444 !important; }
+    .bwp-day-active::before { background:var(--green) !important; }
+    .bwp-day-placeholder { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:20px; text-align:center; color:var(--muted); font-size:12px; }
+
+    /* BWP sidebar styles */
+    .bwp-mes-btn {
+      background:var(--surface); border:1px solid var(--border); border-radius:10px;
+      padding:11px 14px; cursor:pointer; text-align:left; transition:.15s;
+      display:flex; align-items:center; gap:11px; width:100%;
+      position:relative; overflow:hidden; user-select:none; margin-bottom:5px;
+    }
+    .bwp-mes-btn::before { content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:transparent; transition:background .2s; }
+    .bwp-sem-btn {
+      background:var(--surface); border:1px solid var(--border); border-radius:6px;
+      padding:6px 10px; font-size:11px; font-weight:700; color:var(--text2);
+      cursor:pointer; font-family:inherit; transition:.15s; display:block;
+      width:100%; text-align:left; margin-bottom:4px; user-select:none;
+    }
+    .bwp-sem-empty { opacity:.35; pointer-events:none; }
+
+    /* WOD / skill / pump blocks */
+    .wod-block { background:rgba(126,184,247,.06); border:1px solid rgba(126,184,247,.2); border-radius:10px; margin-bottom:10px; overflow:hidden; }
+    .wod-block summary { list-style:none; padding:13px 16px; display:flex; align-items:center; gap:10px; cursor:pointer; user-select:none; }
+    .wod-block summary::-webkit-details-marker { display:none; }
+    .wod-block .block-chevron { color:var(--blue); opacity:.6; transition:transform .2s; }
+    .wod-block[open] .block-chevron { transform:rotate(180deg); }
+    .wod-block[open] summary { border-bottom:1px solid rgba(126,184,247,.15); }
+    .wod-body { padding:12px 16px 14px; font-size:13px; color:var(--text2); line-height:1.7; }
+    .wod-body strong { color:var(--blue); }
+    .wod-item { display:flex; align-items:flex-start; gap:8px; padding:4px 0; }
+    .skill-block { background:rgba(192,132,252,.06); border:1px solid rgba(192,132,252,.2); border-radius:10px; margin-bottom:10px; overflow:hidden; }
+    .skill-block summary { list-style:none; padding:13px 16px; display:flex; align-items:center; gap:10px; cursor:pointer; user-select:none; }
+    .skill-block summary::-webkit-details-marker { display:none; }
+    .skill-block .block-chevron { color:var(--purple); opacity:.6; transition:transform .2s; }
+    .skill-block[open] .block-chevron { transform:rotate(180deg); }
+    .skill-block[open] summary { border-bottom:1px solid rgba(192,132,252,.15); }
+    .pump-block { background:rgba(245,166,35,.06); border:1px solid rgba(245,166,35,.2); border-radius:10px; margin-bottom:10px; overflow:hidden; }
+    .pump-block summary { list-style:none; padding:13px 16px; display:flex; align-items:center; gap:10px; cursor:pointer; user-select:none; }
+    .pump-block summary::-webkit-details-marker { display:none; }
+    .pump-block .block-chevron { color:var(--orange); opacity:.6; transition:transform .2s; }
+    .pump-block[open] .block-chevron { transform:rotate(180deg); }
+    .pump-block[open] summary { border-bottom:1px solid rgba(245,166,35,.15); }
+    .tag-bwp      { background:rgba(184,240,74,.15);  color:var(--green); }
+    .tag-skills   { background:rgba(192,132,252,.12); color:var(--purple); }
+    .tag-pump     { background:rgba(245,166,35,.12);  color:var(--orange); }
+    .tag-endurance{ background:rgba(126,184,247,.12); color:var(--blue); }
     @media (max-width:660px) {
       .header  { padding:24px 16px 20px; }
       .main    { grid-template-columns:1fr; padding:16px; gap:16px; }
       .sidebar { position:static; }
       .day-list { display:grid; grid-template-columns:1fr 1fr; gap:5px; }
       h1 { font-size:38px; }
+      .mayo-s3-plan > div { grid-template-columns:1fr !important; }
     }
   </style>
 </head>
 <body>
 
-<!-- ══ WEEK RADIO INPUTS (before .header so ~ selector reaches it) ══ -->
+<!-- ══ WEEK RADIO INPUTS ══ -->
 <input type="radio" name="week" id="w1" checked>
 <input type="radio" name="week" id="w2">
 <input type="radio" name="week" id="w3">
 <input type="radio" name="week" id="w4">
 
-<!-- ══ DAY RADIO INPUTS (before .main so ~ selector reaches it) ══ -->
+<!-- ══ DAY RADIO INPUTS ══ -->
 <input type="radio" name="day" id="r-lunes" checked>
 <input type="radio" name="day" id="r-martes">
 <input type="radio" name="day" id="r-miercoles">
@@ -235,6 +299,10 @@
 <div class="header">
   <h1>Plan Martin Miranda</h1>
   <p class="subtitle">Entrenamiento semanal · Oly + Movilidad</p>
+  <div class="plan-tabs">
+    <button class="plan-tab-btn" data-plan="bwp"  id="tab-bwp"  onclick="switchPlan('bwp')">Black Week Project</button>
+    <button class="plan-tab-btn" data-plan="base" id="tab-base" onclick="switchPlan('base')">Plan Base</button>
+  </div>
   <div class="week-bar">
     <span class="week-label">Semana</span>
     <label for="w1" class="week-btn">S1</label>
@@ -247,8 +315,8 @@
 <!-- ══ MAIN ══ -->
 <div class="main">
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
+  <!-- SIDEBAR BASE -->
+  <aside class="sidebar base-plan base-sidebar" style="flex-direction:column;">
     <div class="sidebar-title">Días</div>
     <div class="day-list">
 
@@ -297,8 +365,8 @@
     </div>
   </aside>
 
-  <!-- CONTENT -->
-  <main class="content">
+  <!-- CONTENT BASE -->
+  <main class="content base-plan">
 
     <!-- ══════════════ LUNES ══════════════ -->
     <div id="plan-lunes" class="plan-view">
@@ -705,7 +773,389 @@
     </div>
 
   </main>
+
+
+  <!-- ══════════════ BLACK WEEK PROJECT ══════════════ -->
+  <div class="bwp-plan" style="grid-column:1/-1; display:none;" id="bwp-root">
+    <div style="display:grid; grid-template-columns:260px 1fr; gap:24px; align-items:start;">
+
+      <!-- Sidebar BWP -->
+      <aside class="sidebar" id="bwp-sidebar" style="position:sticky; top:24px;">
+        <div class="sidebar-title">Black Week Project</div>
+        <div id="bwp-mes-list"></div>
+      </aside>
+
+      <!-- Content BWP -->
+      <div class="content" id="bwp-content">
+        <div id="bwp-sem-header" style="display:none; margin-bottom:12px;">
+          <div id="bwp-sem-btns" style="display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;"></div>
+          <div id="bwp-day-btns" style="display:flex; flex-direction:column; gap:5px; margin-bottom:16px;"></div>
+          <div id="bwp-day-placeholder" class="bwp-day-placeholder" style="display:block;">Seleccioná un día para ver la planificación</div>
+          <div id="bwp-day-content"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
+
+<script>
+// ── Datos de navegación BWP ──
+const BWP = {
+  meses: [
+    {
+      id: 'mayo', label: 'Mayo', sub: 'Semanas 3 y 4',
+      semanas: [
+        {
+          id: 's3', label: 'Semana 3', rango: '18 – 23 Mayo',
+          dias: [
+            { id: 'lun', label: 'Lunes 18/5', sub: 'Oly + Fuerza + 2 WODs', carga: 'high', contenido: 'bwp-lun-content' },
+            { id: 'mar', label: 'Martes 19/5', sub: 'Skills + Pump + Endurance', carga: 'high-med', contenido: 'bwp-mar-content' },
+          ]
+        },
+        {
+          id: 's4', label: 'Semana 4', rango: '25 – 30 Mayo', vacia: true,
+          dias: []
+        },
+      ]
+    }
+  ]
+};
+
+// Estado
+let activeMes = 'mayo';
+let activeSem = 's3';
+let activeDay = null;
+
+// ── Render sidebar meses ──
+function renderMeses() {
+  const list = document.getElementById('bwp-mes-list');
+  list.innerHTML = '';
+  BWP.meses.forEach(mes => {
+    const btn = document.createElement('button');
+    btn.className = 'bwp-mes-btn' + (activeMes === mes.id ? ' bwp-mes-active' : '');
+    btn.innerHTML = `
+      <div class="day-dot" style="background:var(--purple);"></div>
+      <div class="day-btn-info">
+        <div class="day-btn-name">${mes.label}</div>
+        <div class="day-btn-sub">${mes.sub}</div>
+      </div>`;
+    btn.onclick = () => { activeMes = mes.id; activeSem = mes.semanas[0].id; activeDay = null; render(); };
+    list.appendChild(btn);
+  });
+}
+
+// ── Render semanas y días ──
+function renderContent() {
+  const mes = BWP.meses.find(m => m.id === activeMes);
+  if (!mes) return;
+
+  const semHeader = document.getElementById('bwp-sem-header');
+  semHeader.style.display = 'block';
+
+  // Botones de semanas
+  const semBtns = document.getElementById('bwp-sem-btns');
+  semBtns.innerHTML = '';
+  mes.semanas.forEach(sem => {
+    const btn = document.createElement('button');
+    btn.className = 'bwp-sem-btn' + (sem.vacia ? ' bwp-sem-empty' : '') + (activeSem === sem.id ? ' bwp-sem-active' : '');
+    btn.textContent = `${sem.label} · ${sem.rango}`;
+    if (!sem.vacia) {
+      btn.onclick = () => { activeSem = sem.id; activeDay = null; render(); };
+    }
+    semBtns.appendChild(btn);
+  });
+
+  const sem = mes.semanas.find(s => s.id === activeSem);
+  const dayBtns = document.getElementById('bwp-day-btns');
+  const placeholder = document.getElementById('bwp-day-placeholder');
+  const dayContent = document.getElementById('bwp-day-content');
+  dayBtns.innerHTML = '';
+  dayContent.innerHTML = '';
+
+  if (!sem || sem.vacia) {
+    placeholder.style.display = 'block';
+    placeholder.innerHTML = '<strong>Semana 4 · 25–30 de Mayo</strong><br>El contenido se agregará cuando esté disponible.';
+    return;
+  }
+
+  // Botones de días
+  sem.dias.forEach(dia => {
+    const btn = document.createElement('button');
+    btn.className = 'day-btn' + (activeDay === dia.id ? ' bwp-day-active' : '');
+    const pips = dia.carga === 'high'
+      ? '<div class="pip on-high"></div><div class="pip on-high"></div><div class="pip on-high"></div>'
+      : '<div class="pip on-high"></div><div class="pip on-high"></div><div class="pip on-med"></div>';
+    btn.innerHTML = `
+      <div class="day-dot" style="background:var(--purple);"></div>
+      <div class="day-btn-info">
+        <div class="day-btn-name">${dia.label}</div>
+        <div class="day-btn-sub">${dia.sub}</div>
+      </div>
+      <div class="load-pips">${pips}</div>`;
+    btn.onclick = () => { activeDay = dia.id; render(); };
+    dayBtns.appendChild(btn);
+  });
+
+  // Contenido del día
+  if (!activeDay) {
+    placeholder.style.display = 'block';
+    placeholder.innerHTML = 'Seleccioná un día para ver la planificación';
+    return;
+  }
+
+  placeholder.style.display = 'none';
+  const dia = sem.dias.find(d => d.id === activeDay);
+  if (dia) {
+    const tpl = document.getElementById(dia.contenido);
+    if (tpl) dayContent.innerHTML = tpl.innerHTML;
+  }
+}
+
+function render() {
+  renderMeses();
+  renderContent();
+  // Highlight mes activo
+  document.querySelectorAll('.bwp-mes-btn').forEach(b => b.classList.remove('bwp-mes-active'));
+  document.querySelectorAll('.bwp-mes-btn').forEach((b, i) => {
+    if (BWP.meses[i] && BWP.meses[i].id === activeMes) b.classList.add('bwp-mes-active');
+  });
+}
+
+// ── Switch entre Plan Base y BWP ──
+function switchPlan(plan) {
+  // Tabs
+  document.querySelectorAll('.plan-tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + plan).classList.add('active');
+
+  // Week bar solo visible en Plan Base
+  const weekBar = document.querySelector('.week-bar');
+  if (weekBar) weekBar.style.display = plan === 'base' ? 'flex' : 'none';
+
+  // Base plan elements
+  document.querySelectorAll('.base-plan').forEach(el => {
+    el.style.display = plan === 'base' ? (el.tagName === 'ASIDE' ? 'flex' : 'block') : 'none';
+  });
+  document.querySelectorAll('.base-sidebar').forEach(el => {
+    el.style.display = plan === 'base' ? 'flex' : 'none';
+  });
+
+  // BWP
+  const bwpRoot = document.getElementById('bwp-root');
+  if (bwpRoot) bwpRoot.style.display = plan === 'bwp' ? 'block' : 'none';
+
+  if (plan === 'bwp') render();
+}
+
+// Init al cargar
+window.addEventListener('DOMContentLoaded', () => {
+  switchPlan('bwp');
+});
+</script>
+
+<!-- ══ TEMPLATES DE CONTENIDO BWP ══ -->
+
+<template id="bwp-lun-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Lunes 18 de Mayo · Black Week Project</div>
+    <div class="plan-title">Ciclo 4 2026 — Semana 3</div>
+    <div class="plan-tags">
+      <span class="tag tag-bwp">🏋️ BWP</span>
+      <span class="tag tag-oly">Oly</span>
+      <span class="tag tag-skills">Fuerza</span>
+      <span class="tag tag-endurance">2 WODs</span>
+    </div>
+  </div>
+
+  <details class="block" open>
+    <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">a gusto · 2' Assault opcional solo piernas</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="sub-label">3x</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Bulgarian Squat 1KB · Tempo</span><span class="ex-detail">5/5 · bajar 3'' subir 1''</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Hollow Hold</span><span class="ex-detail">30''</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Banded Complex</span><span class="ex-detail">6 Banded Reverse Fly @90° + 6 @45° + 6/6 Double External Band Rotations</span></div>
+      </div>
+      <div class="sub-label">3 Sets</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">1 Complex del Oly</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Seated Box Jump</span><span class="ex-detail">3 reps · 60 cm</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon">🎯</span><div><div class="block-title">B-OLY — Snatch Complex</div><div class="block-subtitle">Snatch Pull + Hang Squat Snatch + Hang Power Snatch</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-note" style="padding:10px 16px;">Al % del Hang Power Snatch</div>
+      <div class="ex-group">
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">1×2+2+2</span><span class="c-item-reps" style="color:var(--green)">50%</span></div>
+          <div class="c-item"><span class="c-item-name">1×1+2+2</span><span class="c-item-reps" style="color:var(--yellow)">60%</span></div>
+          <div class="c-item"><span class="c-item-name">3×1+2+1</span><span class="c-item-reps" style="color:var(--red)">70% – 75% – 80%</span></div>
+        </div></div>
+      </div>
+      <div class="sub-label">OTM 1'30'' × 4 rounds</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">2 Hang Snatch</span><span class="ex-detail">75% · Power o Squat</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon">💪</span><div><div class="block-title">C-FUERZA — Front Squat + Back Squat</div><div class="block-subtitle">Al % Front Squat · Desde el rack</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">1×3+4</span><span class="c-item-reps" style="color:var(--green)">60%</span></div>
+          <div class="c-item"><span class="c-item-name">1×2+3</span><span class="c-item-reps" style="color:var(--yellow)">72%</span></div>
+          <div class="c-item"><span class="c-item-name">4×2+2</span><span class="c-item-reps" style="color:var(--red)">81% – 85%</span></div>
+        </div></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">💥</span><div><div class="block-title" style="color:var(--blue)">D-WORKOUTS</div><div class="block-subtitle" style="color:var(--text2)">2 WODs · Score registrar</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div style="margin-bottom:16px;">
+        <strong>WOD 1 — Cada 2:30' × 4 Sets · Total 10'</strong>
+        <div class="ex-note" style="padding:6px 0 4px 0; font-style:normal;">Dentro de cada bloque de 2:30':</div>
+        <div class="ex-group" style="padding:8px 0 0 0;">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Shuttle Run</span><span class="ex-detail">7,5 mts ida + 7,5 mts vuelta = 1 rep</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">7 Hang Power Snatch</span><span class="ex-detail">42,5 / 30 kg</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">9 Chest to Bar</span><span class="ex-detail">Opción: Pull Ups</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Max effort Facing Burpees over the Bar</span><span class="ex-detail">hasta los 2:30'</span></div>
+        </div>
+        <div class="note-box" style="margin:8px 0 0 0;"><strong>Score:</strong> si hacés Pull Ups cargar en Scaled.</div>
+      </div>
+      <div style="border-top:1px solid var(--border); padding-top:14px;">
+        <div class="note-box note-warn" style="margin:0 0 12px 0;">9/10' Rest entre WODs</div>
+        <strong>WOD 2 — Chipper For Time · Cap 14'</strong>
+        <div class="ex-note" style="padding:6px 0 4px 0; font-style:normal;">Buy in: 400 (H) / 300 (M) mts Row · Reemplazo: mts run</div>
+        <div class="ex-group" style="padding:8px 0 0 0;">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">12 Clean &amp; Jerk</span><span class="ex-detail">50 / 35 kg</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">25 Toes to Bar</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">12 Clean &amp; Jerk</span><span class="ex-detail">60 / 40 kg</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">25 American Swing</span><span class="ex-detail">21 / 12 kg</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">12 Clean &amp; Jerk</span><span class="ex-detail">70 / 47,5 kg</span></div>
+        </div>
+        <div class="ex-note" style="padding:6px 0 4px 0; font-style:normal;">Cash out: 400 (H) / 300 (M) mts Row · Reemplazo: mts run</div>
+        <div class="note-box" style="margin:8px 0 0 0;"><strong>Score:</strong> si no se completa, sumar 1'' al cap por rep pendiente. Cada 200/150 mts = 1 rep.</div>
+      </div>
+    </div>
+  </details>
+</template>
+
+<template id="bwp-mar-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Martes 19 de Mayo · Black Week Project</div>
+    <div class="plan-title">Ciclo 4 2026 — Semana 3</div>
+    <div class="plan-tags">
+      <span class="tag tag-bwp">🏋️ BWP</span>
+      <span class="tag tag-skills">Skills</span>
+      <span class="tag tag-pump">Pump</span>
+      <span class="tag tag-endurance">Endurance</span>
+    </div>
+  </div>
+
+  <details class="block" open>
+    <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación: Orientada a Skills</div><div class="block-subtitle">3x</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Arm Circles Progresivos</span><span class="ex-detail">10 · 5 adelante / 5 atrás</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Shoulder Tap en Plank</span><span class="ex-detail">8 reps</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Flexiones Pseudo Plancha</span><span class="ex-detail">4 reps</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Kipping Swing en Barra</span><span class="ex-detail">5 reps</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Handstand Hold en Pared Activo</span><span class="ex-detail">20''</span></div>
+      </div>
+      <div class="sub-label">B — Warm Up Optativo (muy recomendado)</div>
+      <div class="ex-note" style="padding:4px 16px 6px; font-style:normal; color:var(--text2);">Objetivo: llegar a los Skills con el SNC activo y línea corporal lista.</div>
+      <div class="sub-label">2 Sets</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Hollow Hold</span><span class="ex-detail">10''</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Rechazos Escapulares en Vertical</span><span class="ex-detail">10 reps</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Pike Push Up Lentos</span><span class="ex-detail">5 reps · bajar 3'' / subir 1''</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Wall Climb con Pausa 2'' arriba</span><span class="ex-detail">3 reps</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">HSW Libre sin Presión</span><span class="ex-detail">10 mts · solo repaso técnico</span></div>
+        <div class="ex-note">Opción: HSW lateral en la pared, mitad de mts a cada lado</div>
+      </div>
+    </div>
+  </details>
+
+  <details class="skill-block">
+    <summary><span class="block-icon" style="color:var(--purple)">🤸</span><div><div class="block-title" style="color:var(--purple)">C-SKILLS — HSW + Free HSPU · Intensidad media</div><div class="block-subtitle" style="color:var(--text2)">Integración progresiva</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-note" style="padding:10px 16px; font-style:normal;">Antes de arrancar: 5-6' de práctica libre de Free HSPU, sin buscar fatiga.</div>
+      <div class="sub-label">2 Sets · c/ 1' rest</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">7,5 mts con 1 Free HSPU en el medio</span><span class="ex-detail">o intento de free</span></div>
+      </div>
+      <div class="sub-label">Rest 2' · 2 Sets · c/ 1'30'' rest</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 mts: 5 mts ida (1 HSPU) + 5 mts vuelta (1 HSPU al final)</span><span class="ex-detail">*o intento</span></div>
+      </div>
+      <div class="sub-label">Rest 2' · 2 Sets · c/ 1' rest</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">7,5 mts: en el medio 2 Free HSPU o intentos + completar mts</span></div>
+      </div>
+      <div class="note-box" style="margin:12px 16px;"><strong>⚠ Importante:</strong> el HSW es el contexto, el Free HSPU es el objetivo. No buscar velocidad — control en el despegue y la bajada.</div>
+    </div>
+  </details>
+
+  <details class="skill-block">
+    <summary><span class="block-icon" style="color:var(--purple)">🎯</span><div><div class="block-title" style="color:var(--purple)">D-SKILLS — Ventanas: Skills Integrados</div><div class="block-subtitle" style="color:var(--text2)">2' On × 30'' Off · 4 Sets · Cap 10'</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 mts HSW</span><span class="ex-detail">unbk o 2 segmentos de 5 mts</span></div>
+        <div class="ex-note">Opción: HS hold en pared — subir y bajar a 1 disco 10k, 8 veces</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Hang Power Clean</span><span class="ex-detail">50 / 35 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">8 Single Leg Squats</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Max effort Double Unders</span><span class="ex-detail">hasta los 2'</span></div>
+      </div>
+      <div class="note-box" style="margin:12px 16px;"><strong>Objetivo:</strong> aplicar el HSW bajo fatiga acumulada. El ganador es quien sostiene los DU consistentes en los 4 sets.</div>
+    </div>
+  </details>
+
+  <details class="pump-block">
+    <summary><span class="block-icon" style="color:var(--orange)">💪</span><div><div class="block-title" style="color:var(--orange)">E-ESTRUCTURA — Pump Prep · Semana 3</div><div class="block-subtitle" style="color:var(--text2)">Push-Pull · Upper body</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="sub-label">2 Sets W-Up</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Bench Press 2DB</span><span class="ex-detail">15/10 reps</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Banded Row</span><span class="ex-detail">10 reps</span></div>
+      </div>
+      <div class="sub-label">Push-Pull · 10 – 10 – 8 – 8 – 8</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Bench Press</span><span class="ex-detail">70% · 1'30'' rest entre series</span></div>
+      </div>
+      <div class="sub-label">Completar</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Parallete Push Ups</span><span class="ex-detail">50 reps</span></div>
+      </div>
+      <div class="sub-label">3 Sets · 2' rest</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Strict Pull Up</span><span class="ex-detail">8 a 13 reps</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Banded Pull Over</span><span class="ex-detail">8 a 10 reps</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🚴</span><div><div class="block-title" style="color:var(--blue)">F-WORKOUTS — Endurance 1 · Bike S3</div><div class="block-subtitle" style="color:var(--text2)">Descending Ladder · 85-90% intensidad</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="note-box note-warn" style="margin:0 0 12px 0;">No es zona 2 — esfuerzo sostenido alto. Reemplazo: mts run</div>
+      <div class="ex-group" style="padding:0;">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">30 (H) / 24 (M) Cal Bike</span><span class="ex-detail">Rest 2'</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">24 (H) / 18 (M) Cal Bike</span><span class="ex-detail">Rest 1'45''</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">18 (H) / 13 (M) Cal Bike</span><span class="ex-detail">Rest 1'30''</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">12 (H) / 8 (M) Cal Bike</span><span class="ex-detail">Rest 1'</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">6 (H) / 4 (M) Cal Bike</span></div>
+      </div>
+      <div class="note-box" style="margin:12px 0 0 0;"><strong>Score:</strong> cargar en minutos y segundos contando las pausas.</div>
+    </div>
+  </details>
+</template>
 
 </body>
 </html>
