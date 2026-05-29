@@ -173,8 +173,29 @@
     .ex-group:last-child { border-bottom:none; }
     .ex-item { display:flex; align-items:flex-start; gap:8px; padding:5px 0; }
     .ex-bullet { width:4px; height:4px; border-radius:50%; background:var(--muted); flex-shrink:0; margin-top:7px; }
-    .ex-name   { font-size:13px; color:var(--text); font-weight:500; flex:1; }
-    .ex-detail { font-size:11px; color:var(--text2); text-align:right; flex-shrink:0; }
+    .ex-name   { font-size:13px; color:var(--text); font-weight:500; flex:1; min-width:0; }
+    .ex-detail { font-size:11px; color:var(--text2); flex-shrink:0; max-width:45%; text-align:right; }
+    .ex-item-wrap { display:flex; flex-direction:column; flex:1; min-width:0; }
+    .ex-item-wrap .ex-name { flex:none; }
+    .ex-item-wrap .ex-detail { text-align:left; margin-top:1px; }
+
+    @media (max-width:500px) {
+      .ex-item { flex-wrap:wrap; }
+      .ex-detail { max-width:100%; text-align:left; flex-basis:100%; padding-left:12px; }
+      .ex-name { flex-basis:calc(100% - 12px); }
+      .block-body { padding:10px 12px 12px; font-size:13px; }
+      .sub-label { font-size:10px; padding:6px 12px; }
+      .block-title { font-size:13px !important; }
+      .block-subtitle { font-size:11px !important; }
+      summary { padding:10px 12px !important; gap:8px !important; }
+      .plan-title { font-size:18px; }
+      .plan-day-label { font-size:11px; }
+      .note-box { font-size:11px; padding:8px 10px; }
+      .complex-list { gap:6px; }
+      .c-item { padding:6px 8px; }
+      .c-item-name { font-size:11px; }
+      .c-item-reps { font-size:12px; }
+    }
     .ex-note   { font-size:11px; color:var(--muted); font-style:italic; padding:2px 0 4px 12px; }
 
     /* ── Progression tables ── */
@@ -861,6 +882,9 @@ const BWP = {
           dias: [
             { id: 's4lun', label: 'Lunes 25/5', sub: 'Push Press + DL + Endurance Parejas', carga: 'high', contenido: 'bwp-s4lun-content' },
             { id: 's4mar', label: 'Martes 26/5', sub: 'Front Squat + Skills + Open Prep', carga: 'high', contenido: 'bwp-s4mar-content' },
+            { id: 's4mie', label: 'Miércoles 27/5', sub: 'Oly Clean + TTB + Structural + WOD', carga: 'high', contenido: 'bwp-s4mie-content' },
+            { id: 's4jue', label: 'Jueves 28/5', sub: 'Pump Prep + Endurance Row + Snatch', carga: 'high', contenido: 'bwp-s4jue-content' },
+            { id: 's4vie', label: 'Viernes 29/5', sub: 'Back Squat + HSPU Capacity + 2 WODs', carga: 'high', contenido: 'bwp-s4vie-content' },
           ]
         },
       ]
@@ -1769,6 +1793,314 @@ window.addEventListener('DOMContentLoaded', () => {
         <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Pelotón B</span><span class="ex-detail">Test hasta 4:00 → ritmo 5:30–6:00 /km</span></div>
         <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Pelotón C</span><span class="ex-detail">Test hasta 4:30 → ritmo 6:00–6:30 /km</span></div>
         <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Pelotón D</span><span class="ex-detail">Test hasta 5:00–5:30 → ritmo hasta 6:30 y un poco más</span></div>
+      </div>
+    </div>
+  </details>
+</template>
+
+<template id="bwp-s4mie-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Miércoles 27 de Mayo · Black Week Project</div>
+    <div class="plan-title">Ciclo 4 2026 — Semana 4 · "Black Week"</div>
+    <div class="plan-tags">
+      <span class="tag tag-bwp">🏋️ BWP</span>
+      <span class="tag tag-oly">Oly Clean</span>
+      <span class="tag tag-skills">TTB</span>
+      <span class="tag tag-pump">Structural</span>
+      <span class="tag tag-endurance">WOD</span>
+    </div>
+  </div>
+
+  <details class="block" open>
+    <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">Protocolo Pliometría + Act de Oly</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Assault Bike RPE 4</span><span class="ex-detail">1'30'' · Reemplazo: Goblet Lunge 12/9</span></div>
+      </div>
+      <div class="sub-label">3 Sets</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">2 Complex del Oly</span><span class="ex-detail">al 30%</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Goblet Squat 1DB Tempo</span><span class="ex-detail">8 reps · bajar 3'' subir 1'' · 24/16 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">GHD Back Extensions + 20'' Hold última rep</span><span class="ex-detail">8 reps · Reemplazo: back ext en piso + 20'' hold</span></div>
+      </div>
+      <div class="sub-label">3 Sets</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">4 Depth Drop to Broad Jump</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Banded Pallof</span><span class="ex-detail">6/6 reps</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon">🎯</span><div><div class="block-title">B-OLY — Clean Complex</div><div class="block-subtitle">Squat Clean + Front Squat + Hang Squat Clean + Front Squat · al % del Hang</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">1×2+1+2+1</span><span class="c-item-reps" style="color:var(--green)">50%</span></div>
+          <div class="c-item"><span class="c-item-name">1×2+1+2+1</span><span class="c-item-reps" style="color:var(--yellow)">60%</span></div>
+          <div class="c-item"><span class="c-item-name">4×1+1+1+1</span><span class="c-item-reps" style="color:var(--red)">70% – 75%</span></div>
+        </div></div>
+      </div>
+      <div class="sub-label">OTM 2' × 4 rounds</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">1 Squat Clean + Drop + 2 Clean Touch and Go</span><span class="ex-detail">entre el 80%–86% del Clean</span></div>
+      </div>
+      <div class="note-box" style="margin:10px 16px;">
+        * Si fallo, bajar al porcentaje seguro dentro del tiempo. Siempre cumplir el volumen.<br>
+        ** El primer Clean es Squat, el segundo y tercero puede ser Power/Squat.<br>
+        *** Drop: después del primer Clean bajo la barra, reseteo el movimiento y salgo a lo que sigue. Touch and Go significa no soltarla continuo con el tercer clean.<br><br>
+        <strong>Objetivo OLY:</strong> mantener la mayor cantidad de rondas similares en el bloque de 70–75%. No interesa que vayan subiendo, sino que mantengan los % la mayor cantidad de rondas posibles.<br>
+        <strong>Objetivo OTM:</strong> después de la ronda 2 o 3 subimos el peso 1 sola vez si SER POSIBLE, sino mantener las 4 rondas con el mismo peso.<br>
+        <strong>Priorizar técnica antes que peso.</strong>
+      </div>
+    </div>
+  </details>
+
+  <details class="skill-block">
+    <summary><span class="block-icon" style="color:var(--purple)">🦵</span><div><div class="block-title" style="color:var(--purple)">C-CORE — TTB Capacity · S4 · Ritmo Open</div><div class="block-subtitle" style="color:var(--text2)">Especificidad y volumen</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="sub-label">1 — Activación: Full Kipping Drill</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">2 min AMRAP</span><span class="ex-detail">3 kip swing + 2 knee raises + 1 T2B · rest breve y volver a colgar</span></div>
+      </div>
+      <div class="sub-label">2 — Trabajo Accesorio de Volumen · EMOM 1' × 8 min</div>
+      <div class="ex-note" style="padding:4px 16px 6px; font-style:normal;">Manejar la transición grip/respiración</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Min Impar: 12 Toes to Bar</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Min Par: 40 Double Unders</span></div>
+      </div>
+      <div class="sub-label">3 — Workout Condicional · 3 Sets</div>
+      <div class="ex-note" style="padding:4px 16px 6px; font-style:normal;">Tomarlo como un workout — salir a buscar un buen tiempo</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">12 Toes to Bar + 10 Hang DB Snatch</span><span class="ex-detail">22,5/15 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">+ 4 Wall Walk</span></div>
+      </div>
+      <div class="sub-label">4 — Accesorio Post Test · 3x</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Banded Pull-Down + 4 Ab Wheel Rollout</span><span class="ex-detail">Liviano · estabilidad de hombro post test</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="pump-block">
+    <summary><span class="block-icon" style="color:var(--orange)">🏋️</span><div><div class="block-title" style="color:var(--orange)">D-STRUCTURAL — Ciclo 4 · S4 · Intensidad Alta</div><div class="block-subtitle" style="color:var(--text2)">5 Sets · Descanso autorregulado (máx 2'30'')</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="sub-label">Opción con Sled y Sandbag</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">20 mts Sled Push</span><span class="ex-detail">80/55 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">20 mts Sandbag Bear Hug Carry</span><span class="ex-detail">50/30 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">2 Rope Climb</span><span class="ex-detail">3,5 m · parámetro más bajo · Reemplazo: 4 Towel Pull-Up = 1 trepada</span></div>
+      </div>
+      <div class="note-box" style="margin:10px 16px;">
+        El rope climb es el conector entre dos movimientos pesados — el tirón dentro de tanto empuje. Quien llega con el grip comprometido por el sandbag descubre exactamente dónde está su límite real bajo fatiga sostenida.<br><br>
+        La carga del sled debe permitir hacer al menos 20 mts sin parar. Si parás, la carga es demasiado alta — ajustar desde el set 1, no desde el 3. El sandbag carry es bear hug, no al hombro. El agarre se compromete antes, eso es exactamente lo que queremos antes del rope.
+      </div>
+      <div class="sub-label">Opción sin Elementos · 5 Sets · Máx 2'30''</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">14 Lunge con barra · Front Rack</span><span class="ex-detail">60/40 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">20 mts Abrazo de discos contra el pecho</span><span class="ex-detail">o Plate Hug Carry cargados</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">2 Rope Climbs</span><span class="ex-detail">3,5 m</span></div>
+      </div>
+      <div class="ex-note" style="padding:6px 16px;">Elegir peso para las estocadas y la caminata con discos que exija un esfuerzo similar al sled y la sandbag (esfuerzo tipo 8/10). Score: no se carga, pasar feedback al grupo.</div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">💥</span><div><div class="block-title" style="color:var(--blue)">E-WORKOUTS — AMRAP 8'</div><div class="block-subtitle" style="color:var(--text2)">Escalera de reps por ronda</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="ex-group" style="padding:0 0 8px 0;">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Burpees over the Dumbbell (lateral)</span><span class="ex-detail">3 reps ronda 1 · +3 por ronda</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Doble DB Hang Clean to Overhead</span><span class="ex-detail">3 reps ronda 1 · +1 por ronda · 2×17,5/2×10 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">7,5 mts Walking Lunge con DBs (Front Rack)</span><span class="ex-detail">fijo todas las rondas</span></div>
+      </div>
+      <div class="note-box" style="margin:8px 0 0 0;">
+        La escalera de reps con mancuerna combina potencia de cadera, coordinación y resistencia del grip. El punto de quiebre es el DB clean to overhead cuando las reps suben: quien lo cicla bien desde ronda 1 saca ventaja en ronda 4 y 5. Salir conservador en los burpees y construir el workout desde el inicio.
+      </div>
+    </div>
+  </details>
+</template>
+
+<template id="bwp-s4jue-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Jueves 28 de Mayo · Black Week Project</div>
+    <div class="plan-title">Ciclo 4 2026 — Semana 4 · "Black Week"</div>
+    <div class="plan-tags">
+      <span class="tag tag-bwp">🏋️ BWP</span>
+      <span class="tag tag-pump">Pump Prep</span>
+      <span class="tag tag-endurance">Endurance Row + Snatch</span>
+    </div>
+  </div>
+
+  <details class="block" open>
+    <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">3 Sets</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="sub-label">3 Sets</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Complex Banded</span><span class="ex-detail">5 Pull Face + 5 Press Cubano</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Banded Unstable Shoulder Press c/kbs</span><span class="ex-detail">4 reps</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Frog Bridge c/banda en las rodillas</span><span class="ex-detail">30''</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="pump-block">
+    <summary><span class="block-icon" style="color:var(--orange)">💪</span><div><div class="block-title" style="color:var(--orange)">B-ESTRUCTURA — Pump Prep · Semana 4</div><div class="block-subtitle" style="color:var(--text2)">Push-Pull · Pico de volumen</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="sub-label">2 Sets W-Up</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Bench Press</span><span class="ex-detail">12 reps · 30%</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Banded Row</span><span class="ex-detail">10 reps</span></div>
+      </div>
+      <div class="sub-label">Push-Pull · 8 – 8 – 8 – 8 – 8</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Bench Press</span><span class="ex-detail">75% · 1'30'' rest entre series</span></div>
+      </div>
+      <div class="sub-label">OTM 1' × 6 rounds</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">DB Bench Press</span><span class="ex-detail">10 a 15 reps · 22,5/15 kg</span></div>
+      </div>
+      <div class="sub-label">3 Sets · 2' rest</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Strict Pull Up</span><span class="ex-detail">8 a 12 reps</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Banded Pull Ups</span><span class="ex-detail">10 a 15 reps</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🚴</span><div><div class="block-title" style="color:var(--blue)">C-WORKOUTS — Endurance 2 · S4 · Pico de Carga</div><div class="block-subtitle" style="color:var(--text2)">Híbrido Row + Power Snatch · Pirámide descendente · For Time · Cap 20'</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="note-box note-warn" style="margin:0 0 12px 0;">Semana 4 de 5 — el techo del ciclo. Los 750 mts de apertura marcan el tono: si salís por encima del RPE 7 en ese primer remo, las rondas 3, 4 y 5 se van a cobrar el costo energético y de tirón. Estamos trabajando el snatch bajo fatiga de remo: grip comprometido, buscar postura bajo presión. No salir a "ganar" el wod — estamos entrenando ritmo sostenido.</div>
+
+      <strong>WOD 1 — For Time · Cap 20' · 45/32,5 kg</strong>
+      <div class="ex-group" style="padding:8px 0 0 0;">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Ronda 1: Row + 15 Power Snatch</span><span class="ex-detail">600 (H) / 500 (M) mts</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Ronda 2: Row + 12 Power Snatch</span><span class="ex-detail">450 (H) / 400 (M) mts</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Ronda 3: Row + 9 Power Snatch</span><span class="ex-detail">350 (H) / 300 (M) mts</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Ronda 4: Row + 6 Power Snatch</span><span class="ex-detail">225 (H) / 175 (M) mts</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Ronda 5: Row + 3 Power Snatch</span><span class="ex-detail">100 (H) / 75 (M) mts</span></div>
+      </div>
+      <div class="ex-note" style="padding:4px 0 4px 0; font-style:normal;">Reemplazo sin máquinas: 500/400/300/200/100 mts Run</div>
+      <div class="note-box" style="margin:10px 0 0 0;">
+        Target de división en el snatch por ej: 5+5+5 en ronda 1. No salir unbroken ni en sets de 8+7 — el grip que se gasta en la ronda 1 no vuelve. La ronda 5 tiene que sentirse igual de prolija que la ronda 1. RPE 7,5 sostenido durante todo el trabajo.<br><br>
+        <strong>Score:</strong> no hace falta cargar el tiempo, sin controlarlo — buscar hacer el trabajo como se lo plantea y pasar el feedback al grupo.
+      </div>
+    </div>
+  </details>
+</template>
+
+<template id="bwp-s4vie-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Viernes 29 de Mayo · Black Week Project</div>
+    <div class="plan-title">Ciclo 4 2026 — Semana 4 · "Black Week"</div>
+    <div class="plan-tags">
+      <span class="tag tag-bwp">🏋️ BWP</span>
+      <span class="tag tag-oly">Back Squat</span>
+      <span class="tag tag-skills">HSPU Capacity</span>
+      <span class="tag tag-endurance">2 WODs</span>
+    </div>
+  </div>
+
+  <details class="block" open>
+    <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">Bike + 3 Sets + 3 Sets</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Assault Bike solo piernas</span><span class="ex-detail">4' · Reemplazo: Goblet Lunge 12/9</span></div>
+      </div>
+      <div class="sub-label">3 Sets</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Deficit Bulgarian Squat 2KB</span><span class="ex-detail">4/4 reps</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Dual KBs Hollow Flutter Kicks</span><span class="ex-detail">20''</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Good Morning into Squat c/barra</span><span class="ex-detail">10 reps</span></div>
+      </div>
+      <div class="sub-label">3 Sets</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Copenaghen Plank Pierna Derecha</span><span class="ex-detail">15''</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Copenaghen Plank Pierna Izquierda</span><span class="ex-detail">15''</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Rest</span><span class="ex-detail">10''</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon">💪</span><div><div class="block-title">B-FUERZA — Back Squat · Ciclo 3 S4</div><div class="block-subtitle">Desde el rack</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">1×5</span><span class="c-item-reps" style="color:var(--green)">60%</span></div>
+          <div class="c-item"><span class="c-item-name">2×5</span><span class="c-item-reps" style="color:var(--yellow)">72% – 75%</span></div>
+          <div class="c-item"><span class="c-item-name">5×2</span><span class="c-item-reps" style="color:var(--red)">81% – 85%</span></div>
+        </div></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon">🦵</span><div><div class="block-title">C-CORE</div><div class="block-subtitle">Secuencia GHD + Bike</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">40 GHD Sit Ups</span><span class="ex-detail">Reemplazo: 50 Sit Up con Plate</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">30 (H) / 22 (M) Cal Bike</span><span class="ex-detail">60-65 RPM (H) / 55-50 RPM (M) · Reemplazo: 10 Shuttle Run</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">30 GHD Sit Ups</span><span class="ex-detail">Reemplazo: 40 Sit Up con Plate</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">30 (H) / 22 (M) Cal Bike</span><span class="ex-detail">60-65 RPM (H) / 55-50 RPM (M)</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">20 GHD Sit Ups</span><span class="ex-detail">Reemplazo: 30 Sit Up con Plate</span></div>
+      </div>
+      <div class="note-box" style="margin:10px 16px;">Las cals son solo para que sea un rest activo pero tampoco deberían dejarlo pasar tanto. Los RPMs accesibles son para simular fatiga del flexor de cadera dentro de un WOD y un volumen alto de GHD.</div>
+    </div>
+  </details>
+
+  <details class="skill-block">
+    <summary><span class="block-icon" style="color:var(--purple)">🤸</span><div><div class="block-title" style="color:var(--purple)">D-HSPU CAPACITY — Ciclo 4 · S4 · Pico del Bloque</div><div class="block-subtitle" style="color:var(--text2)">Semana de máximo volumen · Trabajar según fatiga 3 o 4 Sets</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-note" style="padding:10px 16px; font-style:normal;">Semana de máximo volumen. Las tres semanas anteriores buscamos construir posición, acumular reps y empujar sets largos. Hoy es el tope de eso: exponerse a HSPU cuando el hombro ya tiene trabajo encima. No es test de fuerza pura — es tolerancia real bajo fatiga acumulada de la semana. Quien se sienta muy fatigado de hombros debe bajar volumen.</div>
+
+      <div class="sub-label">Parte 1 — Densidad estricta · Cada 2' × 3 o 4 Sets · dentro de los 2' realizar:</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">4 HSPU Estrictos</span><span class="ex-detail">*Si cuesta: abmat o kipping c/ Deficit 2×15/2×10</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Handstand Hold en pared última rep</span><span class="ex-detail">Max tiempo restante activo · si llego a 10'' bajar</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">El resto de los 2' es descanso</span></div>
+      </div>
+      <div class="ex-note" style="padding:4px 16px 8px;">Quien no domina los estrictos puede sumar abmat o kipping c/deficit, sin negociar el estándar del movimiento — bajar dificultad si necesita.</div>
+
+      <div class="sub-label">Parte 2 — Volumen kipping bajo fatiga · 4 Sets / descanso 1'30''</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Kipping HSPU</span><span class="ex-detail">Parámetro de apoyo 76×25 cm · si los tiene pulidos puede hacer 12</span></div>
+      </div>
+      <div class="note-box" style="margin:10px 16px;">El objetivo es que los 4 sets se vean iguales. Si el set 1 fue 10 unbroken y el set 4 fue 5-5, fuimos muy fuerte al inicio. Estrategia desde el primer set.</div>
+
+      <div class="sub-label">Accesorio de cierre · 3 Sets (MUY RECOMENDADO)</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Banded Pull Apart 90°</span><span class="ex-detail">10 reps</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Banded Pull Apart 45°</span><span class="ex-detail">10 reps</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Dead Hang relajado</span><span class="ex-detail">20''</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">💥</span><div><div class="block-title" style="color:var(--blue)">E-WORKOUTS — 2 Workouts Competitivos · S4</div><div class="block-subtitle" style="color:var(--text2)">8' Rest entre WODs</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div style="margin-bottom:16px;">
+        <strong>WOD 1 — FOR TIME · Cap 9' · "Heavy Pull" · 3 Rondas</strong>
+        <div class="ex-group" style="padding:8px 0 0 0;">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">6 Hang Power Clean</span><span class="ex-detail">60 / 40 kg</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">12 Single Leg Squat</span><span class="ex-detail">6/6</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">18 Pull Ups</span></div>
+        </div>
+        <div class="note-box" style="margin:8px 0 0 0;">El Clean pesado en 3 rondas: salir limpio no apurando el touch and go, ni la bajada. 6 reps bien marcadas. Los SLS son el reset entre barra y barra — respirar ahí, no esprintarlos. Los Pull Ups en ronda 3 con el grip cargado son donde se define el tiempo.<br><strong>Score:</strong> si no se completa, sumar 1'' al cap por rep faltante.</div>
+      </div>
+
+      <div style="border-top:1px solid var(--border); padding-top:14px;">
+        <div class="note-box note-warn" style="margin:0 0 12px 0;">8' Rest</div>
+        <strong>WOD 2 — AMRAP 6' · "Open Engine" · OPTATIVO SEGÚN FATIGA</strong>
+        <div class="ex-group" style="padding:8px 0 0 0;">
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">35 Double Unders</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">8 DB Overhead Squat · 4/4 alternando hombros</span><span class="ex-detail">1×21 / 1×16 kg</span></div>
+          <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">1 BMU ascendente</span><span class="ex-detail">+1 cada ronda (1, 2, 3, 4, 5...) · Opción: 3 C2B subiendo de 2</span></div>
+        </div>
+        <div class="note-box" style="margin:10px 0 0 0;">
+          Los DU son el regulador del ritmo — salir fluidos, no fragmentarlos. El DB OHS necesita concentración: la mancuerna en overhead bajo fatiga de hombro castiga la falta de estabilidad, hacer los 4/4 sin apuro con core firme. El BMU es la parte más compleja: las primeras rondas son engañosas, pero a partir de la ronda 4-5 cuando van 4/5 BMU por vuelta + el grip de los DU, ahí se define quién puede ciclar. La interferencia OHS + BMU sobre fatiga previa de HSPU es exactamente lo que necesitamos controlar.
+        </div>
       </div>
     </div>
   </details>
