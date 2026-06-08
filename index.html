@@ -900,13 +900,24 @@ const BWP = {
           ]
         },
       ]
+    },
+    {
+      id: 'c5', label: 'Ciclo 5', sub: 'S1',
+      semanas: [
+        {
+          id: 'c5s1', label: 'Semana 1', rango: '8 – 14 Junio',
+          dias: [
+            { id: 'c5s1lun', label: 'Lunes 8/6', sub: 'Snatch + Front Squat + 2 WODs', carga: 'high', contenido: 'bwp-c5s1lun-content' },
+          ]
+        },
+      ]
     }
   ]
 };
 
 // Estado
-let activeMes = 'c4';
-let activeSem = 's3';
+let activeMes = 'c5';
+let activeSem = 'c5s1';
 let activeDay = null;
 
 // ── Render sidebar ciclos ──
@@ -2734,6 +2745,120 @@ window.addEventListener('DOMContentLoaded', () => {
         🏁 <strong>75 Toes to Bar = fin del workout.</strong><br>
         ⚠ Si no completás el buy-in, penalización de <strong>10 reps</strong> de T2B.<br>
         <strong>Score:</strong> cantidad total de Toes to Bar realizados (AMRAP).
+      </div>
+    </div>
+  </details>
+</template>
+
+<template id="bwp-c5s1lun-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Lunes 8 de Junio · Ciclo 5</div>
+    <div class="plan-title">Ciclo 5 2026 — Semana 1</div>
+    <div class="plan-tags">
+      <span class="tag tag-bwp">🏋️ BWP</span>
+      <span class="tag tag-oly">Snatch</span>
+      <span class="tag tag-skills">Front Squat</span>
+      <span class="tag tag-endurance">2 WODs</span>
+    </div>
+  </div>
+
+  <details class="block" open>
+    <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">a gusto</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Assault Bike solo piernas</span><span class="ex-detail">1'30'' · opcional</span></div>
+      </div>
+      <div class="sub-label">3x</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Tempo Bulgarian Squat 1KB</span><span class="ex-detail">5/5 · bajar 3'' subir 1''</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Puente</span><span class="ex-detail">30''</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Puente Invertido</span><span class="ex-detail">30'' · boca arriba, escápulas y talones sobre cajones</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Banded Complex</span><span class="ex-detail">6 Banded Reverse Fly @90° + 6 @45° + 6/6 Double External Band Rotations</span></div>
+      </div>
+      <div class="sub-label">3 Sets</div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">1 Complex de Snatch del Oly</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Seated Box Jump</span><span class="ex-detail">4 reps · 60 / 50 cm</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon">🎯</span><div><div class="block-title">B-OLY — Snatch Pull + Squat Snatch</div><div class="block-subtitle">Al % del Squat Snatch</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">1×3+3</span><span class="c-item-reps" style="color:var(--green)">50%</span></div>
+          <div class="c-item"><span class="c-item-name">1×2+3</span><span class="c-item-reps" style="color:var(--yellow)">60%</span></div>
+          <div class="c-item"><span class="c-item-name">2×1+2</span><span class="c-item-reps" style="color:var(--orange)">70% – 75%</span></div>
+          <div class="c-item"><span class="c-item-name">3×1+1</span><span class="c-item-reps" style="color:var(--red)">80% – 85% – 90%</span></div>
+        </div></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon">💪</span><div><div class="block-title">C-FUERZA — Front Squat</div><div class="block-subtitle">Desde el Rack</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">1×4</span><span class="c-item-reps" style="color:var(--green)">60%</span></div>
+          <div class="c-item"><span class="c-item-name">2×4</span><span class="c-item-reps" style="color:var(--yellow)">72%</span></div>
+          <div class="c-item"><span class="c-item-name">4×2</span><span class="c-item-reps" style="color:var(--red)">81% – 85%</span></div>
+        </div></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">💥</span><div><div class="block-title" style="color:var(--blue)">D-WORKOUTS — WOD 1 · "Fresh Air"</div><div class="block-subtitle" style="color:var(--text2)">For Time · Cap 8' · 3 Rondas</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="ex-group" style="padding:0 0 12px 0;">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">12 DB Hang Snatch alternados</span><span class="ex-detail">22,5 / 15 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">9 Burpees over the DB</span><span class="ex-detail">laterales</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Double Unders ascendentes</span><span class="ex-detail">Ronda 1: 35 · Ronda 2: 50 · Ronda 3: 65</span></div>
+      </div>
+
+      <div class="note-box" style="margin:0 0 10px 0;">
+        <strong>Intro:</strong> Arranca el ciclo y esto es lo que el nombre dice: aire fresco. No vamos a buscar records ni fundirnos — el Oly y el Front ya se llevaron lo pesado del día. Moverse rápido, prolijos y con cabeza. La escalera de DU arranca en 35 y termina en 65: tiene que verse igual de limpio en la ronda 3 que en la 1. Guardá energía para ir más rápido en la ronda de 65.
+      </div>
+
+      <div class="note-box note-warn" style="margin:0 0 10px 0;">
+        <strong>Cómo encararlo:</strong><br>
+        <strong style="color:var(--text)">DB Snatch:</strong> técnico, alternando limpio con cadera explosiva. No ir al fallo — ritmo constante.<br>
+        <strong style="color:var(--text)">Burpees over the DB:</strong> cadencia, paso lateral, respirar arriba. Regulador del pulso, no es para apurarse.<br>
+        <strong style="color:var(--text)">Double Unders:</strong> acá se define el workout. Con 65 al final, llegar, respirar dos segundos, y recién ahí buscar el tramo largo. El que entra acelerado tropieza y regala 10-20'' en reenganchar. Saca ventaja el que administra, no el que empuja.
+      </div>
+
+      <div class="note-box" style="margin:0;"><strong>Score:</strong> si no se completa, sumar 1'' al cap por rep pendiente.</div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title" style="color:var(--blue)">D-WORKOUTS — WOD 2 · "Mixed"</div><div class="block-subtitle" style="color:var(--text2)">Cada 2:30' × 4 Sets · Total 10'</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="note-box note-warn" style="margin:0 0 14px 0;">8' Rest entre WODs</div>
+
+      <div class="ex-note" style="padding:0 0 10px 0; font-style:normal; color:var(--text2);">Dentro de cada ventana de 2:30':</div>
+      <div class="ex-group" style="padding:0 0 12px 0;">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">12 (H) / 9 (M) Cal Bike</span><span class="ex-detail">RPE 8 · Reemplazo: 200 mts Run / 7 Shuttle Run (7,5 mts × 2)</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">12 Hang Power Clean</span><span class="ex-detail">42,5 / 30 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">15 Box Jump Over</span><span class="ex-detail">step down</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Max American Swing en el tiempo restante</span><span class="ex-detail">21 / 12 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Descanso el resto del tiempo</span></div>
+      </div>
+
+      <div class="note-box" style="margin:0 0 10px 0;">
+        <strong>Intro:</strong> Día uno y cerramos con un Mixed: motor, barra liviana, pierna y cadera, todo en una ventana corta. El laburo es fijo — la idea es cerrarlo holgado dentro de los 2:30 para ganarse el descanso. La bike va a RPE 8, es el costo real del WOD, pero no la quemamos: si salimos a romperla nos quedamos sin piernas para la barra y el box.
+      </div>
+
+      <div class="note-box note-warn" style="margin:0;">
+        <strong>Cómo encararlo:</strong><br>
+        <strong style="color:var(--text)">Bike:</strong> firme, RPE 8, no suicida. Es el costo de entrada, no el filtro. Si la fundimos en el set 1, lo pagamos del 3 en adelante.<br>
+        <strong style="color:var(--text)">Hang Power Clean:</strong> doce de un tiro, hook grip, cadera. A 42,5/30 es cycling, no fuerza — no soltarla salvo que el grip lo pida.<br>
+        <strong style="color:var(--text)">Box Jump Over:</strong> step down siempre, sin rebote. Control y pulso, no velocidad.<br>
+        <strong style="color:var(--text)">American Swing:</strong> cierre del set, rango completo, cadera no brazos, respirar arriba.<br>
+        <strong style="color:var(--text)">Diferencial:</strong> el HPC de los sets 3 y 4. El que controló la bike desde el set 1 mantiene la barra unbroken y cierra con tiempo de sobra.
       </div>
     </div>
   </details>
