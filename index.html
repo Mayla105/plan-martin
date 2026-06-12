@@ -299,6 +299,35 @@
       .mayo-s3-plan > div { grid-template-columns:1fr !important; }
     }
 
+    /* ── Ciclo dropdown ── */
+    .ciclo-dropdown { position: relative; width: 100%; margin-bottom: 12px; }
+    .ciclo-dropdown-btn {
+      width: 100%; background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 11px 14px; cursor: pointer; text-align: left;
+      display: flex; align-items: center; gap: 10px; font-family: inherit;
+      transition: .15s; user-select: none;
+    }
+    .ciclo-dropdown-btn:hover, .ciclo-dropdown-btn.open { background: var(--surface2); border-color: #333; }
+    .ciclo-dropdown-btn::before { content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--green); border-radius:10px 0 0 10px; }
+    .ciclo-chevron { margin-left: auto; color: var(--muted); font-size: 10px; transition: transform .2s; flex-shrink:0; }
+    .ciclo-dropdown-btn.open .ciclo-chevron { transform: rotate(180deg); }
+    .ciclo-dropdown-panel {
+      display: none; position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+      background: var(--surface2); border: 1px solid var(--border); border-radius: 10px;
+      overflow: hidden; z-index: 100; box-shadow: 0 8px 24px rgba(0,0,0,.5);
+    }
+    .ciclo-dropdown-panel.open { display: block; }
+    .ciclo-option {
+      width: 100%; background: none; border: none; border-bottom: 1px solid var(--border);
+      padding: 11px 14px; display: flex; align-items: center; gap: 10px;
+      cursor: pointer; font-family: inherit; text-align: left; transition: background .12s;
+    }
+    .ciclo-option:last-child { border-bottom: none; }
+    .ciclo-option:hover { background: rgba(255,255,255,.04); }
+    .ciclo-option.active { background: rgba(184,240,74,.08); }
+    .ciclo-option .day-btn-name { font-family:"Bebas Neue",sans-serif; font-size:15px; letter-spacing:1px; color:var(--text); line-height:1; margin-bottom:1px; }
+    .ciclo-option .day-btn-sub { font-size:11px; color:var(--text2); }
+
     /* ── BWP responsive grid ── */
     .bwp-grid {
       display: grid;
@@ -436,7 +465,7 @@
         <div class="plan-tags"><span class="tag tag-oly">⚡ Oly</span><span class="tag tag-warn">Carga alta</span></div>
       </div>
 
-      <details class="block" open>
+      <details class="block">
         <summary><span class="block-icon">🔄</span><div><div class="block-title">Movilidad General</div><div class="block-subtitle">2 rounds</div></div><span class="block-chevron">▼</span></summary>
         <div class="block-body"><div class="ex-group">
           <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Sentada 90°-90° Rot. Externa</span><span class="ex-detail">8/8</span></div>
@@ -527,7 +556,7 @@
         <div class="plan-tags"><span class="tag tag-mob">🦵 Movilidad</span><span class="tag tag-run">🏃 Run Z2</span></div>
       </div>
 
-      <details class="block" open>
+      <details class="block">
         <summary><span class="block-icon">🔄</span><div><div class="block-title">Movilidad — Bloque 1</div><div class="block-subtitle">x1 serie</div></div><span class="block-chevron">▼</span></summary>
         <div class="block-body"><div class="ex-group">
           <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Foam Roll Gemelo Dcho + Quads</span><span class="ex-detail">1' c/u</span></div>
@@ -584,7 +613,7 @@
 
       <div class="note-box-standalone">⚠️ <strong>WOD 20:30 — Escalado.</strong> Front Squat y Deadlift pesado pusieron mucho en piernas y lumbar. Bajá cargas, reducí rondas si hace falta — el objetivo es el estímulo de movimiento, no el score.</div>
 
-      <details class="block" open>
+      <details class="block">
         <summary><span class="block-icon">🔄</span><div><div class="block-title">Movilidad General</div><div class="block-subtitle">2 rounds</div></div><span class="block-chevron">▼</span></summary>
         <div class="block-body"><div class="ex-group">
           <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Pasajes frontales/laterales con banda</span><span class="ex-detail">5/5/5</span></div>
@@ -661,7 +690,7 @@
         <div class="plan-tags"><span class="tag tag-mob">🦵 Movilidad</span><span class="tag tag-run">🏃 Run Z2</span></div>
       </div>
 
-      <details class="block" open>
+      <details class="block">
         <summary><span class="block-icon">🔄</span><div><div class="block-title">Movilidad — Bloque 1</div><div class="block-subtitle">x1 serie</div></div><span class="block-chevron">▼</span></summary>
         <div class="block-body"><div class="ex-group">
           <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Foam Roll Glúteos + Foot Massage</span><span class="ex-detail">1' c/u</span></div>
@@ -705,7 +734,7 @@
         <div class="plan-tags"><span class="tag tag-oly">⚡ Oly</span><span class="tag tag-warn">Carga alta</span></div>
       </div>
 
-      <details class="block" open>
+      <details class="block">
         <summary><span class="block-icon">🔄</span><div><div class="block-title">Movilidad General</div><div class="block-subtitle">2 rounds</div></div><span class="block-chevron">▼</span></summary>
         <div class="block-body"><div class="ex-group">
           <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Pasajes frontales/laterales con banda</span><span class="ex-detail">5/5/5</span></div>
@@ -790,7 +819,7 @@
         <div class="plan-tags"><span class="tag tag-mob">🦵 Movilidad</span><span class="tag tag-optional">Sin run</span></div>
       </div>
 
-      <details class="block" open>
+      <details class="block">
         <summary><span class="block-icon">🔄</span><div><div class="block-title">Movilidad — Bloque 1</div><div class="block-subtitle">x1 serie</div></div><span class="block-chevron">▼</span></summary>
         <div class="block-body"><div class="ex-group">
           <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Foam Roll Gemelos + Quads</span><span class="ex-detail">1' c/u</span></div>
@@ -924,23 +953,63 @@ let activeMes = 'c5';
 let activeSem = 'c5s1';
 let activeDay = null;
 
-// ── Render sidebar ciclos ──
+// ── Render sidebar ciclos (dropdown) ──
 function renderMeses() {
   const list = document.getElementById('bwp-mes-list');
-  list.innerHTML = '';
-  BWP.ciclos.forEach(ciclo => {
-    const btn = document.createElement('button');
-    btn.className = 'bwp-mes-btn' + (activeMes === ciclo.id ? ' bwp-mes-active' : '');
-    btn.innerHTML = `
-      <div class="day-dot" style="background:var(--purple);"></div>
-      <div class="day-btn-info">
-        <div class="day-btn-name">${ciclo.label}</div>
-        <div class="day-btn-sub">${ciclo.sub}</div>
-      </div>`;
-    btn.onclick = () => { activeMes = ciclo.id; activeSem = ciclo.semanas[0].id; activeDay = null; render(); };
-    list.appendChild(btn);
-  });
+  const cicloActivo = BWP.ciclos.find(c => c.id === activeMes);
+  list.innerHTML = `
+    <div class="ciclo-dropdown" id="ciclo-dropdown">
+      <button class="ciclo-dropdown-btn" id="ciclo-dropdown-btn" onclick="toggleCicloDropdown(event)">
+        <div class="day-dot" style="background:var(--purple); flex-shrink:0;"></div>
+        <div class="day-btn-info">
+          <div class="day-btn-name">${cicloActivo ? cicloActivo.label : '—'}</div>
+          <div class="day-btn-sub">${cicloActivo ? cicloActivo.sub : ''}</div>
+        </div>
+        <span class="ciclo-chevron">▼</span>
+      </button>
+      <div class="ciclo-dropdown-panel" id="ciclo-dropdown-panel">
+        ${BWP.ciclos.map(ciclo => `
+          <button class="ciclo-option ${ciclo.id === activeMes ? 'active' : ''}"
+            onclick="selectCiclo('${ciclo.id}', event)">
+            <div class="day-dot" style="background:var(--purple); flex-shrink:0;"></div>
+            <div class="day-btn-info">
+              <div class="day-btn-name">${ciclo.label}</div>
+              <div class="day-btn-sub">${ciclo.sub}</div>
+            </div>
+          </button>`).join('')}
+      </div>
+    </div>`;
 }
+
+function toggleCicloDropdown(e) {
+  if (e) e.stopPropagation();
+  const btn = document.getElementById('ciclo-dropdown-btn');
+  const panel = document.getElementById('ciclo-dropdown-panel');
+  if (!btn || !panel) return;
+  const isOpen = panel.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  panel.classList.toggle('open', !isOpen);
+}
+
+function selectCiclo(id, e) {
+  if (e) e.stopPropagation();
+  activeMes = id;
+  const ciclo = BWP.ciclos.find(c => c.id === id);
+  activeSem = ciclo.semanas[0].id;
+  activeDay = null;
+  const btn = document.getElementById('ciclo-dropdown-btn');
+  const panel = document.getElementById('ciclo-dropdown-panel');
+  if (btn) btn.classList.remove('open');
+  if (panel) panel.classList.remove('open');
+  render();
+}
+
+document.addEventListener('click', function() {
+  const btn = document.getElementById('ciclo-dropdown-btn');
+  const panel = document.getElementById('ciclo-dropdown-panel');
+  if (btn) btn.classList.remove('open');
+  if (panel) panel.classList.remove('open');
+});
 
 // ── Render semanas y días ──
 function renderContent() {
@@ -1068,7 +1137,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">a gusto · 2' Assault opcional solo piernas</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="sub-label">3x</div>
@@ -1160,7 +1229,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación: Orientada a Skills</div><div class="block-subtitle">3x</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="ex-group">
@@ -1270,7 +1339,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">Protocolo de Pliometría + Act de Oly</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="ex-group">
@@ -1373,7 +1442,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">6x + 3 Sets</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="sub-label">6x</div>
@@ -1448,7 +1517,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">Bike solo piernas + 3 Sets</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="ex-group">
@@ -1563,7 +1632,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Accesorios</div><div class="block-subtitle">Pliometría + Complex Oly</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="ex-note" style="padding:10px 16px; font-style:normal;">
@@ -1652,7 +1721,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">5x + 3 Sets</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="sub-label">5x</div>
@@ -1734,7 +1803,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">3' Assault solo piernas (optativo) + 3x</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="ex-group">
@@ -1840,7 +1909,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">Protocolo Pliometría + Act de Oly</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="ex-group">
@@ -1960,7 +2029,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">3 Sets</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="sub-label">3 Sets</div>
@@ -2030,7 +2099,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">Bike + 3 Sets + 3 Sets</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="ex-group">
@@ -2147,7 +2216,7 @@ window.addEventListener('DOMContentLoaded', () => {
     <div class="note-box note-warn" style="margin:12px 0 0 0;">⚡ Próxima semana: Semana de Descarga</div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Accesorios</div><div class="block-subtitle">Pliometría + Complex Oly</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="ex-note" style="padding:10px 16px; font-style:normal;">
@@ -2240,7 +2309,7 @@ window.addEventListener('DOMContentLoaded', () => {
     <div class="note-box note-warn" style="margin:12px 0 0 0;">🔋 Semana de descarga — llegar al fin de semana descansado es el objetivo principal</div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">3x + 2 Sets</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="ex-group">
@@ -2341,7 +2410,7 @@ window.addEventListener('DOMContentLoaded', () => {
     <div class="note-box note-warn" style="margin:12px 0 0 0;">🔋 Sin contraturno de running esta semana</div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación: Orientada a Skills</div><div class="block-subtitle">3 Rondas por calidad</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="sub-label">3 Rondas</div>
@@ -2460,7 +2529,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">Protocolo Pliometría + Act de Oly</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="ex-group">
@@ -2567,7 +2636,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">Bike + 3 Sets + 3 Sets</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="ex-group">
@@ -2679,7 +2748,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">a gusto</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="sub-label">3x</div>
@@ -2766,7 +2835,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">a gusto</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="ex-group">
@@ -2880,7 +2949,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación: Orientada a Skills</div><div class="block-subtitle">2 Sets · calidad, sin fatiga</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="ex-group">
@@ -2984,7 +3053,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">Protocolo de Pliometría + Act de Oly</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="sub-label">3 Sets</div>
@@ -3086,7 +3155,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">a gusto</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="sub-label">3 Sets</div>
@@ -3189,7 +3258,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <details class="block" open>
+  <details class="block">
     <summary><span class="block-icon">🔄</span><div><div class="block-title">A — Activación + Movilidad</div><div class="block-subtitle">a gusto</div></div><span class="block-chevron">▼</span></summary>
     <div class="block-body">
       <div class="ex-group">
