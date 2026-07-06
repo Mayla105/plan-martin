@@ -931,7 +931,7 @@ const BWP = {
       ]
     },
     {
-      id: 'c5', label: 'Ciclo 5', sub: 'S1 · S2 · S3 · S4',
+      id: 'c5', label: 'Ciclo 5', sub: 'S1 · S2 · S3 · S4 · S5',
       semanas: [
         {
           id: 'c5s1', label: 'Semana 1', rango: '8 – 14 Junio',
@@ -974,6 +974,13 @@ const BWP = {
             { id: 'c5s4mie', label: 'Miércoles 1/7', sub: 'Oly Clean/Jerk + T2B + Structural + WOD', carga: 'high', contenido: 'bwp-c5s4mie-content' },
             { id: 'c5s4jue', label: 'Jueves 2/7', sub: 'Push Press + Deadlift + Endurance', carga: 'high-med', contenido: 'bwp-c5s4jue-content' },
             { id: 'c5s4vie', label: 'Viernes 3/7', sub: 'Back Squat + HSPU + Simulacro Team Open', carga: 'high', contenido: 'bwp-c5s4vie-content' },
+            { id: 'c5s4sab', label: 'Sábado 4/7', sub: 'Simulacro Team Open + 1RM Clean & Jerk + WOD', carga: 'high', contenido: 'bwp-c5s4sab-content' },
+          ]
+        },
+        {
+          id: 'c5s5', label: 'Semana 5', rango: '6 – 12 Julio · Descarga · Jueves Rest Total',
+          dias: [
+            { id: 'c5s5lun', label: 'Lunes 6/7', sub: 'Squat Snatch + Front Squat + 2 WODs', carga: 'high', contenido: 'bwp-c5s5lun-content' },
           ]
         },
       ]
@@ -4171,6 +4178,192 @@ window.addEventListener('DOMContentLoaded', () => {
         <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">7 Toes to Bar</span></div>
         <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">14 Hang KB Snatch</span><span class="ex-detail">21 / 12 kg</span></div>
         <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">7 Burpee Box Jump Over</span></div>
+      </div>
+    </div>
+  </details>
+</template>
+
+<template id="bwp-c5s5lun-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Lunes 6/7 · Ciclo 5</div>
+    <div class="plan-title">Ciclo 5 2026 — Semana 5 · Descarga (Jueves Rest Total)</div>
+    <div class="plan-tags">
+      <span class="tag tag-oly">Squat Snatch</span>
+      <span class="tag tag-str">Front Squat</span>
+      <span class="tag tag-wod">2 WODs</span>
+      <span class="tag tag-high">Carga Alta</span>
+    </div>
+  </div>
+
+  <details class="block">
+    <summary><span class="block-icon">⚡</span><div><div class="block-title">A — ACTIVACIÓN + Movilidad</div><div class="block-subtitle">Movilidad + Activación Oly</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-item" style="padding:0 0 10px 0;"><div class="ex-bullet"></div><span class="ex-name">1'30'' Assault Bike solo piernas</span><span class="ex-detail">Opcional — Reemplazo: 2' Lunge sumando mts</span></div>
+      <div class="ex-group">
+        <div class="ex-group-title">3 Sets</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5/5 Tempo Bulgarian Squat 1KB</span><span class="ex-detail">Bajo en 3'' · Subo en 1''</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">6/6 Banded Pallof + Rotación</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">30'' Puente Invertido</span><span class="ex-detail">Boca arriba — escapulas y talones sobre cajones</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">1 Banded Complex</span><span class="ex-detail">6 Banded Reverse Fly 90° + 6 a 45° + 6 Banded Pull Face</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">3 Sets — Activación Oly</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">1 Complex de Snatch del Oly</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">4/4 Explosive Step Up</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--green)">🏋️</span><div><div class="block-title">B — OLY: Squat Snatch + Hang Power Snatch</div><div class="block-subtitle">% al Hang Power Snatch</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">1×2+2</span><span class="c-item-reps" style="color:var(--green)">50%</span></div>
+          <div class="c-item"><span class="c-item-name">1×2+2</span><span class="c-item-reps" style="color:var(--yellow)">60%</span></div>
+          <div class="c-item"><span class="c-item-name">2×1+1</span><span class="c-item-reps" style="color:var(--orange)">70% – 75%</span></div>
+          <div class="c-item"><span class="c-item-name">2×1+1</span><span class="c-item-reps" style="color:var(--red)">80% – 85% – 90%</span></div>
+        </div></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--yellow)">🦵</span><div><div class="block-title">C — FUERZA: Front Squat</div><div class="block-subtitle">Desde el Rack</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">1×6</span><span class="c-item-reps" style="color:var(--green)">50%</span></div>
+          <div class="c-item"><span class="c-item-name">1×3</span><span class="c-item-reps" style="color:var(--green)">60%</span></div>
+          <div class="c-item"><span class="c-item-name">1×3</span><span class="c-item-reps" style="color:var(--yellow)">70%</span></div>
+          <div class="c-item"><span class="c-item-name">2×2</span><span class="c-item-reps" style="color:var(--orange)">80%</span></div>
+          <div class="c-item"><span class="c-item-name">2×2</span><span class="c-item-reps" style="color:var(--red)">90% · Depende el cansancio</span></div>
+          <div class="c-item"><span class="c-item-name">1×1</span><span class="c-item-reps" style="color:var(--red)">95% – 100%</span></div>
+        </div></div>
+      </div>
+      <div class="note-box" style="margin:0;"><strong>Observación:</strong> las últimas series son solo si me siento bien — no debería fallar ninguna serie. Si no puedo aumentar el peso, mantengo las mismas rondas y reps con el último cargado. Siempre priorizo volumen/reps antes que el peso.</div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">D — WOD 1 · Semana de Descarga</div><div class="block-subtitle">AMRAP 9'</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="note-box" style="margin:0 0 10px 0;">
+        <strong>Intro — Semana de Descarga (S5):</strong> Esta semana bajamos volumen, no bajamos el filo. Venimos de tres semanas de carga y un pico exigente — el cuerpo ya acumuló el estímulo que necesitaba, y ahora el trabajo es dejar que aparezca. Los pesos siguen siendo los de verdad, los tiempos siguen siendo cortos y exigentes, pero la cantidad de vueltas y repeticiones baja. No es una semana relajada: es una semana afilada. Cada bloque tiene menos volumen pero la misma intención de siempre — entrar, ejecutar limpio, y salir antes de vaciar el tanque. <strong>El objetivo ya no es simular ni acumular: es llegar.</strong>
+      </div>
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">12 (H) / 9 (M) cal Row</span><span class="ex-detail">Reemplazo: 5 Shuttle Run (1 rep = 15 mts)</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">6 Shoulder to Overhead</span><span class="ex-detail">52,5 / 35 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Pull-Up</span></div>
+      </div>
+      <div class="note-box" style="margin:0 0 8px 0;">
+        <strong>Cómo lo encaramos:</strong> El row/shuttle es tránsito rápido entre estaciones, no una prueba de motor. Buscamos completar entre 4 y 5 rondas limpias, sosteniendo el mismo ritmo de principio a fin.
+      </div>
+      <div class="note-box note-warn" style="margin:0 0 8px 0;">
+        <strong>Ganador:</strong> quien sostiene el mismo ritmo de Shoulder to Overhead ronda a ronda sin fragmentar en singles — ahí aparecen los 15–20''.
+      </div>
+      <div class="note-box" style="margin:0;"><strong>Score:</strong> cada cal = 1 rep.</div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">D — WOD 2</div><div class="block-subtitle">For Time · Cap 7' · 8–9' rest previo</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="note-box" style="margin:0 0 10px 0;">
+        <strong>Intro:</strong> Cierre con cuerpo real: reloj corriendo desde el arranque, sin fragmentar de más. El HSPU lo resolvemos en tandas que podamos sostener sin perder la marca — acá el volumen puede pesar, así que administrar el hombro desde la ronda uno es clave. El wall ball lo tiramos parejo, sin buscar el techo, y la soga la usamos para bajar pulsaciones entre estaciones, no para acumular más fatiga. <strong>La tercera ronda es la que separa a quien llegó administrando del que se quedó sin nada para cerrar.</strong>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">3 Rondas</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Kipping HSPU</span><span class="ex-detail">Parámetro de apoyo: 76×25 cm</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">20 Wall Ball</span><span class="ex-detail">9 / 6 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">40 Double Unders</span></div>
+      </div>
+      <div class="note-box" style="margin:0;">
+        <strong>Ganador:</strong> quien sostiene el mismo ritmo de HSPU ronda a ronda sin fragmentar en más de dos-tres tandas, y no corta el wall ball — ahí aparecen los 15–20''.
+      </div>
+    </div>
+  </details>
+</template>
+
+<template id="bwp-c5s4sab-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Sábado 4/7 · Ciclo 5</div>
+    <div class="plan-title">Ciclo 5 2026 — Semana 4 · Semana Negra</div>
+    <div class="plan-tags">
+      <span class="tag tag-wod">Simulacro Team Open</span>
+      <span class="tag tag-oly">1RM Clean & Jerk</span>
+      <span class="tag tag-wod">WOD</span>
+      <span class="tag tag-high">Carga Alta</span>
+    </div>
+  </div>
+
+  <div class="note-box note-warn" style="margin:0 0 12px 0;"><strong>Próxima semana:</strong> Semana de Descarga con Jueves de Rest Total.</div>
+
+  <details class="block">
+    <summary><span class="block-icon">⚡</span><div><div class="block-title">A — ACTIVACIÓN + Movilidad</div><div class="block-subtitle"></div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-item" style="padding:0 0 10px 0;"><div class="ex-bullet"></div><span class="ex-name">3' Assault Bike solo piernas</span><span class="ex-detail">Reemplazo: Goblet Lunge 12/9 kg</span></div>
+      <div class="ex-group">
+        <div class="ex-group-title">3 Sets</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">20'' Hollow + 20'' Back Extension</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">1 Complex con Banda</span><span class="ex-detail">5 Press Cubano + 5 Pull Face</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">20 Jumping Jack</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">8 Good Morning</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">C — WOD 1 · Simulacro Southfit Team Open WOD1</div><div class="block-subtitle">AMRAP 10' + 1RM Clean & Jerk · Ejecución Individual</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="ex-group">
+        <div class="ex-group-title">AMRAP 10'</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">9 Chest to Bar</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">12 mts DB Overhead Walking Lunge</span><span class="ex-detail">2×6 mts · 1 DB 22,5/15 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">15 Toes to Bar</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">21 Alt DB Snatch</span><span class="ex-detail">22,5 / 15 kg</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">— 1' Rest —</div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">5' para</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">1RM Clean & Jerk</span></div>
+      </div>
+      <div class="note-box" style="margin:0;"><strong>Score:</strong> 2 resultados — cantidad de reps en el AMRAP (cada 6 mts = 1 rep) y por otro lado el RM.</div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">WOD 2 · "Anchor"</div><div class="block-subtitle">For Time · 10–12' rest previo</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="ex-group">
+        <div class="ex-group-title">Bloque 1</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">75 Double Unders</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">6 (H) / 5 (M) Bar Muscle-Up</span><span class="ex-detail">Opción: 10 Chest to Bar</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">12 Double KB Dead Clean</span><span class="ex-detail">2×21 / 12 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">6 (H) / 5 (M) Bar Muscle-Up</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">12 Double KB Dead Clean</span><span class="ex-detail">2×21 / 12 kg</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">Bloque 2</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">75 Double Unders</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 (H) / 4 (M) Bar Muscle-Up</span><span class="ex-detail">Opción: 8 Chest to Bar</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">9 Double KB Dead Clean</span><span class="ex-detail">2×21 / 12 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 (H) / 4 (M) Bar Muscle-Up</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">9 Double KB Dead Clean</span><span class="ex-detail">2×21 / 12 kg</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">Bloque 3</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">75 Double Unders</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">4 (H) / 3 (M) Bar Muscle-Up</span><span class="ex-detail">Opción: 6 Chest to Bar</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">6 Double KB Dead Clean</span><span class="ex-detail">2×21 / 12 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">4 (H) / 3 (M) Bar Muscle-Up</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">6 Double KB Dead Clean</span><span class="ex-detail">2×21 / 12 kg</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">Cash-Out (una vez)</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">500 mts Run</span></div>
       </div>
     </div>
   </details>
