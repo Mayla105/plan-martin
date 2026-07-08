@@ -982,6 +982,8 @@ const BWP = {
           dias: [
             { id: 'c5s5lun', label: 'Lunes 6/7', sub: 'Squat Snatch + Front Squat + 2 WODs', carga: 'high', contenido: 'bwp-c5s5lun-content' },
             { id: 'c5s5mar', label: 'Martes 7/7', sub: 'Skills HSW + BMU + Pump + Endurance', carga: 'high-med', contenido: 'bwp-c5s5mar-content' },
+            { id: 'c5s5mie', label: 'Miércoles 8/7', sub: 'Oly Clean + T2B Capacity + Structural + WOD', carga: 'high-med', contenido: 'bwp-c5s5mie-content' },
+            { id: 'c5s5jue', label: 'Jueves 9/7', sub: 'Rest total', carga: 'off', contenido: 'bwp-c5s5jue-content' },
           ]
         },
       ]
@@ -4180,6 +4182,127 @@ window.addEventListener('DOMContentLoaded', () => {
         <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">14 Hang KB Snatch</span><span class="ex-detail">21 / 12 kg</span></div>
         <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">7 Burpee Box Jump Over</span></div>
       </div>
+    </div>
+  </details>
+</template>
+
+<template id="bwp-c5s5jue-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Jueves 9/7 · Ciclo 5</div>
+    <div class="plan-title">Ciclo 5 2026 — Semana 5 · Descarga</div>
+    <div class="plan-tags">
+      <span class="tag" style="background:rgba(100,100,100,.15); color:var(--text2);">🛌 Rest Total</span>
+    </div>
+  </div>
+  <div class="note-box" style="margin:16px 0; padding:20px; text-align:center; font-size:15px;">
+    Día de descanso completo.<br><br>
+    Sin entrenamiento. Dejá que el cuerpo absorba el trabajo del ciclo.
+  </div>
+</template>
+
+<template id="bwp-c5s5mie-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Miércoles 8/7 · Ciclo 5</div>
+    <div class="plan-title">Ciclo 5 2026 — Semana 5 · Descarga (Jueves Rest Total)</div>
+    <div class="plan-tags">
+      <span class="tag tag-oly">Oly Clean</span>
+      <span class="tag tag-str">T2B Capacity</span>
+      <span class="tag tag-str">Structural</span>
+      <span class="tag tag-wod">WOD Optativo</span>
+      <span class="tag tag-high-med">Carga Med-Alta</span>
+    </div>
+  </div>
+
+  <details class="block">
+    <summary><span class="block-icon">⚡</span><div><div class="block-title">A — ACTIVACIÓN + Movilidad</div><div class="block-subtitle">Protocolo Pliometría + Act. Oly</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-group-title">3 Sets — Activación Cadenas</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5/5 Banded Monster Walk</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">8/8 Banded Pallof</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">8 Banded Jumping Good Morning</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">3 Sets — Activación Oly</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Seated Box Jump</span><span class="ex-detail">Aumentando la altura en cada ronda</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">1 Complex del Oly</span><span class="ex-detail">Al 30%</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">8 Banded Pull Face</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--green)">🏋️</span><div><div class="block-title">B — OLY: Power Clean + Hang Clean + Squat Clean</div><div class="block-subtitle">% al Hang Clean (Power o Squat)</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">1×2+2+2</span><span class="c-item-reps" style="color:var(--green)">50%</span></div>
+          <div class="c-item"><span class="c-item-name">1×2+1+1</span><span class="c-item-reps" style="color:var(--yellow)">60%</span></div>
+          <div class="c-item"><span class="c-item-name">3×1+1+1</span><span class="c-item-reps" style="color:var(--orange)">70% – 75% – 80%</span></div>
+          <div class="c-item"><span class="c-item-name">2×1+1+0</span><span class="c-item-reps" style="color:var(--red)">85% · Sin Squat</span></div>
+        </div></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="skill-block">
+    <summary><span class="block-icon" style="color:var(--green)">🤸</span><div><div class="block-title">C — T2B CAPACITY S5</div><div class="block-subtitle">Cada 2:00 × 5 Sets</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-group-title">Cada 2:00 × 5 Sets</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Toes to Bar</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Rondas Impares (1, 3, 5)</span><span class="ex-detail">3 Shuttle Run (7,5 mts ida + 7,5 mts vuelta = 1 rep) — ritmo lento, trote suave</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Rondas Pares (2, 4)</span><span class="ex-detail">10 mts Front Rack Lunge (2×16/12 kg) — paso controlado, sin apuro</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">→ Descanso el resto de la ventana</span></div>
+      </div>
+      <div class="note-box" style="margin:0;">
+        <strong>Cómo lo encaramos:</strong> el T2B lo resolvemos en las tandas que nos permitan mantener el kip limpio — 10 no es una prueba de resistencia, son técnicos bajo volumen moderado. El shuttle y los lunge son puramente para llegar frescos al próximo set, no para generar motor.
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--orange)">🧱</span><div><div class="block-title">D — STRUCTURAL S5</div><div class="block-subtitle">4 Rondas · 1:30 Rest Fijo entre Rondas</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="note-box" style="margin:0 0 10px 0;">
+        Bloque de porte y grip puro — sin motor de por medio, cada ronda se resuelve entera antes del descanso fijo. El sled empuja pierna, el rope climb pide tirón de espalda y agarre, y el farmer carry cierra sosteniendo el core y el antebrazo ya cansado. Entramos pesado en los tres, sin apuro — la calidad de cada tramo importa más que la velocidad entre ellos.
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">4 Rondas · Continuo dentro de cada ronda</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">15 mts Sled Push</span><span class="ex-detail">80 / 60 kg — Reemplazo: 15 mts Heavy Front Rack Lunge Carry (2×16/12)</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">1 Rope Climb</span><span class="ex-detail">Reemplazo: 4 Towel Pull-Up = 1 trepada</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">20 mts Farmer Carry</span><span class="ex-detail">2×24 / 2×16 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">→ 1:30 rest entre rondas</span></div>
+      </div>
+      <div class="note-box" style="margin:0 0 8px 0;">
+        <strong>Cómo lo encaramos:</strong> el sled lo empujamos firme, sin perder el paso; el rope climb en la cantidad que toque, subiendo prolijo, sin patalear de más; el farmer carry lo sostenemos derecho hasta el final de los 20 mts, sin bajar la carga a mitad de camino.
+      </div>
+      <div class="note-box" style="margin:0;"><strong>Score:</strong> no es necesario cargarlo.</div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">E — WOD · Optativo</div><div class="block-subtitle">For Time · Cap 9'</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="note-box" style="margin:0 0 10px 0;">
+        <strong>Intro:</strong> Cierre corto y filoso para terminar el día: la distancia entre el burpee y la dumbbell obliga a un tránsito breve entre cada repetición, así que el ritmo se marca solo — no hace falta fragmentar de más, el desplazamiento ya es el descanso natural. Entramos parejo desde el 18 y cerramos con el cash out de devil press ya con el hombro y la cadera trabajados, pero no vaciados.
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">18 – 12 – 6</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Burpee Target</span><span class="ex-detail">Sobre el barral</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Hang DB Snatch Alternado</span><span class="ex-detail">22,5 / 15 kg — la dumbbell a 5 mts del barral</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">Rest 1'</div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">Cash Out</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">14 Single DB Devil Press</span><span class="ex-detail">22,5 / 15 kg</span></div>
+      </div>
+      <div class="note-box" style="margin:0 0 8px 0;">
+        <strong>Ganador:</strong> quien sostiene el mismo ritmo de transición burpee-dumbbell en las tres rondas sin cortar el snatch en singles forzados — ahí aparecen los 15–20''. El cash out separa a quien administró cadera en el 18-12-6 del que llega a las 14 reps con las piernas ya pesadas.
+      </div>
+      <div class="note-box" style="margin:0;"><strong>Score:</strong> incluir el rest previo antes del cash out. Sin completar, +1'' al cap por rep pendiente.</div>
     </div>
   </details>
 </template>
