@@ -931,7 +931,7 @@ const BWP = {
       ]
     },
     {
-      id: 'c5', label: 'Ciclo 5', sub: 'S1 · S2 · S3 · S4 · S5',
+      id: 'c5', label: 'Ciclo 5', sub: 'S1 · S2 · S3 · S4 · S5 · S6',
       semanas: [
         {
           id: 'c5s1', label: 'Semana 1', rango: '8 – 14 Junio',
@@ -984,6 +984,14 @@ const BWP = {
             { id: 'c5s5mar', label: 'Martes 7/7', sub: 'Skills HSW + BMU + Pump + Endurance', carga: 'high-med', contenido: 'bwp-c5s5mar-content' },
             { id: 'c5s5mie', label: 'Miércoles 8/7', sub: 'Oly Clean + T2B Capacity + Structural + WOD', carga: 'high-med', contenido: 'bwp-c5s5mie-content' },
             { id: 'c5s5jue', label: 'Jueves 9/7', sub: 'Rest total', carga: 'off', contenido: 'bwp-c5s5jue-content' },
+            { id: 'c5s5vie', label: 'Viernes 10/7', sub: 'Back Squat + HSPU Taper + 2 WODs', carga: 'high-med', contenido: 'bwp-c5s5vie-content' },
+            { id: 'c5s5sab', label: 'Sábado 11/7', sub: 'Pliometría + Thruster/FS RM + 2 WODs', carga: 'high', contenido: 'bwp-c5s5sab-content' },
+          ]
+        },
+        {
+          id: 'c5s6', label: 'Semana 6', rango: '13 – 19 Julio · Transición al Ciclo 6',
+          dias: [
+            { id: 'c5s6lun', label: 'Lunes 13/7', sub: 'Snatch + Front Squat + 2 WODs', carga: 'high', contenido: 'bwp-c5s6lun-content' },
           ]
         },
       ]
@@ -4181,6 +4189,295 @@ window.addEventListener('DOMContentLoaded', () => {
         <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">7 Toes to Bar</span></div>
         <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">14 Hang KB Snatch</span><span class="ex-detail">21 / 12 kg</span></div>
         <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">7 Burpee Box Jump Over</span></div>
+      </div>
+    </div>
+  </details>
+</template>
+
+<template id="bwp-c5s6lun-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Lunes 13/7 · Ciclo 5</div>
+    <div class="plan-title">Ciclo 5 2026 — Semana 6 · Transición al Ciclo 6</div>
+    <div class="plan-tags">
+      <span class="tag tag-oly">Snatch</span>
+      <span class="tag tag-str">Front Squat</span>
+      <span class="tag tag-wod">2 WODs</span>
+      <span class="tag tag-high">Carga Alta</span>
+    </div>
+  </div>
+
+  <details class="block">
+    <summary><span class="block-icon">⚡</span><div><div class="block-title">A — ACTIVACIÓN + Movilidad</div><div class="block-subtitle">Movilidad + Activación Oly</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-item" style="padding:0 0 10px 0;"><div class="ex-bullet"></div><span class="ex-name">3' Assault Bike solo piernas</span><span class="ex-detail">Opcional — Reemplazo: 2' Lunge sumando mts</span></div>
+      <div class="ex-group">
+        <div class="ex-group-title">3 Sets</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5/5 Tempo Bulgarian Squat 1KB</span><span class="ex-detail">Bajo en 3'' · Subo en 1''</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">20'' Hollow Rock</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">20'' GHD Back Extensions Hold</span><span class="ex-detail">Reemplazo: Back Ext Hold en el piso</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">3 Sets</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">1 Banded Complex</span><span class="ex-detail">6 Banded Reverse Fly 90° + 6 a 45° + 6 Banded Pull Face</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">1 Complex del Snatch c/Barra Sola</span><span class="ex-detail">2 Muscle Snatch + 2 Snatch Balance + 2 Overhead Squats</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">4 Box Jump</span><span class="ex-detail">70 / 50 cm</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--green)">🏋️</span><div><div class="block-title">B — OLY: Snatch Pull + Hang Squat Snatch + Hang Low Squat Snatch</div><div class="block-subtitle">% al Hang</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">1×2+2+2</span><span class="c-item-reps" style="color:var(--green)">50%</span></div>
+          <div class="c-item"><span class="c-item-name">1×2+2+2</span><span class="c-item-reps" style="color:var(--yellow)">60%</span></div>
+          <div class="c-item"><span class="c-item-name">3×1+2+1</span><span class="c-item-reps" style="color:var(--orange)">70% – 75%</span></div>
+          <div class="c-item"><span class="c-item-name">2×1+1+1</span><span class="c-item-reps" style="color:var(--red)">85%</span></div>
+        </div></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--yellow)">🦵</span><div><div class="block-title">C — FUERZA: Front Squat</div><div class="block-subtitle">Desde el Rack</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">1×4</span><span class="c-item-reps" style="color:var(--yellow)">60%</span></div>
+          <div class="c-item"><span class="c-item-name">2×4</span><span class="c-item-reps" style="color:var(--orange)">72%</span></div>
+          <div class="c-item"><span class="c-item-name">3×2</span><span class="c-item-reps" style="color:var(--red)">81% – 85%</span></div>
+          <div class="c-item"><span class="c-item-name">2×2</span><span class="c-item-reps" style="color:var(--red)">90%</span></div>
+        </div></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">D — WOD 1</div><div class="block-subtitle">For Time · 21-15-9</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="note-box" style="margin:0 0 10px 0;">
+        <strong>Intro:</strong> Arrancamos otra semana de open con un formato clásico de escalera descendente, gimnástico de tracción contra carga unilateral pesada. 21-15-9 es conocido: la cuenta baja rápido pero la fatiga de agarre y hombro se acumula rápido también. C2B exige ritmo de kip sostenido, Devil Press exige transición de piso a overhead sin perder el aire. <strong>La clave hoy es no fundir el antebrazo en la primera ronda — administrar el kip desde el arranque para llegar entero a la de nueve.</strong>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">21 – 15 – 9</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Chest to Bar</span><span class="ex-detail">Opción: Pull-Up</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">DB Devil Press</span><span class="ex-detail">1×22,5 / 15 kg</span></div>
+      </div>
+      <div class="note-box" style="margin:0 0 8px 0;">
+        <strong>Cómo encararlo:</strong> En el 21 lo encaramos en sets cómodos, sin buscar el unbroken si no está firme — mejor 7-7-7 o 12-9 con transiciones rápidas que un set largo que nos deje sin kip para el resto. El Devil Press en tandas de 5-7, respirando arriba del burpee antes de bajar de nuevo. Al llegar al 15 el juego cambia: ahí es donde se nota quién controló el grip. En el 9 ya es gestión pura — llegar, respirar, terminar.
+      </div>
+      <div class="note-box note-warn" style="margin:0 0 8px 0;">
+        <strong>Diferencial ganador:</strong> El corte está en la transición del 15 al 9. El que llega con grip fresco resuelve el 9 unbroken en ambos movimientos y saca 15–20 segundos de ventaja limpia sobre el que tiene que fraccionar el C2B en el tramo final. Elegir hacer Pull-Ups si hacerlo con C2B hace perder fluidez en el trabajo — buscamos salir a buscarlo al WOD.
+      </div>
+      <div class="note-box" style="margin:0;"><strong>Score:</strong> con Pull-Ups, cargar en Scaled.</div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">D — WOD 2 · Marca HSPU</div><div class="block-subtitle">EMOM 1' × 10' · 8–9' rest previo</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="note-box" style="margin:0 0 10px 0;">
+        <strong>Intro:</strong> Cerramos con un EMOM corto que separa dos estímulos sin que se pisen: HSPU en los minutos impares para meter volumen de hombro con velocidad, Row en los pares para bajar pulsaciones sin soltar la intensidad del todo. Diez minutos, ritmo controlado, sin buscar el fallo en ningún tramo, aprovechando el rest sobrante de los bloques de empuje.
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">EMOM 1' × 10' — 5 Rondas</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Min Impar · 10 a 12 reps Kipping HSPU</span><span class="ex-detail">Parámetro de apoyo: 76×25 cm</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Min Par · 10 (H) / 8 (M) Cal Row</span><span class="ex-detail">Opción A: 5 Shuttle Run (7,5 mts ida + 7,5 mts vuelta = 1 rep) · Opción B: 15 American KB Swing (21/12 kg)</span></div>
+      </div>
+      <div class="note-box" style="margin:0 0 8px 0;">
+        <strong>Cómo encararlo:</strong> En los minutos de HSPU salimos directo, sin perder tiempo en el set-up — buscamos completar el número temprano en el minuto para ganar más segundos extra de aire antes del próximo. En el Row a un ritmo sostenible las cinco rondas, ni un cal más de lo que el cuerpo banca — no se gana nada forzando el pace.
+      </div>
+      <div class="note-box note-warn" style="margin:0;">
+        <strong>Diferencial ganador:</strong> Se ve en la ronda 4 y 5 del HSPU: el que gastó de más en el Row llega con el kip degradado y pierde 10–15 segundos de margen dentro de cada minuto.
+      </div>
+    </div>
+  </details>
+</template>
+
+<template id="bwp-c5s5sab-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Sábado 11/7 · Ciclo 5</div>
+    <div class="plan-title">Ciclo 5 2026 — Semana 5 · Descarga</div>
+    <div class="plan-tags">
+      <span class="tag tag-oly">Pliometría</span>
+      <span class="tag tag-oly">Thruster/FS RM</span>
+      <span class="tag tag-wod">2 WODs</span>
+      <span class="tag tag-high">Carga Alta</span>
+    </div>
+  </div>
+
+  <details class="block">
+    <summary><span class="block-icon">⚡</span><div><div class="block-title">A — ACTIVACIÓN + Movilidad</div><div class="block-subtitle">Movilidad + Pliometría</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-note">Movilidad adecuada para la sesión — Complex + WODs. Activaciones específicas de los grupos/cadenas musculares del día.</div>
+      <div class="ex-note" style="color:var(--yellow)"><strong>Recomendación:</strong> 2–5 min Assault Bike previa a la pliometría.</div>
+      <div class="ex-group">
+        <div class="ex-group-title">Activación Pliometría — 3 Sets</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">30'' Hollow</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Pogo Jumps</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">Pliometría — 3 Sets · 2' rest</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">3 Seated Box Jump</span><span class="ex-detail">50 cm</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">3 Seated Box Jump</span><span class="ex-detail">60 cm</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">2 Seated Box Jump</span><span class="ex-detail">70 cm</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">1 Complex con Barra Sola</span><span class="ex-detail">2 Thrusters + 2 Front Squats</span></div>
+      </div>
+      <div class="note-box" style="margin:0;">Objetivo: salto lo más explosivo posible y aterrizar erguido sobre el cajón — evitar recepción en semiflexión de piernas.</div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--green)">🏋️</span><div><div class="block-title">B — OLY: Thruster + Front Squat RM</div><div class="block-subtitle">Buscar mejor peso del día · Cap 10'</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">2 Thrusters + 2 Front Squats</span></div>
+      </div>
+      <div class="note-box" style="margin:0 0 8px 0;"><strong>Importante:</strong> NO es desde el rack — puedo subirla con un Power Clean. Hasta 2 fallos y se corta el trabajo.</div>
+      <div class="note-box note-warn" style="margin:0 0 8px 0;">Sumamos un RM para evaluar la potencia y el traslado de las piernas hacia el tren superior. Luego de semanas de fuerza de Push Press y Front Squats, deberíamos poder el 80% o cerca de nuestro Push Press — si esto no sucede, capaz hay un fallo técnico del traslado de la potencia o de empuje final (empujó hacia adelante, no arriba).</div>
+      <div class="note-box" style="margin:0;"><strong>Score:</strong> cargar el peso logrado, sea o no RM.</div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">C — WOD 1</div><div class="block-subtitle">AMRAP 10'</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">9 Power Snatch</span><span class="ex-detail">40 / 25 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">1 Gymnastic Complex</span><span class="ex-detail">5 Toes to Bar + 3 Pull-Up + 1 Bar Muscle-Up — Opción: 7 T2B + 5 Pull-Up + 3 C2B — o al menos intentar que sea complex</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">18 Wall Ball</span><span class="ex-detail">9 / 6 kg</span></div>
+      </div>
+      <div class="note-box" style="margin:0;"><strong>Score:</strong> con el complex en C2B, cargar en Scaled.</div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">D — WOD 2</div><div class="block-subtitle">For Time · Cap 12' · 10–12' rest previo</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="ex-group">
+        <div class="ex-group-title">3 Rondas</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">300 mts Run</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">18 Hang KB Clean and Jerk</span><span class="ex-detail">1×21 / 12 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Burpee Target</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 mts HSW</span><span class="ex-detail">Tramos de 3 mts mín — Opción: 3 Wall Walk</span></div>
+      </div>
+      <div class="note-box" style="margin:0;"><strong>Score:</strong> sin completar, +1'' al cap por rep pendiente. Cada 150 mts = 1 rep. Con Wall Walk, cargar en Scaled.</div>
+    </div>
+  </details>
+</template>
+
+<template id="bwp-c5s5vie-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Viernes 10/7 · Ciclo 5</div>
+    <div class="plan-title">Ciclo 5 2026 — Semana 5 · Descarga</div>
+    <div class="plan-tags">
+      <span class="tag tag-str">Back Squat</span>
+      <span class="tag tag-str">HSPU Taper</span>
+      <span class="tag tag-wod">2 WODs</span>
+      <span class="tag tag-high-med">Carga Med-Alta</span>
+    </div>
+  </div>
+
+  <details class="block">
+    <summary><span class="block-icon">⚡</span><div><div class="block-title">A — ACTIVACIÓN + Movilidad</div><div class="block-subtitle">Piernas + Core + Potencia</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-item" style="padding:0 0 10px 0;"><div class="ex-bullet"></div><span class="ex-name">4' Assault Bike solo piernas</span><span class="ex-detail">Reemplazo: Goblet Lunge 12/9 kg</span></div>
+      <div class="ex-group">
+        <div class="ex-group-title">3 Sets</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">4/4 Deficit Bulgarian Squat</span><span class="ex-detail">2 KB</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">8/8 KB Halos</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">8 GHD Back Extensions</span><span class="ex-detail">+ 15'' Hold en la última rep — Reemplazo: 10 Back Ext en el piso + Hold</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">3 Sets</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">15'' Flutter Kicks</span><span class="ex-detail">Con 1 KB en cada mano</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Good Morning into Squat c/barra</span><span class="ex-detail">+ 5 Jumping Back Squat c/barra</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">4 Depth Jump</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--yellow)">🦵</span><div><div class="block-title">B-FUERZA — Back Squat S5</div><div class="block-subtitle">Desde el Rack</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">1×6</span><span class="c-item-reps" style="color:var(--green)">50%</span></div>
+          <div class="c-item"><span class="c-item-name">1×3</span><span class="c-item-reps" style="color:var(--green)">60%</span></div>
+          <div class="c-item"><span class="c-item-name">1×3</span><span class="c-item-reps" style="color:var(--yellow)">70%</span></div>
+          <div class="c-item"><span class="c-item-name">2×2</span><span class="c-item-reps" style="color:var(--orange)">80%</span></div>
+          <div class="c-item"><span class="c-item-name">2×2</span><span class="c-item-reps" style="color:var(--red)">90%</span></div>
+          <div class="c-item"><span class="c-item-name">1×1</span><span class="c-item-reps" style="color:var(--red)">95% – 100%</span></div>
+        </div></div>
+      </div>
+      <div class="note-box" style="margin:0;"><strong>Observación:</strong> las últimas series son solo si me siento bien — no debería fallar ninguna serie. Si no puedo aumentar el peso, mantengo las mismas rondas y reps con el último cargado. Siempre priorizo volumen/reps antes que el peso.</div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--orange)">💪</span><div><div class="block-title">C — CORE</div><div class="block-subtitle">OTM 1'30'' × 8 Rounds</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Rondas Impares · 14 GHD Sit-Ups</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Rondas Pares · 1' Step Up sin peso</span><span class="ex-detail">Contabilizar las reps · RPE 4</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--purple)">🙃</span><div><div class="block-title">D — CAPACITY INVERSIÓN / HSPU S5</div><div class="block-subtitle">Taper · Técnico, No Vaciarse · Cada 2:30 × 4 Sets</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="note-box" style="margin:0 0 10px 0;">
+        Última semana de invertido antes de la segunda instancia de medición del ciclo, el Open de individuales — ya pasamos el de equipos para testearnos. Hoy no se busca volumen, se busca que la posición se sienta sólida y liviana. El wall walk sigue siendo el protagonista, el ring muscle-up cierra el objetivo semanal de tracción, y el HSPU estricto entra como lo que es esta semana: seguro estructural, no capacidad a exprimir. <strong>La ventana de dos minutos y medio es generosa a propósito — buscamos calidad en cada repetición y descanso real entre series, no llenar el tiempo.</strong>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">Cada 2:30 × 4 Sets</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">3 Wall Walk</span><span class="ex-detail">Técnico</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">3 (H) / 2 (M) Ring Muscle-Up</span><span class="ex-detail">Adaptación: 8/6 Chest to Bar — sábado complex c/BMU</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Strict HSPU</span><span class="ex-detail">Parámetro de apoyo: 76×25 cm — puedo usar abmat, sin strict realizar "kipping"</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">→ Descanso el resto de la ventana</span></div>
+      </div>
+      <div class="note-box" style="margin:0;">
+        <strong>Cómo lo encaramos:</strong> el wall walk se resuelve controlado, sin apurar el kick-up; el ring muscle-up en la cantidad que toque según sexo, priorizando transición limpia por sobre la velocidad; el HSPU estricto lo ajusta cada atleta entre 5 y 8 según cómo sienta el hombro ese día — si aparece compensación, se corta ahí.
+      </div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">E — WOD 1</div><div class="block-subtitle">For Time · Cap 9'</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="note-box" style="margin:0 0 10px 0;">
+        <strong>Cómo lo encaramos:</strong> con cinco escalones en vez de tres, la dosis por ronda es corta — no hay tiempo de acumular fatiga en ningún tramo antes de que cambie el número. La barra cicla liviana y continua, el box jump over se resuelve fluido sin pisar fuerte, y la soga — con más volumen relativo que el resto — es donde se recupera el aliento sin cortar el ritmo.
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">12 – 9 – 6 – 3</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Hang Power Clean + Push Jerk</span><span class="ex-detail">43 / 30 kg</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">12 – 9 – 6 – 3</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Box Jump Over</span><span class="ex-detail">60 / 50 cm</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">60 – 45 – 30 – 15</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Double Unders</span></div>
+      </div>
+      <div class="ex-note" style="padding:0 0 8px 0; color:var(--text2); font-size:0.82rem;">Flow: 12 Hang PC and Jerk + 12 BJO + 60 DU, ...</div>
+      <div class="note-box note-warn" style="margin:0 0 8px 0;">
+        <strong>Ganador:</strong> quien sostiene el mismo ritmo de barra en los cinco escalones sin bajar el peso ni fragmentar en singles, y no corta los dobles en el primer escalón — ahí aparecen los 15–20'', sobre todo en los últimos dos escalones donde el ritmo tiende a acelerarse de más.
+      </div>
+      <div class="note-box" style="margin:0;"><strong>Score:</strong> sin completar, +1'' al cap por rep pendiente.</div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">E — WOD 2 · Flush Regenerativo · Optativo</div><div class="block-subtitle">No Puntúa · No es For Time</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Row Continuo — 14'</span><span class="ex-detail">RPE 5–6 — Reemplazo: Run suave 14' (Z2, mismo RPE) o Bike Z2 si el remo no está disponible</span></div>
+      </div>
+      <div class="note-box" style="margin:0;">
+        Cierre del día pensado para llegar frescos al sábado, no para sumar estímulo. Remamos parejo, conversacional, sin picos ni sprints — el objetivo es bajar pulsaciones y activar recuperación, no generar más fatiga. Si en algún tramo el ritmo se te sube solo, bajalo: hoy el remo es regenerativo, no entrenamiento.
       </div>
     </div>
   </details>
