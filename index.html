@@ -999,9 +999,10 @@ const BWP = {
   ]
 };
 
-// Estado
-let activeMes = 'c5';
-let activeSem = 'c5s3';
+// Estado — arranca siempre en el último ciclo y última semana cargados
+const ultimoCiclo = BWP.ciclos[BWP.ciclos.length - 1];
+let activeMes = ultimoCiclo.id;
+let activeSem = ultimoCiclo.semanas[ultimoCiclo.semanas.length - 1].id;
 let activeDay = null;
 
 // ── Render sidebar ciclos (dropdown) ──
