@@ -399,8 +399,8 @@
 
 <!-- ══ HEADER ══ -->
 <div class="header">
-  <h1>Plan Martin Miranda</h1>
-  <p class="subtitle">Entrenamiento semanal · Oly + Movilidad</p>
+  <h1 id="plan-title-main">2T</h1>
+  <p class="subtitle" id="plan-subtitle">Entrenamiento semanal</p>
   <div class="plan-tabs">
     <button class="plan-tab-btn" data-plan="t2"  id="tab-t2"  onclick="switchPlan('t2')">2T</button>
     <button class="plan-tab-btn" data-plan="bwp" id="tab-bwp" onclick="switchPlan('bwp')">Black Week Project</button>
@@ -1059,6 +1059,7 @@ const T2 = {
 
 // ── Planes disponibles y estado por plan ──
 const PLANES = { t2: T2, bwp: BWP };
+const PLAN_LABELS = { t2: '2T', bwp: 'Black Week Project' };
 let activePlan = null;
 
 // Estado por plan — cada uno arranca en su último ciclo y última semana cargados
@@ -1262,7 +1263,19 @@ function applyRM(items, rmStr) {
   });
 }
 
+// ── Header: nombre del plan + ciclo activo ──
+function updateHeader() {
+  const h1 = document.getElementById('plan-title-main');
+  const sub = document.getElementById('plan-subtitle');
+  if (h1) h1.textContent = PLAN_LABELS[activePlan] || '';
+  if (sub) {
+    const ciclo = DATA().ciclos.find(c => c.id === activeMes);
+    sub.textContent = ciclo ? `Entrenamiento semanal · ${ciclo.label}` : 'Entrenamiento semanal';
+  }
+}
+
 function render() {
+  updateHeader();
   renderMeses();
   renderContent();
   // Highlight mes activo
