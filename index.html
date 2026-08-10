@@ -1116,6 +1116,17 @@ const T2 = {
         },
       ]
     },
+    {
+      id: 't2c2', label: 'Ciclo 2', sub: 'S1',
+      semanas: [
+        {
+          id: 't2c2s1', label: 'Semana 1', rango: '10 – 16 Agosto · Carga',
+          dias: [
+            { id: 't2c2s1lun', label: 'Lunes 10/8', sub: 'Snatch EMOM + Clusters + ATD Open 26.1', carga: 'high', contenido: 't2-c2s1lun-content' },
+          ]
+        },
+      ]
+    },
   ]
 };
 
@@ -8801,6 +8812,178 @@ window.addEventListener('DOMContentLoaded', () => {
 </template>
 
 <!-- ══ TEMPLATES DE CONTENIDO 2T ══ -->
+
+<template id="t2-c2s1lun-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Lunes 10/8 · Ciclo 2</div>
+    <div class="plan-title">2T 2026 — Semana 1 · Carga</div>
+    <div class="plan-tags">
+      <span class="tag tag-oly">Snatch EMOM</span>
+      <span class="tag tag-str">Clusters</span>
+      <span class="tag tag-wod">ATD Open 26.1</span>
+      <span class="tag tag-high">2 Sesiones</span>
+    </div>
+  </div>
+
+  <div class="note-box note-warn" style="margin:0 0 12px 0;">
+    <strong>Entramos en un NUEVO CICLO.</strong> El objetivo de estos meses es ponernos al día con las capacidades que dejamos un poco atrás — capacidad y volumen gimnástico de empuje alto, levantamientos pesados bajo fatiga, y pacing específico de competencia — para las competencias de <strong>Septiembre, Octubre y Noviembre</strong> (Strongfit, Southfit y Argentina Throwdown).
+  </div>
+  <div class="note-box" style="margin:0 0 12px 0;">
+    Esta es la <strong>Semana 1 de Carga</strong>. Trabajamos exactamente con el <strong>80% del volumen objetivo semanal</strong> de dichas competencias (hicimos un estudio revisando el volumen de trabajo de los últimos años y las últimas competencias para determinar un número de reps y ejercicios de una compe modelo). Vamos a ir aumentando un 5% semanal hasta la descarga, y luego comenzamos de nuevo. La idea es que más cerca de la competencia, ese volumen llegue al 100%.
+  </div>
+  <div class="note-box" style="margin:0 0 12px 0;">
+    <strong>Nueva metodología: CLUSTERS.</strong> En la fuerza básica y de vez en cuando gimnástica vamos a usar el método Cluster — un esquema hermoso para el sistema nervioso: <strong>4-5 series de [2 reps al 80-85% + 15'' pausa + 2 reps + 15'' pausa + 1 rep]</strong>. Sumamos 5 repeticiones pesadas por serie, pero esas micro-pausas de 15 segundos permiten recargar fosfágenos (ATP-PC) y mover kilos que en un 5×5 tradicional serían imposibles. <strong>Esta primera semana vamos a trabajar liviano para irle agarrando la mano.</strong>
+  </div>
+  <div class="note-box" style="margin:0 0 12px 0;">
+    <strong>Levantamiento olímpico:</strong> pasamos a EMOMs de 1'30'' o 2'. Este tiempo de descanso se va a acortar con el pasar de las semanas para generar la capacidad de trabajo bajo fatiga que necesitamos en competencia. Arrancamos livianos para afianzar técnica, pero las últimas 3-4 series van a llegar al 80%+ del 1RM.
+  </div>
+  <div class="note-box" style="margin:0 0 12px 0;">
+    <strong>Los metcons de esta semana son los clasificatorios (Open) de Argentina Throwdown.</strong> Recomiendo filmarlo aunque no estés anotado, y ponerte en situación de Open.
+  </div>
+
+  <div class="sub-label">Sesión 1 — Principal</div>
+
+  <details class="block">
+    <summary><span class="block-icon">⚡</span><div><div class="block-title">CALENTAMIENTO</div><div class="block-subtitle">Pliometría + 3 Rondas + 2 Rondas Oly</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-group-title">Pliometría (Activación) — 4 Series</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">3 Depth Jumps to Broad Jump</span><span class="ex-detail">Dejarse caer de cajón de 45 cm, absorber y saltar en largo al máximo inmediatamente</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">3 Rondas</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Spanish Squats con banda pesada</span><span class="ex-detail">Foco en VMO</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5/5 Landmine Sots Press</span><span class="ex-detail">Con barra vacía</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Scapular Pull-Ups</span><span class="ex-detail">Con pausa de 2'' arriba</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Hollow Rocks</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">2 Rondas</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Snatch Pulls</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Hang Muscle Snatch</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Balance Snatch</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--green)">🏋️</span><div><div class="block-title">FUERZA OLÍMPICA — Snatch</div><div class="block-subtitle">Cada 1'30'' × 8 Series</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-item" style="padding:0 0 10px 0;"><div class="ex-bullet"></div><span class="ex-name">Complex</span><span class="ex-detail">1 Snatch Pull (suelto la barra y armo de nuevo) + 1 Hang Squat Snatch + 1 Squat Snatch</span></div>
+      <div class="ex-group">
+        <div class="ex-group-title">Progresión</div>
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">Series 1, 2, 3</span><span class="c-item-reps" style="color:var(--green)">50% – 60%</span></div>
+          <div class="c-item"><span class="c-item-name">Series 4, 5</span><span class="c-item-reps" style="color:var(--orange)">70% – 75%</span></div>
+          <div class="c-item"><span class="c-item-name">Series 6, 7, 8</span><span class="c-item-reps" style="color:var(--red)">80% – 85%</span></div>
+        </div></div>
+      </div>
+      <div class="note-box" style="margin:0;">Empezá liviano — las últimas 3 series deben estar al 80-85% del 1RM.</div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--yellow)">🦵</span><div><div class="block-title">FUERZA BÁSICA — Back Squat (Clusters Semana 1)</div><div class="block-subtitle">4 Series · Descanso 3' entre series</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-group-title">Estructura del Cluster (× 4 series)</div>
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">2 reps</span><span class="c-item-reps" style="color:var(--red)">85%</span></div>
+          <div class="c-item"><span class="c-item-name">→ Descanso 15'' en el rack</span><span class="c-item-reps" style="color:var(--text2)">—</span></div>
+          <div class="c-item"><span class="c-item-name">2 reps</span><span class="c-item-reps" style="color:var(--red)">85%</span></div>
+          <div class="c-item"><span class="c-item-name">→ Descanso 15''</span><span class="c-item-reps" style="color:var(--text2)">—</span></div>
+          <div class="c-item"><span class="c-item-name">1 rep</span><span class="c-item-reps" style="color:var(--red)">85%</span></div>
+        </div></div>
+      </div>
+      <div class="note-box" style="margin:0;"><strong>Nota:</strong> descanso de 3 minutos completos entre cada serie de cluster.</div>
+    </div>
+  </details>
+
+  <details class="skill-block">
+    <summary><span class="block-icon" style="color:var(--green)">🤸</span><div><div class="block-title">FUERZA GIMNÁSTICA — Tracción con Lastre</div><div class="block-subtitle">Weighted Strict Pull-Ups · Clusters · 4 Series</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-group-title">Estructura del Cluster (× 4 series)</div>
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">2 reps</span><span class="c-item-reps" style="color:var(--red)">85% RM</span></div>
+          <div class="c-item"><span class="c-item-name">→ Descanso 15''</span><span class="c-item-reps" style="color:var(--text2)">—</span></div>
+          <div class="c-item"><span class="c-item-name">2 reps</span><span class="c-item-reps" style="color:var(--red)">85% RM</span></div>
+          <div class="c-item"><span class="c-item-name">→ Descanso 15''</span><span class="c-item-reps" style="color:var(--text2)">—</span></div>
+          <div class="c-item"><span class="c-item-name">1 rep</span><span class="c-item-reps" style="color:var(--red)">85% RM</span></div>
+        </div></div>
+      </div>
+      <div class="note-box note-warn" style="margin:0;">Podemos hacer estos dos ejercicios (Back Squat + Weighted Pull-Ups) <strong>en superserie</strong>, pero descansamos mínimo <strong>1' entre cada ejercicio y 3' entre series</strong>.</div>
+    </div>
+  </details>
+
+  <details class="skill-block">
+    <summary><span class="block-icon" style="color:var(--green)">🤸</span><div><div class="block-title">CAPACIDAD GIMNÁSTICA</div><div class="block-subtitle">EMOM 10'</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">A · 15-20 Chest to Bar</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">B · 15/12 Cal Bike</span></div>
+      </div>
+    </div>
+  </details>
+
+  <div class="sub-label">Sesión 2 — Metcon</div>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">METCON · "ATD Open WOD 26.1"</div><div class="block-subtitle">For Time</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="ex-group">
+        <div class="ex-group-title">Bloque 1</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">18 Shuttle Runs</span><span class="ex-detail">2×7,5 m</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">40 Hang DB Snatch</span><span class="ex-detail">22,5 / 15 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">12 Lateral Burpees over the DB</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">Bloque 2</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">18 Shuttle Runs</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">30 Hang DB Snatch</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">12 Lateral Burpees over the DB</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">Bloque 3</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">18 Shuttle Runs</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">20 Hang DB Snatch</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">12 Lateral Burpees over the DB</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">Tiempos a Vencer (Top 5)</div>
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">Elite</span><span class="c-item-reps" style="color:var(--red)">Sub 10:15</span></div>
+          <div class="c-item"><span class="c-item-name">RX</span><span class="c-item-reps" style="color:var(--orange)">Sub 10:30</span></div>
+          <div class="c-item"><span class="c-item-name">Advanced</span><span class="c-item-reps" style="color:var(--yellow)">Sub 11:00</span></div>
+          <div class="c-item"><span class="c-item-name">Scaled</span><span class="c-item-reps" style="color:var(--green)">Sub 12:00</span></div>
+        </div></div>
+      </div>
+      <div class="note-box note-warn" style="margin:0 0 8px 0;">Si estás tirando esto en serio, <strong>leé bien los parámetros y el flow.</strong></div>
+      <div class="note-box" style="margin:0;">
+        <strong>Cómo lo encaramos:</strong> Los primeros Shuttle de la segunda y tercera ronda usalos para recuperar lo que gastaste haciendo burpees y snatches — al menos los primeros 9 se deberían ver tranquilos, respirando. <strong>Recién podés apretar en la segunda mitad.</strong> Aconsejo ir unbroken en todo si tu capacidad lo permite; si no, cortar en series largas con descansos cortos.
+      </div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">METCON Alternativo</div><div class="block-subtitle">Si ya hiciste el 26.1 y no lo vas a repetir</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="ex-group">
+        <div class="ex-group-title">AMRAP 7 Minutos</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">40 Double Unders</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">15 Hang Power Snatches Dual KB</span><span class="ex-detail">2×24/16 · 2×20/14 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Bar-Facing Burpees</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">— Descanso Estricto 4 Minutos —</div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">For Time 7 Minutos</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Intentamos hacer la misma cantidad de reps o más que en el AMRAP anterior</span></div>
+      </div>
+    </div>
+  </details>
+</template>
 
 <template id="t2-s5lun-content">
   <div class="plan-header">
