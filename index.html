@@ -1125,6 +1125,8 @@ const T2 = {
           dias: [
             { id: 't2c2s1lun', label: 'Lunes 10/8', sub: 'Snatch EMOM + Clusters + ATD Open 26.1', carga: 'high', contenido: 't2-c2s1lun-content' },
             { id: 't2c2s1mar', label: 'Martes 11/8', sub: 'HSW test + Push Jerk + Clusters + ATD Open 26.2', carga: 'high', contenido: 't2-c2s1mar-content' },
+            { id: 't2c2s1mie', label: 'Miércoles 12/8', sub: 'Squat Clean + Deadlift Clusters + ATD 26.3', carga: 'high', contenido: 't2-c2s1mie-content' },
+            { id: 't2c2s1jue', label: 'Jueves 13/8', sub: 'Zona 2 · 45–50 min', carga: 'med', contenido: 't2-c2s1jue-content' },
           ]
         },
       ]
@@ -8925,6 +8927,141 @@ window.addEventListener('DOMContentLoaded', () => {
 </template>
 
 <!-- ══ TEMPLATES DE CONTENIDO 2T ══ -->
+
+<template id="t2-c2s1mie-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Miércoles 12/8 · Ciclo 2</div>
+    <div class="plan-title">2T 2026 — Semana 1 · Carga</div>
+    <div class="plan-tags">
+      <span class="tag tag-oly">Squat Clean</span>
+      <span class="tag tag-str">Deadlift Clusters</span>
+      <span class="tag tag-wod">ATD 26.3</span>
+      <span class="tag tag-str">Strongman</span>
+      <span class="tag tag-high">2 Sesiones</span>
+    </div>
+  </div>
+
+  <div class="sub-label">Sesión 1</div>
+
+  <details class="block">
+    <summary><span class="block-icon">⚡</span><div><div class="block-title">CALENTAMIENTO</div><div class="block-subtitle">Pliometría + 3 Rondas</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-group-title">Pliometría (Activación) — 4 Series</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">3 Broad Jump to Box Jump</span><span class="ex-detail">Salto en largo seguido instantáneamente de un salto al cajón medio o bajo</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">3 Rondas</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Deficit RDLs</span><span class="ex-detail">Con KB o barra liviana</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10/10 Single Leg Glute Bridges</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Tall Cleans</span><span class="ex-detail">Codos rápidos</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Hang Muscle Clean + Front Squat</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Squat Clean</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Kipping Swings en barra</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--green)">🏋️</span><div><div class="block-title">FUERZA OLÍMPICA — Squat Clean</div><div class="block-subtitle">Cada 1'30'' × 8 Series</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-item" style="padding:0 0 10px 0;"><div class="ex-bullet"></div><span class="ex-name">Complex</span><span class="ex-detail">1 Hang Squat Clean + SUELTO LA BARRA + 1 Squat Clean</span></div>
+      <div class="ex-group">
+        <div class="ex-group-title">Progresión</div>
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">Series 1, 2, 3</span><span class="c-item-reps" style="color:var(--green)">50% – 60%</span></div>
+          <div class="c-item"><span class="c-item-name">Series 4, 5</span><span class="c-item-reps" style="color:var(--orange)">70% – 75%</span></div>
+          <div class="c-item"><span class="c-item-name">Series 6, 7, 8</span><span class="c-item-reps" style="color:var(--red)">80% – 85%</span></div>
+        </div></div>
+      </div>
+      <div class="note-box" style="margin:0;">Empezá liviano — las últimas 3 series deben estar al 80-85% del 1RM.</div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--yellow)">🦵</span><div><div class="block-title">FUERZA BÁSICA — Deadlift (Clusters Semana 1)</div><div class="block-subtitle">4 Series</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-group-title">Estructura del Cluster (× 4 series)</div>
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">2 reps</span><span class="c-item-reps" style="color:var(--red)">85%</span></div>
+          <div class="c-item"><span class="c-item-name">→ Descanso 15''</span><span class="c-item-reps" style="color:var(--text2)">—</span></div>
+          <div class="c-item"><span class="c-item-name">2 reps</span><span class="c-item-reps" style="color:var(--red)">85%</span></div>
+          <div class="c-item"><span class="c-item-name">→ Descanso 15''</span><span class="c-item-reps" style="color:var(--text2)">—</span></div>
+          <div class="c-item"><span class="c-item-name">1 rep</span><span class="c-item-reps" style="color:var(--red)">85%</span></div>
+        </div></div>
+      </div>
+      <div class="note-box" style="margin:0;"><strong>Nota:</strong> soltá la barra en las pausas de 15 segundos, tomá aire, y volvé a setear la espalda.</div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">METCON · "ATD 26.3"</div><div class="block-subtitle">Time Cap 7'</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">15 Toes to Bar</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">9 Thrusters</span><span class="ex-detail">60 / 40 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">15 Toes to Bar</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">15 Thrusters</span><span class="ex-detail">50 / 35 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">15 Toes to Bar</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">21 Thrusters</span><span class="ex-detail">40 / 30 kg</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">Tiempos estimados (Top 5 por categoría)</div>
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">Elite</span><span class="c-item-reps" style="color:var(--red)">Sub 3' – 3'30''</span></div>
+          <div class="c-item"><span class="c-item-name">RX</span><span class="c-item-reps" style="color:var(--orange)">3'30'' – 3'50''</span></div>
+          <div class="c-item"><span class="c-item-name">Advanced</span><span class="c-item-reps" style="color:var(--yellow)">4' – 4'30''</span></div>
+        </div></div>
+      </div>
+      <div class="note-box" style="margin:0;"><strong>Nota:</strong> se calcula que aproximadamente se tarda 1' más que en un FRAN.</div>
+    </div>
+  </details>
+
+  <div class="sub-label">Sesión 2</div>
+
+  <details class="skill-block">
+    <summary><span class="block-icon" style="color:var(--green)">🤸</span><div><div class="block-title">FUERZA GIMNÁSTICA</div><div class="block-subtitle">EMOM 10 Minutos</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Min 1 · 1-2 Legless Rope Climbs</span><span class="ex-detail">Estrictos desde sentado si es posible — si no podés hacer legless aún, podés subir hasta la mitad, o subir con ayuda de las piernas y bajar lo más estricto posible</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Min 2 · 5 Ring Dips con lastre</span><span class="ex-detail">RIR 3</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--orange)">🧱</span><div><div class="block-title">STRONGMAN</div><div class="block-subtitle">4 Rondas · Descanso 1:1</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">20 m Sled Push</span><span class="ex-detail">150/100 · 120/80</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">20 m Sled Pull</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Sandbag Cleans</span><span class="ex-detail">70/50 · 50/30 kg</span></div>
+      </div>
+    </div>
+  </details>
+</template>
+
+<template id="t2-c2s1jue-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Jueves 13/8 · Ciclo 2</div>
+    <div class="plan-title">2T 2026 — Semana 1 · Carga</div>
+    <div class="plan-tags">
+      <span class="tag tag-wod">Zona 2</span>
+      <span class="tag" style="background:rgba(100,100,100,.15); color:var(--text2);">Sesión Única</span>
+    </div>
+  </div>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🏃</span><div><div class="block-title">CAPACIDAD AERÓBICA (Zona 2)</div><div class="block-subtitle">45–50 Minutos Continuos · RPE 5-6</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">45–50' continuos</span><span class="ex-detail">Remo, bici, natación o trote regenerativo — o combinación</span></div>
+      </div>
+      <div class="note-box" style="margin:0;"><strong>Foco en la respiración nasal.</strong></div>
+    </div>
+  </details>
+</template>
 
 <template id="t2-c2s1mar-content">
   <div class="plan-header">
