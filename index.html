@@ -1137,7 +1137,7 @@ const T2 = {
       ]
     },
     {
-      id: 't2c2', label: 'Ciclo 2', sub: 'S1 · S2',
+      id: 't2c2', label: 'Ciclo 2', sub: 'S1 · S2 · S3',
       semanas: [
         {
           id: 't2c2s1', label: 'Semana 1', rango: '10 – 16 Agosto · Carga',
@@ -1159,6 +1159,12 @@ const T2 = {
             { id: 't2c2s2jue', label: 'Jueves 20/8', sub: 'Zona 2 · 5 km Run', carga: 'med', contenido: 't2-c2s2jue-content' },
             { id: 't2c2s2vie', label: 'Viernes 21/8', sub: 'Clean Complex + Front Squat Clusters + HSW Metcon', carga: 'high', contenido: 't2-c2s2vie-content' },
             { id: 't2c2s2sab', label: 'Sábado 22/8', sub: 'Gimnasia bajo fatiga + Bench/OHS Clusters', carga: 'high', contenido: 't2-c2s2sab-content' },
+          ]
+        },
+        {
+          id: 't2c2s3', label: 'Semana 3', rango: '24 – 30 Agosto · Carga',
+          dias: [
+            { id: 't2c2s3lun', label: 'Lunes 24/8', sub: 'Snatch Complex + Back Squat Clusters + 2 Metcons', carga: 'high', contenido: 't2-c2s3lun-content' },
           ]
         },
       ]
@@ -9793,6 +9799,120 @@ window.addEventListener('DOMContentLoaded', () => {
 </template>
 
 <!-- ══ TEMPLATES DE CONTENIDO 2T ══ -->
+
+<template id="t2-c2s3lun-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Lunes 24/8 · Ciclo 2</div>
+    <div class="plan-title">2T 2026 — Semana 3 · Carga</div>
+    <div class="plan-tags">
+      <span class="tag tag-oly">Snatch Complex</span>
+      <span class="tag tag-str">Back Squat Clusters</span>
+      <span class="tag tag-wod">2 Metcons</span>
+      <span class="tag tag-high">2 Sesiones</span>
+    </div>
+  </div>
+
+  <div class="sub-label">Sesión 1</div>
+
+  <details class="block">
+    <summary><span class="block-icon">⚡</span><div><div class="block-title">CALENTAMIENTO</div><div class="block-subtitle">Pliometría + 3 Rondas</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-group-title">Pliometría — 3 Series</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">6 Depth Jumps to High Target</span><span class="ex-detail">Dejarse caer, absorber el impacto y saltar vertical buscando tocar una marca alta — si es posible más alta que la semana pasada</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">3 Rondas</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Snatch Balances con barra</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Snatch Pull + 5 Hang Muscle Snatch</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Strict Toes to Bar</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10/10 Bulgarian Split Squats</span><span class="ex-detail">Con KB en overhead</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5/5 KB Windmills</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--green)">🏋️</span><div><div class="block-title">FUERZA OLÍMPICA — Snatch Complex</div><div class="block-subtitle">EMOM 8 Minutos</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-item" style="padding:0 0 10px 0;"><div class="ex-bullet"></div><span class="ex-name">Complex</span><span class="ex-detail">1 Power Snatch + 1 Squat Snatch — suelto la barra luego del Power</span></div>
+      <div class="ex-group">
+        <div class="ex-group-title">Progresión · % del Power Snatch</div>
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">Arranque</span><span class="c-item-reps" style="color:var(--yellow)">65%</span></div>
+          <div class="c-item"><span class="c-item-name">Últimas 4 series</span><span class="c-item-reps" style="color:var(--red)">85% – 90%</span></div>
+        </div></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--yellow)">🦵</span><div><div class="block-title">FUERZA BÁSICA — Back Squat (Clusters Semana 3)</div><div class="block-subtitle">4 Series · Descanso 3' entre series</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="note-box note-warn" style="margin:0 0 10px 0;"><strong>Cambia el esquema del cluster:</strong> ahora son singles al 90% con pausas de 10''.</div>
+      <div class="ex-group">
+        <div class="ex-group-title">Estructura del Cluster (× 4 series)</div>
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">1 rep</span><span class="c-item-reps" style="color:var(--red)">90%</span></div>
+          <div class="c-item"><span class="c-item-name">→ 10'' pausa</span><span class="c-item-reps" style="color:var(--text2)">—</span></div>
+          <div class="c-item"><span class="c-item-name">1 rep</span><span class="c-item-reps" style="color:var(--red)">90%</span></div>
+          <div class="c-item"><span class="c-item-name">→ 10'' pausa</span><span class="c-item-reps" style="color:var(--text2)">—</span></div>
+          <div class="c-item"><span class="c-item-name">1 rep</span><span class="c-item-reps" style="color:var(--red)">90%</span></div>
+        </div></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="skill-block">
+    <summary><span class="block-icon" style="color:var(--green)">🤸</span><div><div class="block-title">FUERZA GIMNÁSTICA (Tracción)</div><div class="block-subtitle">EMOM 10 Minutos</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Min 1 · 3-4 Weighted Strict Pull-Ups</span><span class="ex-detail">Más pesados que la semana pasada</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Min 2 · 10-20 Toes to Bar UNB</span><span class="ex-detail">Buscá un número igual en todas las rondas</span></div>
+      </div>
+    </div>
+  </details>
+
+  <div class="sub-label">Sesión 2</div>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">METCON 1</div><div class="block-subtitle">Row + Cleans en escalera ascendente de carga</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="ex-group">
+        <div class="ex-group-title">Bloque 1</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">1000 m Row</span><span class="ex-detail">@ 2:00 / 500 m · RPE 7</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">9 Cleans — SINGLES</span><span class="ex-detail">Elite/RX: 85 / 52,5 · ADV/Master: 70 / 45 kg</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">Bloque 2</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">750 m Row</span><span class="ex-detail">@ 1:55 / 500 m · RPE 7.5</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">7 Cleans — SINGLES</span><span class="ex-detail">Elite/RX: 93 / 61 · ADV/Master: 83 / 51 kg</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">Bloque 3</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">500 m Row</span><span class="ex-detail">@ Sub 1:50 / 500 m · RPE 8-9</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Cleans — SINGLES</span><span class="ex-detail">Elite/RX: 105 / 67,5 · ADV/Master: 90 / 55 kg</span></div>
+      </div>
+      <div class="note-box" style="margin:0;">
+        <strong>Nota:</strong> estamos buscando incrementar la intensidad del remo a medida que sube el peso de la barra, para ver hasta qué ritmo puedo mantener en una máquina y aun así poder tirar singles livianos / moderados / pesados. <strong>Respetá el ritmo del remo</strong>, o bien si no se asemeja a tu RPE, anotá qué ritmo utilizaste en cada sección.
+      </div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">METCON 2</div><div class="block-subtitle">AMRAP 7' · Rest 5' previo</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">200 m Run</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Burpees Box Jump Over</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">15 Chest to Bar / Pull-Ups</span></div>
+      </div>
+      <div class="note-box" style="margin:0;">
+        <strong>Nota:</strong> este es un WOD en el cual nos queremos mover constantemente. Es corto, así que <strong>buscá recuperarte en el run</strong> e ir UNB en los demás ejercicios. Reducí al mínimo los tiempos de transición, y que sean los últimos dos minutos los que te dejen sin aire.
+      </div>
+    </div>
+  </details>
+</template>
 
 <template id="t2-c2s2mie-content">
   <div class="plan-header">
