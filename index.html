@@ -1157,7 +1157,7 @@ const T2 = {
       ]
     },
     {
-      id: 't2c2', label: 'Ciclo 2', sub: 'S1 · S2 · S3 · S4',
+      id: 't2c2', label: 'Ciclo 2', sub: 'S1 · S2 · S3 · S4 · S5',
       semanas: [
         {
           id: 't2c2s1', label: 'Semana 1', rango: '10 – 16 Agosto · Carga',
@@ -1200,6 +1200,13 @@ const T2 = {
             { id: 't2c2s4mie', label: 'Miércoles 2/9', sub: 'Squat Clean + Deadlift + Metcon Sled', carga: 'high-med', contenido: 't2-c2s4mie-content' },
             { id: 't2c2s4jue', label: 'Jueves 3/9', sub: 'Zona 2 / Descanso total', carga: 'med', contenido: 't2-c2s4jue-content' },
             { id: 't2c2s4vie', label: 'Viernes 4/9', sub: 'Snatch Complex + Front Squat + Gimnasia + Metcon', carga: 'high-med', contenido: 't2-c2s4vie-content' },
+            { id: 't2c2s4sab', label: 'Sábado 5/9', sub: 'Capacidad de Trabajo · 3 AMRAP + Intervalos', carga: 'high', contenido: 't2-c2s4sab-content' },
+          ]
+        },
+        {
+          id: 't2c2s5', label: 'Semana 5', rango: '7 – 13 Septiembre',
+          dias: [
+            { id: 't2c2s5lun', label: 'Lunes 7/9', sub: 'Snatch desde bloques + Back Squat Waves + Test Gimnástico + 2 Metcons', carga: 'high', contenido: 't2-c2s5lun-content' },
           ]
         },
       ]
@@ -11055,6 +11062,236 @@ window.addEventListener('DOMContentLoaded', () => {
         <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Masaje con foam roller</span></div>
         <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Visualización de los WODs de la competencia</span></div>
         <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Carga de carbohidratos</span></div>
+      </div>
+    </div>
+  </details>
+</template>
+
+<template id="t2-c2s4sab-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Sábado 5/9 · Ciclo 2</div>
+    <div class="plan-title">2T 2026 — Semana 4 · Descarga A / Peaking B</div>
+    <div class="plan-tags">
+      <span class="tag tag-wod">Capacidad de Trabajo</span>
+      <span class="tag tag-wod">3 AMRAP</span>
+      <span class="tag tag-high">Carga Alta</span>
+      <span class="tag" style="background:rgba(100,100,100,.15); color:var(--text2);">Sesión Única</span>
+    </div>
+  </div>
+
+  <details class="block">
+    <summary><span class="block-icon">⚡</span><div><div class="block-title">CALENTAMIENTO</div><div class="block-subtitle">3 Rondas</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-group-title">3 Rondas</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">100 mts Run</span><span class="ex-detail">Aceleramos cada ronda</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10-12 Ab Wheel Rollout / Ring Fallout</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10/10 Pallof Press en Split</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Kipping con pausa en Hollow y Arch Hollow</span><span class="ex-detail">Puede ser en anillas</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10'' Vertical Libre</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 OHS con disco</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">METCON · Capacidad de Trabajo</div><div class="block-subtitle">Alternancia fácil / difícil · Rest 2'30'' entre bloques</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="ex-group">
+        <div class="ex-group-title">1 — 5' Row</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5' Row</span><span class="ex-detail">@ 2:10 – 2:15 / 500 mts</span></div>
+      </div>
+      <div class="note-box note-warn" style="margin:0 0 10px 0;text-align:center;"><strong>Rest 2'30''</strong></div>
+
+      <div class="ex-group">
+        <div class="ex-group-title">2 — AMRAP 10' (ritmo repetible)</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">15 / 12 Cal Row</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Overhead Squats</span><span class="ex-detail">45 / 30 kg · Scaled 40 / 25 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Ring Muscle Ups / 7 Bar Muscle Ups</span></div>
+      </div>
+      <div class="note-box note-warn" style="margin:0 0 10px 0;text-align:center;"><strong>Rest 2'30''</strong></div>
+
+      <div class="ex-group">
+        <div class="ex-group-title">3 — 5' Assault Bike</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5' Assault Bike</span><span class="ex-detail">@ 54 – 58 RPM</span></div>
+      </div>
+      <div class="note-box note-warn" style="margin:0 0 10px 0;text-align:center;"><strong>Rest 2'30''</strong></div>
+
+      <div class="ex-group">
+        <div class="ex-group-title">4 — AMRAP 10' (ritmo repetible)</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">15 / 12 Cal Row</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">15 Box Jump Over</span><span class="ex-detail">Con step down</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">15 Alt. DB Snatch</span><span class="ex-detail">22,5 / 15 kg</span></div>
+      </div>
+      <div class="note-box note-warn" style="margin:0 0 10px 0;text-align:center;"><strong>Rest 2'30''</strong></div>
+
+      <div class="ex-group">
+        <div class="ex-group-title">5 — 5' Row</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5' Row</span><span class="ex-detail">@ 2:10 – 2:15 / 500 mts</span></div>
+      </div>
+      <div class="note-box note-warn" style="margin:0 0 10px 0;text-align:center;"><strong>Rest 2'30''</strong></div>
+
+      <div class="ex-group">
+        <div class="ex-group-title">6 — AMRAP 10' (ritmo repetible)</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Toes to Bar</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">15 Wall Ball Shots</span><span class="ex-detail">9 / 6 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">30 Double Unders</span></div>
+      </div>
+      <div class="note-box note-warn" style="margin:0 0 10px 0;text-align:center;"><strong>Rest 2'30''</strong></div>
+
+      <div class="ex-group">
+        <div class="ex-group-title">7 — 5' Assault Bike</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5' Assault Bike</span><span class="ex-detail">@ 54 – 58 RPM</span></div>
+      </div>
+
+      <div class="note-box" style="margin:0 0 8px 0;">
+        <strong>¿Qué es esto?</strong> básicamente un método para trabajar tu <strong>capacidad de trabajo</strong> — el tiempo que podés mantenerte en un ritmo respetable haciendo trabajos de modalidades mixtas. En este formato vas a tener un trabajo "fácil" seguido de uno más intenso o "difícil", y la complejidad de los difíciles va disminuyendo. La idea es <strong>aprender a recuperarnos activamente entre esfuerzos</strong>, porque con el pasar del ciclo (4-6 semanas) vamos a ir achicando esos descansos para desarrollar a fondo esta capacidad.
+      </div>
+      <div class="note-box note-warn" style="margin:0;">
+        <strong>3 cuestiones de este tipo de trabajo</strong> (va a aparecer 2 veces por semana):<br>
+        <strong>1.</strong> Nuestra capacidad de trabajo físico está siendo testeada a través de un volumen alto de repeticiones y ejercicios — te va a servir para ver cómo estás en ese sentido.<br>
+        <strong>2.</strong> Nuestra capacidad de afinar el ritmo en los AMRAP también está siendo testeada. Estamos obligados a medir cómo nos desempeñamos para pegarle al ritmo justo y <strong>no morir en el segundo o tercer AMRAP</strong>.<br>
+        <strong>3.</strong> Vamos a ir mejorando de a poco las combinaciones, para generar capacidad de trabajo cada vez más avanzada.
+      </div>
+    </div>
+  </details>
+</template>
+
+<template id="t2-c2s5lun-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Lunes 7/9 · Ciclo 2</div>
+    <div class="plan-title">2T 2026 — Semana 5</div>
+    <div class="plan-tags">
+      <span class="tag tag-oly">Snatch desde bloques</span>
+      <span class="tag tag-str">Back Squat Waves</span>
+      <span class="tag tag-str">Test Gimnástico</span>
+      <span class="tag tag-wod">2 Metcons</span>
+      <span class="tag tag-high">Carga Alta</span>
+    </div>
+  </div>
+
+  <div class="sub-label" style="color:var(--green)">Sesión 1 — Prioridad</div>
+
+  <details class="block">
+    <summary><span class="block-icon">⚡</span><div><div class="block-title">CALENTAMIENTO</div><div class="block-subtitle">Pliometría + 3 Rondas</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-group-title">Pliometría — 4 series</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">3 Depth Jumps to Broad Jump</span><span class="ex-detail">Dejarse caer de cajón de 30-45 cm y rebotar inmediatamente en un salto en largo horizontal máximo</span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">3 Rondas</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Snatch Deadlift tempo 3-1-1-1</span><span class="ex-detail">Barra vacía</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Hang Power Snatch</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Hang Muscle Snatch</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Scapular Pull-ups</span><span class="ex-detail">Con pausa de 2'' arriba</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10/10 Banded Monster Walks</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 OHS con banda de resistencia atada al frente</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--green)">🏋️</span><div><div class="block-title">LEVANTAMIENTO OLÍMPICO · Snatch desde bloques</div><div class="block-subtitle">EMOM 1' × 6 + EMOM 1'15'' × 4</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-group-title">EMOM 1' × 6 Rondas</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">2 High Hang Squat Snatch desde bloques altos</span><span class="ex-detail">Tercio superior del muslo</span></div>
+      </div>
+      <div class="note-box note-warn" style="margin:0 0 10px 0;text-align:center;"><strong>Descansamos 1' y arrancamos</strong></div>
+      <div class="ex-group">
+        <div class="ex-group-title">EMOM 1'15'' × 4 Rondas</div>
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">Arranque</span><span class="c-item-reps" style="color:var(--green)">40%</span></div>
+          <div class="c-item"><span class="c-item-name">Últimos 4 minutos</span><span class="c-item-reps" style="color:var(--red)">75% – 80%</span></div>
+        </div></div>
+      </div>
+      <div class="note-box" style="margin:0;"><strong>Carga:</strong> empezar al 40% e ir subiendo hasta 75-80% del 1RM en los últimos 4 minutos. <strong>Foco: velocidad de metida.</strong></div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--green)">🏋️</span><div><div class="block-title">FUERZA BÁSICA · Back Squat (Waves Semana 1)</div><div class="block-subtitle">2 Waves · Rest 2' entre series</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-group-title">Wave 1</div>
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">5 reps</span><span class="c-item-reps" style="color:var(--yellow)">65%</span></div>
+          <div class="c-item"><span class="c-item-name">4 reps</span><span class="c-item-reps" style="color:var(--orange)">75%</span></div>
+          <div class="c-item"><span class="c-item-name">3 reps</span><span class="c-item-reps" style="color:var(--red)">80%</span></div>
+        </div></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">Wave 2</div>
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">5 reps</span><span class="c-item-reps" style="color:var(--orange)">75%</span></div>
+          <div class="c-item"><span class="c-item-name">4 reps</span><span class="c-item-reps" style="color:var(--red)">80%</span></div>
+          <div class="c-item"><span class="c-item-name">3 reps</span><span class="c-item-reps" style="color:var(--red)">85%</span></div>
+        </div></div>
+      </div>
+      <div class="note-box" style="margin:0;"><strong>Descanso:</strong> 2 minutos entre series.</div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--orange)">🤸</span><div><div class="block-title">FUERZA GIMNÁSTICA · TEST</div><div class="block-subtitle">Max Reps Strict + Max Reps Kipping</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">1. Test Max Reps Strict Pull-ups</span><span class="ex-detail">Cortar al soltar la barra</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Descanso estricto 3-4 minutos</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">2. Test Max Reps Kipping Pull-ups / Chest to Bar</span><span class="ex-detail">Sin soltar la barra</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">METCON 1 · 21-15-9</div><div class="block-subtitle">Time Cap 12'</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="ex-group">
+        <div class="ex-group-title">21 - 15 - 9 · TC 12'</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">DB Snatch</span><span class="ex-detail">40 / 27,5 kg · Scaled 30 / 22,5 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Chest to Bar</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Burpee Box Jump Over</span><span class="ex-detail">Con step down</span></div>
+      </div>
+      <div class="note-box" style="margin:0;"><strong>Nota:</strong> la idea es trabajar con una <strong>DB más pesada que la que usás normalmente</strong>.</div>
+    </div>
+  </details>
+
+  <div class="note-box note-warn" style="margin:0 0 12px 0;text-align:center;"><strong>Rest 3'</strong></div>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">METCON 2 · 9-6-3</div><div class="block-subtitle">Time Cap 5'</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="ex-group">
+        <div class="ex-group-title">9 - 6 - 3 · TC 5'</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Metros de Walking Lunges</span><span class="ex-detail">Doble DB, mismo peso que antes</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Shuttle Runs</span><span class="ex-detail">2×5 mts</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Burpees Over the DB</span></div>
+      </div>
+    </div>
+  </details>
+
+  <div class="sub-label" style="color:var(--orange)">Sesión 2 — Accesorios</div>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--orange)">🧱</span><div><div class="block-title">STRONGMAN · Acondicionamiento</div><div class="block-subtitle">3 Rondas por tiempo · Descanso 1:1</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-group-title">3 Rondas por tiempo</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">8 Sandbag Cleans</span><span class="ex-detail">Lo más pesado que encuentres</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">15 Kettlebell Swings</span><span class="ex-detail">38 / 30 o 28 / 21 kg</span></div>
+      </div>
+      <div class="note-box" style="margin:0;"><strong>Descanso:</strong> lo que tardaste en la ronda.</div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--orange)">💪</span><div><div class="block-title">ACCESORIOS</div><div class="block-subtitle">3 Súper-series</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-group-title">3 Súper-series</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">15 GHD Back Extension</span><span class="ex-detail">Con disco si podés</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">3× Banded Wall Spider Crawls</span><span class="ex-detail">Subo y bajo tres veces seguidas, banda pesada</span></div>
       </div>
     </div>
   </details>
