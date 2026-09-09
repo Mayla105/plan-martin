@@ -1157,7 +1157,7 @@ const T2 = {
       ]
     },
     {
-      id: 't2c2', label: 'Ciclo 2', sub: 'S1 · S2 · S3 · S4 · S5',
+      id: 't2c2', label: 'Ciclo 2', sub: 'S1 · S2 · S3 · S4',
       semanas: [
         {
           id: 't2c2s1', label: 'Semana 1', rango: '10 – 16 Agosto · Carga',
@@ -1203,13 +1203,18 @@ const T2 = {
             { id: 't2c2s4sab', label: 'Sábado 5/9', sub: 'Capacidad de Trabajo · 3 AMRAP + Intervalos', carga: 'high', contenido: 't2-c2s4sab-content' },
           ]
         },
+      ]
+    },
+    {
+      id: 't2c3', label: 'Ciclo 3', sub: 'S1',
+      semanas: [
         {
-          id: 't2c2s5', label: 'Semana 5', rango: '7 – 13 Septiembre',
+          id: 't2c3s1', label: 'Semana 1', rango: '7 – 13 Septiembre',
           dias: [
-            { id: 't2c2s5lun', label: 'Lunes 7/9', sub: 'Snatch desde bloques + Back Squat Waves + Test Gimnástico + 2 Metcons', carga: 'high', contenido: 't2-c2s5lun-content' },
-            { id: 't2c2s5mar', label: 'Martes 8/9', sub: 'Push Jerk Cycling + Strict Press Waves + Test Ring Dips + Capacidad de Trabajo', carga: 'high', contenido: 't2-c2s5mar-content' },
-            { id: 't2c2s5mie', label: 'Miércoles 9/9', sub: 'Squat Clean High Hang + Deadlift Waves + Test T2B + Metcon Escalonado', carga: 'high', contenido: 't2-c2s5mie-content' },
-            { id: 't2c2s5jue', label: 'Jueves 10/9', sub: 'Running · Pirámide de Ritmos · 35 min continuos', carga: 'med', contenido: 't2-c2s5jue-content' },
+            { id: 't2c3s1lun', label: 'Lunes 7/9', sub: 'Snatch desde bloques + Back Squat Waves + Test Gimnástico + 2 Metcons', carga: 'high', contenido: 't2-c3s1lun-content' },
+            { id: 't2c3s1mar', label: 'Martes 8/9', sub: 'Push Jerk Cycling + Strict Press Waves + Test Ring Dips + Capacidad de Trabajo', carga: 'high', contenido: 't2-c3s1mar-content' },
+            { id: 't2c3s1mie', label: 'Miércoles 9/9', sub: 'Squat Clean High Hang + Deadlift Waves + Test T2B + Metcon Escalonado', carga: 'high', contenido: 't2-c3s1mie-content' },
+            { id: 't2c3s1jue', label: 'Jueves 10/9', sub: 'Running · Pirámide de Ritmos · 35 min continuos', carga: 'med', contenido: 't2-c3s1jue-content' },
           ]
         },
       ]
@@ -11160,10 +11165,10 @@ window.addEventListener('DOMContentLoaded', () => {
   </details>
 </template>
 
-<template id="t2-c2s5mie-content">
+<template id="t2-c3s1mie-content">
   <div class="plan-header">
-    <div class="plan-day-label" style="color:var(--purple)">Miércoles 9/9 · Ciclo 2</div>
-    <div class="plan-title">2T 2026 — Semana 5</div>
+    <div class="plan-day-label" style="color:var(--purple)">Miércoles 9/9 · Ciclo 3</div>
+    <div class="plan-title">2T 2026 — Semana 1</div>
     <div class="plan-tags">
       <span class="tag tag-oly">Squat Clean High Hang</span>
       <span class="tag tag-str">Deadlift Waves</span>
@@ -11301,10 +11306,10 @@ window.addEventListener('DOMContentLoaded', () => {
   </details>
 </template>
 
-<template id="t2-c2s5jue-content">
+<template id="t2-c3s1jue-content">
   <div class="plan-header">
-    <div class="plan-day-label" style="color:var(--purple)">Jueves 10/9 · Ciclo 2</div>
-    <div class="plan-title">2T 2026 — Semana 5</div>
+    <div class="plan-day-label" style="color:var(--purple)">Jueves 10/9 · Ciclo 3</div>
+    <div class="plan-title">2T 2026 — Semana 1</div>
     <div class="plan-tags">
       <span class="tag tag-wod">Running</span>
       <span class="tag tag-med">Carga Media</span>
@@ -11336,10 +11341,10 @@ window.addEventListener('DOMContentLoaded', () => {
   </details>
 </template>
 
-<template id="t2-c2s5mar-content">
+<template id="t2-c3s1mar-content">
   <div class="plan-header">
-    <div class="plan-day-label" style="color:var(--purple)">Martes 8/9 · Ciclo 2</div>
-    <div class="plan-title">2T 2026 — Semana 5</div>
+    <div class="plan-day-label" style="color:var(--purple)">Martes 8/9 · Ciclo 3</div>
+    <div class="plan-title">2T 2026 — Semana 1</div>
     <div class="plan-tags">
       <span class="tag tag-oly">Push Jerk Cycling</span>
       <span class="tag tag-str">Strict Press Waves</span>
@@ -11471,10 +11476,10 @@ window.addEventListener('DOMContentLoaded', () => {
   </details>
 </template>
 
-<template id="t2-c2s5lun-content">
+<template id="t2-c3s1lun-content">
   <div class="plan-header">
-    <div class="plan-day-label" style="color:var(--purple)">Lunes 7/9 · Ciclo 2</div>
-    <div class="plan-title">2T 2026 — Semana 5</div>
+    <div class="plan-day-label" style="color:var(--purple)">Lunes 7/9 · Ciclo 3</div>
+    <div class="plan-title">2T 2026 — Semana 1</div>
     <div class="plan-tags">
       <span class="tag tag-oly">Snatch desde bloques</span>
       <span class="tag tag-str">Back Squat Waves</span>
