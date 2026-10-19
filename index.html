@@ -1206,7 +1206,7 @@ const T2 = {
       ]
     },
     {
-      id: 't2c3', label: 'Ciclo 3', sub: 'S5 · S6 · S7 · S8 · S9 · S10',
+      id: 't2c3', label: 'Ciclo 3', sub: 'S5 · S6 · S7 · S8 · S9 · S10 · S11',
       semanas: [
         {
           id: 't2c3s1', label: 'Semana 5', rango: '7 – 13 Septiembre',
@@ -1266,6 +1266,12 @@ const T2 = {
             { id: 't2c3s6mie', label: 'Miércoles 15/10', sub: 'Fuerza Mixta + Habilidad Gimnástica + Open 27.2 / Último evento Rapthor', carga: 'high', contenido: 't2-c3s6mie-content' },
             { id: 't2c3s6jue', label: 'Jueves 16/10', sub: 'Descanso Activo / Descanso total si competís', carga: 'med', contenido: 't2-c3s6jue-content' },
             { id: 't2c3s6vie', label: 'Viernes 17/10', sub: 'EMOM 20 + Front Squat 4x6 + HSPU Déficit / Activación pre-compe', carga: 'high', contenido: 't2-c3s6vie-content' },
+          ]
+        },
+        {
+          id: 't2c3s7', label: 'Semana 11', rango: '19 – 25 Octubre',
+          dias: [
+            { id: 't2c3s7lun', label: 'Lunes 19/10', sub: 'Snatch Complex pesado + Back Squat 80% + Strongman + Acondicionamiento', carga: 'high', contenido: 't2-c3s7lun-content' },
           ]
         },
       ]
@@ -11796,6 +11802,124 @@ window.addEventListener('DOMContentLoaded', () => {
   <div class="note-box note-warn" style="margin:0;">
     <strong>Descansás completamente.</strong>
   </div>
+</template>
+
+<template id="t2-c3s7lun-content">
+  <div class="plan-header">
+    <div class="plan-day-label" style="color:var(--purple)">Lunes 19/10 · Ciclo 3</div>
+    <div class="plan-title">2T 2026 — Semana 11</div>
+    <div class="plan-tags">
+      <span class="tag tag-oly">Snatch Complex</span>
+      <span class="tag tag-str">Back Squat 80%</span>
+      <span class="tag tag-wod">Strongman</span>
+      <span class="tag tag-wod">Acondicionamiento</span>
+      <span class="tag tag-high">Carga Alta</span>
+    </div>
+  </div>
+
+  <div class="sub-label" style="color:var(--green)">Sesión 1</div>
+
+  <details class="block">
+    <summary><span class="block-icon">⚡</span><div><div class="block-title">CALENTAMIENTO</div><div class="block-subtitle">Pliometría + 3 Rondas</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-group-title">Pliometría — 4 series</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Depth Jumps to Hurdle Hop</span><span class="ex-detail">Dejarse caer de cajón de 30-45 cm, rebotar y saltar inmediatamente una valla <strong>más alta que la semana pasada</strong></span></div>
+      </div>
+      <div class="ex-group">
+        <div class="ex-group-title">3 Rondas</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Snatch Balances con pausa de 2'' en el fondo</span><span class="ex-detail">Barra vacía</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Hang Muscle Snatch</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">5 Overhead Squats</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Spanish Squats con banda pesada</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">10 Strict Toes to Bar</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">15 Hollow to Arch Rolls</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--green)">🏋️</span><div><div class="block-title">LEVANTAMIENTO OLÍMPICO · Snatch Complex</div><div class="block-subtitle">Pesada + 3×1 + Deficit Snatch Pull</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="ex-group-title">Complex</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">1 Squat Snatch + 1 Low Hang Squat Snatch + 1 Hang Squat Snatch</span></div>
+      </div>
+      <div class="note-box" style="margin:0 0 10px 0;"><strong>Nota:</strong> buscamos una pesada del complex <strong>en menos de 10'</strong>.</div>
+      <div class="ex-group">
+        <div class="ex-group-title">3×1 Complex · Rest 2' entre series</div>
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">3×1 Complex</span><span class="c-item-reps" style="color:var(--red)">85% – 90%</span></div>
+        </div></div>
+      </div>
+      <div class="note-box" style="margin:0 0 10px 0;">El <strong>85-90% es sobre la pesada del complex</strong> que acabás de encontrar — ingresá ese peso en la casilla de arriba.</div>
+      <div class="ex-group">
+        <div class="ex-group-title">5×3 Deficit Snatch Pull · Rest 2' entre series</div>
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">Serie 1</span><span class="c-item-reps" style="color:var(--red)">85%</span></div>
+          <div class="c-item"><span class="c-item-name">Aumentando por ronda</span><span class="c-item-reps" style="color:var(--red)">+5%</span></div>
+        </div></div>
+      </div>
+      <div class="note-box" style="margin:0;">Empezamos con nuestro 85% y aumentamos de a 5% por ronda. <strong>Descansá 2'</strong> entre series.</div>
+    </div>
+  </details>
+
+  <details class="block">
+    <summary><span class="block-icon" style="color:var(--green)">🏋️</span><div><div class="block-title">FUERZA BÁSICA · Back Squat</div><div class="block-subtitle">4 Series de 6-8 reps · Rest 2' entre series</div></div><span class="block-chevron">▼</span></summary>
+    <div class="block-body">
+      <div class="ex-group">
+        <div class="complex-wrap"><div class="complex-list">
+          <div class="c-item"><span class="c-item-name">4×6-8 reps</span><span class="c-item-reps" style="color:var(--red)">80%</span></div>
+        </div></div>
+      </div>
+      <div class="note-box" style="margin:0;">Sobre nuestro 1RM. <strong>Descanso 2'</strong> entre series.</div>
+    </div>
+  </details>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">METCON</div><div class="block-subtitle">For Time · 3 Rondas · Rest 2' entre cada una</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="ex-group">
+        <div class="ex-group-title">3 Rondas</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">12 Box Jump Over</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">50 mts Bearhug Sandbag Carry</span><span class="ex-detail">70 / 50 kg · Scaled 50 / 30 kg — o Doble KB Front Rack Carry pesado</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">8 Sandbag to Shoulder</span><span class="ex-detail">Alternando entre hombros — o Doble KB Clean pesado</span></div>
+      </div>
+      <div class="note-box" style="margin:0;"><strong>Rest 2'</strong> entre rondas.</div>
+    </div>
+  </details>
+
+  <div class="sub-label" style="color:var(--orange)">Sesión 2 — Acondicionamiento</div>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">BLOQUE 1 · 30-20-10</div><div class="block-subtitle">Progresión de RPE por ronda</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="ex-group">
+        <div class="ex-group-title">30 - 20 - 10</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Cal Row</span><span class="ex-detail">o Shuttle Runs (2×7,5 mts)</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Cal Bike</span><span class="ex-detail">o Box Step Up con saco de 20 / 15 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">Strict Pull Ups</span></div>
+      </div>
+      <div class="note-box note-warn" style="margin:0;">
+        <strong>Ritmo en las máquinas:</strong> Ronda 30 → RPE 5-6 · Ronda 20 → RPE 7 · Ronda 10 → <strong>RPE 9-10</strong>.
+      </div>
+    </div>
+  </details>
+
+  <div class="note-box note-warn" style="margin:0 0 12px 0;text-align:center;"><strong>Rest 10'</strong></div>
+
+  <details class="wod-block">
+    <summary><span class="block-icon" style="color:var(--blue)">🔁</span><div><div class="block-title">BLOQUE 2 · 8 Series</div><div class="block-subtitle">Ritmo fuerte / competitivo · 60'' on / 60'' off</div></div><span class="block-chevron">▼</span></summary>
+    <div class="wod-body">
+      <div class="ex-group">
+        <div class="ex-group-title">8 Series @ ritmo fuerte / competitivo</div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">60'' Row / Run</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">60'' Rest</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">60'' Ski Erg</span><span class="ex-detail">o Sumo Deadlift High Pull con KB de 24 kg · o barra de 30 / 25 kg</span></div>
+        <div class="ex-item"><div class="ex-bullet"></div><span class="ex-name">60'' Rest</span></div>
+      </div>
+    </div>
+  </details>
 </template>
 
 <template id="t2-c3s6vie-content">
