@@ -340,6 +340,8 @@
     .ciclo-option.active { background: rgba(184,240,74,.08); }
     .ciclo-option .day-btn-name { font-family:"Bebas Neue",sans-serif; font-size:15px; letter-spacing:1px; color:var(--text); line-height:1; margin-bottom:1px; }
     .ciclo-option .day-btn-sub { font-size:11px; color:var(--text2); }
+    .sem-dropdown .ciclo-dropdown-btn::before { background:var(--blue); }
+    .sem-dropdown .ciclo-option.active { background: rgba(90,160,255,.08); }
 
     /* ── BWP responsive grid ── */
     .bwp-grid {
@@ -368,9 +370,6 @@
         flex: 1;
         min-width: 120px;
         padding: 8px 10px;
-      }
-      #bwp-sem-btns {
-        flex-direction: column !important;
       }
       #bwp-day-btns .day-btn {
         padding: 10px 12px;
@@ -883,7 +882,7 @@
       <!-- Content BWP -->
       <div class="content" id="bwp-content">
         <div id="bwp-sem-header" style="display:none; margin-bottom:12px;">
-          <div id="bwp-sem-btns" style="display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;"></div>
+          <div id="bwp-sem-btns" style="margin-bottom:4px;"></div>
           <div id="bwp-day-btns" style="display:flex; flex-direction:column; gap:5px; margin-bottom:16px;"></div>
           <div id="bwp-day-placeholder" class="bwp-day-placeholder" style="display:block;">Seleccioná un día para ver la planificación</div>
           <div id="bwp-day-content"></div>
@@ -1368,11 +1367,28 @@ function toggleCicloDropdown(e) {
   panel.classList.toggle('open', !isOpen);
 }
 
+function toggleSemDropdown(e) {
+  if (e) e.stopPropagation();
+  const btn = document.getElementById('sem-dropdown-btn');
+  const panel = document.getElementById('sem-dropdown-panel');
+  if (!btn || !panel) return;
+  const isOpen = panel.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  panel.classList.toggle('open', !isOpen);
+}
+
+function selectSemana(id, e) {
+  if (e) e.stopPropagation();
+  activeSem = id;
+  activeDay = null;
+  render();
+}
+
 function selectCiclo(id, e) {
   if (e) e.stopPropagation();
   activeMes = id;
   const ciclo = DATA().ciclos.find(c => c.id === id);
-  activeSem = ciclo.semanas[0].id;
+  activeSem = ciclo.semanas[ciclo.semanas.length - 1].id;
   activeDay = null;
   const btn = document.getElementById('ciclo-dropdown-btn');
   const panel = document.getElementById('ciclo-dropdown-panel');
@@ -1382,10 +1398,12 @@ function selectCiclo(id, e) {
 }
 
 document.addEventListener('click', function() {
-  const btn = document.getElementById('ciclo-dropdown-btn');
-  const panel = document.getElementById('ciclo-dropdown-panel');
-  if (btn) btn.classList.remove('open');
-  if (panel) panel.classList.remove('open');
+  ['ciclo-dropdown', 'sem-dropdown'].forEach(prefix => {
+    const btn = document.getElementById(prefix + '-btn');
+    const panel = document.getElementById(prefix + '-panel');
+    if (btn) btn.classList.remove('open');
+    if (panel) panel.classList.remove('open');
+  });
 });
 
 // ── Render semanas y días ──
@@ -1396,18 +1414,31 @@ function renderContent() {
   const semHeader = document.getElementById('bwp-sem-header');
   semHeader.style.display = 'block';
 
-  // Botones de semanas
+  // Selector desplegable de semanas
   const semBtns = document.getElementById('bwp-sem-btns');
-  semBtns.innerHTML = '';
-  mes.semanas.forEach(sem => {
-    const btn = document.createElement('button');
-    btn.className = 'bwp-sem-btn' + (sem.vacia ? ' bwp-sem-empty' : '') + (activeSem === sem.id ? ' bwp-sem-active' : '');
-    btn.textContent = `${sem.label} · ${sem.rango}`;
-    if (!sem.vacia) {
-      btn.onclick = () => { activeSem = sem.id; activeDay = null; render(); };
-    }
-    semBtns.appendChild(btn);
-  });
+  const semActiva = mes.semanas.find(s => s.id === activeSem);
+  semBtns.innerHTML = `
+    <div class="ciclo-dropdown sem-dropdown" id="sem-dropdown">
+      <button class="ciclo-dropdown-btn" id="sem-dropdown-btn" onclick="toggleSemDropdown(event)">
+        <div class="day-dot" style="background:var(--blue); flex-shrink:0;"></div>
+        <div class="day-btn-info">
+          <div class="day-btn-name">${semActiva ? semActiva.label : '—'}</div>
+          <div class="day-btn-sub">${semActiva ? semActiva.rango : ''}</div>
+        </div>
+        <span class="ciclo-chevron">▼</span>
+      </button>
+      <div class="ciclo-dropdown-panel" id="sem-dropdown-panel">
+        ${mes.semanas.map(sem => `
+          <button class="ciclo-option ${sem.id === activeSem ? 'active' : ''}"
+            ${sem.vacia ? 'disabled style="opacity:.35; cursor:default;"' : `onclick="selectSemana('${sem.id}', event)"`}>
+            <div class="day-dot" style="background:var(--blue); flex-shrink:0;"></div>
+            <div class="day-btn-info">
+              <div class="day-btn-name">${sem.label}</div>
+              <div class="day-btn-sub">${sem.rango}</div>
+            </div>
+          </button>`).join('')}
+      </div>
+    </div>`;
 
   const sem = mes.semanas.find(s => s.id === activeSem);
   const dayBtns = document.getElementById('bwp-day-btns');
