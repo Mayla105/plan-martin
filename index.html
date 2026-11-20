@@ -237,6 +237,19 @@
     .rm-bar input:focus { outline:none; border-color:var(--green); }
     .rm-bar .rm-clear { background:none; border:none; color:var(--muted); font-size:11px; cursor:pointer; text-decoration:underline; padding:0; }
     .rm-bar .rm-clear:hover { color:var(--text); }
+    .log-bar { margin:10px 16px 2px; padding:10px 12px; background:var(--surface2); border:1px solid var(--border); border-radius:8px; }
+    .log-bar-head { display:flex; align-items:center; gap:8px; margin-bottom:6px; }
+    .log-bar-head label { font-size:10px; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.8px; }
+    .log-bar-saved { margin-left:auto; font-size:10px; color:var(--green); opacity:0; transition:opacity .25s; }
+    .log-bar-saved.show { opacity:1; }
+    .log-bar input {
+      width:100%; box-sizing:border-box; background:var(--surface); border:1px solid var(--border);
+      border-radius:6px; color:var(--text); font-size:13px; font-weight:600; padding:8px 10px;
+    }
+    .log-bar input::placeholder { color:var(--muted); font-weight:400; }
+    .log-bar input:focus { outline:none; border-color:var(--green); }
+    .log-bar .log-clear { background:none; border:none; color:var(--muted); font-size:10px; cursor:pointer; text-decoration:underline; padding:0; }
+    .log-bar .log-clear:hover { color:var(--text); }
 
     /* ── Plan selector tabs ── */
     input[type="radio"][name="plan"] { display:none; }
@@ -1503,6 +1516,7 @@ function renderContent() {
     if (tpl) {
       dayContent.innerHTML = tpl.innerHTML;
       initRMCalculators(dayContent);
+      initWeightLogs(dayContent, dia.id);
     }
   }
 }
@@ -1543,6 +1557,77 @@ function initRMCalculators(container) {
       input.value = '';
       localStorage.removeItem(key);
       applyRM(items, '');
+    });
+  });
+}
+
+// ── Registro de pesos: campo para anotar con cuánto hiciste el ejercicio ese día ──
+function initWeightLogs(container, dayId) {
+  // Solo estos levantamientos llevan registro de peso
+  const RE_LIFT = /overhead[ ]*squat|ohs|snatch|clean|jerk|push[ ]*press|press[ ]*estricto|strict[ ]*press|back[ ]*squat|front[ ]*squat|deadlift|yoke[ ]*carry|farmer[']?s?[ ]*carry/i;
+  // Bloques donde el movimiento aparece pero no se registra peso
+  const RE_EXCLUIR = /calentamiento|movilidad|activaci[óo]n|pliometr[íi]a|protocolo|warm\s*up|accesorios/i;
+
+  container.querySelectorAll('details.block').forEach(block => {
+    const titleEl = block.querySelector('.block-title');
+    if (!titleEl) return;
+    const title = titleEl.textContent.trim();
+    if (RE_EXCLUIR.test(title)) return;
+
+    const body = block.querySelector('.block-body');
+    if (!body || body.querySelector('.log-bar')) return;
+
+    // Matchea por título, o por el nombre de los ejercicios del bloque
+    let match = RE_LIFT.test(title);
+    if (!match) {
+      body.querySelectorAll('.ex-name, .ex-group-title, .c-item-name').forEach(el => {
+        if (RE_LIFT.test(el.textContent)) match = true;
+      });
+    }
+    if (!match) return;
+
+    const key = 'log_' + dayId + '_' + title.replace(/[^A-Za-z0-9]+/g, '_');
+
+    const bar = document.createElement('div');
+    bar.className = 'log-bar';
+    bar.innerHTML = `
+      <div class="log-bar-head">
+        <label>¿Con cuánto lo hiciste?</label>
+        <span class="log-bar-saved">guardado ✓</span>
+      </div>
+      <input type="text" class="log-input" placeholder="Ej: 90kg ×3 · 95kg ×2 · se sintió liviano">
+      <div style="margin-top:6px;"><button type="button" class="log-clear">borrar registro</button></div>`;
+    body.appendChild(bar);
+
+    const input = bar.querySelector('.log-input');
+    const savedTag = bar.querySelector('.log-bar-saved');
+    const clearBtn = bar.querySelector('.log-clear');
+
+    try {
+      const saved = localStorage.getItem(key);
+      if (saved) { input.value = saved; savedTag.classList.add('show'); }
+    } catch (e) {}
+
+    let t;
+    input.addEventListener('input', () => {
+      clearTimeout(t);
+      savedTag.classList.remove('show');
+      t = setTimeout(() => {
+        try {
+          if (input.value.trim()) {
+            localStorage.setItem(key, input.value);
+            savedTag.classList.add('show');
+          } else {
+            localStorage.removeItem(key);
+          }
+        } catch (e) {}
+      }, 400);
+    });
+
+    clearBtn.addEventListener('click', () => {
+      input.value = '';
+      savedTag.classList.remove('show');
+      try { localStorage.removeItem(key); } catch (e) {}
     });
   });
 }
